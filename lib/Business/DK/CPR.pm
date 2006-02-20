@@ -1,6 +1,6 @@
 package Business::DK::CPR;
 
-# $Id: CPR.pm,v 1.2 2006-02-20 21:51:03 jonasbn Exp $
+# $Id: CPR.pm,v 1.3 2006-02-20 22:28:54 jonasbn Exp $
 
 use strict;
 use vars qw($VERSION @ISA @EXPORT_OK);
@@ -94,15 +94,100 @@ __END__
 
 =head1 NAME
 
-Business::DK::CVR - a danish CPR (Central Person Registraion) code generator/validator
+Business::DK::CVR - a danish CPR code generator/validator
+
+=head1 VERSION
+
+This documentation describes version 0.01
 
 =head1 SYNOPSIS
 
+	use Business::DK::CPR qw(validate);
+
+	my $rv;
+	eval {
+		$rv = validate(1501721111);
+	};
+	
+	if ($@) {
+		die "Code is not of the expected format - $@";
+	}
+	
+	if ($rv) {
+		print "CPR is valid";
+	} else {
+		print "CPR is not valid";
+	}
+
+
+	use Business::DK::CPR qw(calculate);
+
+	my @cprs = calculate(150172);
+
+	my $number_of_valid_cprs = calculate(150172);
+
+
 =head1 DESCRIPTION
+
+CPR stands for Central Person Registration and it a social security number used 
+in Denmark.
 
 =head2 validate
 
+This function checks a CPR number for validity. It takes a CPR number as 
+argument and returns 1 (true) for valid and 0 (false) for invalid.
+
+It dies if the CPR number is malformed or in anyway unpassable, be aware that
+the 6 first digits are a date (SEE: B<_checkdate> function below.
+
+NB! it is possible to make fake CPR number, which appear valid, please see 
+MOTIVATION and the B<calculation> function. 
+
 =head2 calculate
+
+This function takes an integer representing a date and calculates valid CPR 
+numbers for the specified date. In scalar context returns the number of valid 
+CPR numbers possible and in list context a list of valid CPR numbers.
+
+If the date malformed, in anyway not valid or unspecified the function dies.
+
+=head1 PRIVATE FUNCTIONS
+
+=head2 _checkdate
+
+This function takes an integer representing a date in the format: ddmmyy.
+
+It check the validity of the date and returns 1 (true) if the date is valid.
+
+It dies if no argument is provided or if the data in invalid or cannot be 
+parsed.
+
+=head1 EXPORTS
+
+Business::DK::CPR exports on request:
+
+=over
+
+=item validate
+
+=item calculate
+
+=item _checkdate
+
+=back
+
+=head1 TODO
+
+=over
+
+=item The CPR agency in Denmark are developing a new CPR scheme, due to the 
+fact that they are running out of valid CPR numbers.
+
+=back
+
+=head1 TESTS
+
+Coverage of the test suite is at 100%
 
 =head1 BUGS
 
@@ -125,6 +210,22 @@ or by sending mail to
 =item L<Business::DK::CPR>
 
 =back
+
+=head1 MOTIVATION
+
+I write business related applications. So I need to be able to validate CPR 
+numbers once is a while, hence the validation function.
+
+The calculate function is a completely different story. When I was in school
+we where programming in Comal80 and some of the guys in my school created 
+lists of CPR numbers valid with their own birthdays. The thing was that if you 
+got caught riding the train without a valid ticket the personnel would only 
+check the validity of you CPR number, so all you have to remember was your 
+birthday and 4 more digits not being the 4 last digits of your CPR number.
+
+I guess this was the first hack I ever heard about and saw - I never tried it
+out, but back then it really fascinated me and my interest in computers began 
+back then.
 
 =head1 AUTHOR
 
