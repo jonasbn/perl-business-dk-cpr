@@ -1,6 +1,6 @@
 package Business::DK::CPR;
 
-# $Id: CPR.pm,v 1.3 2006-02-20 22:28:54 jonasbn Exp $
+# $Id: CPR.pm,v 1.4 2006-02-21 21:02:45 jonasbn Exp $
 
 use strict;
 use vars qw($VERSION @ISA @EXPORT_OK);
@@ -81,7 +81,7 @@ sub _checkdate {
 	if (! ($birthdate =~ m/^(\d{2})(\d{2})(\d{2})$/)) {
 		croak "argument: $birthdate could not be parsed";			
 	}
-	
+		
 	if (! check_date($3, $2 ,$1)) {
 		croak "argument: $birthdate has to be a valid date in the following format: ddmmyy";			
 	}
@@ -207,7 +207,7 @@ or by sending mail to
 
 =item L<Business::DK::PO>
 
-=item L<Business::DK::CPR>
+=item L<Business::DK::CVR>
 
 =back
 
@@ -224,8 +224,8 @@ check the validity of you CPR number, so all you have to remember was your
 birthday and 4 more digits not being the 4 last digits of your CPR number.
 
 I guess this was the first hack I ever heard about and saw - I never tried it
-out, but back then it really fascinated me and my interest in computers began 
-back then.
+out, but back then it really fascinated me and my interest in computers was 
+really sparked.
 
 =head1 AUTHOR
 
