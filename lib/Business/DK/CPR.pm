@@ -1,6 +1,6 @@
 package Business::DK::CPR;
 
-# $Id: CPR.pm,v 1.4 2006-02-21 21:02:45 jonasbn Exp $
+# $Id: CPR.pm,v 1.5 2006-02-23 09:22:48 jonasbn Exp $
 
 use strict;
 use vars qw($VERSION @ISA @EXPORT_OK);
@@ -94,11 +94,11 @@ __END__
 
 =head1 NAME
 
-Business::DK::CVR - a danish CPR code generator/validator
+Business::DK::CPR - a danish CPR code generator/validator
 
 =head1 VERSION
 
-This documentation describes version 0.01
+This documentation describes version 0.02
 
 =head1 SYNOPSIS
 
