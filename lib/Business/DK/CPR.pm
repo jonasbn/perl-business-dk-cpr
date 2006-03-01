@@ -1,6 +1,6 @@
 package Business::DK::CPR;
 
-# $Id: CPR.pm,v 1.5 2006-02-23 09:22:48 jonasbn Exp $
+# $Id: CPR.pm,v 1.6 2006-03-01 07:42:54 jonasbn Exp $
 
 use strict;
 use vars qw($VERSION @ISA @EXPORT_OK);
@@ -11,7 +11,7 @@ use Date::Calc qw(check_date);
 
 require Exporter;
 
-$VERSION = '0.01';
+$VERSION = '0.02';
 @ISA = qw(Exporter);
 @EXPORT_OK = qw(validate calculate _checkdate);
 

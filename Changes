@@ -1,8 +1,8 @@
 Changes file for Business-DK-CPR
 
-$Id: Changes,v 1.4 2006-02-23 09:22:48 jonasbn Exp $
+$Id: Changes,v 1.5 2006-03-01 07:42:54 jonasbn Exp $
 
-Release 0.02
+Release 0.02 - Released Wed Mar 1 2006 Update not necessary
 
 - Fixed a small POD error, reported by htoug (thanks)
 
