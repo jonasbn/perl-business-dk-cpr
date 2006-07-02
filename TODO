@@ -1,7 +1,10 @@
 TODO file for Business-DK-CPR
 
-$Id: TODO,v 1.3 2006-02-21 21:02:45 jonasbn Exp $
+$Id: TODO,v 1.4 2006-07-02 13:23:09 jonasbn Exp $
 
 - Investigate new CPR number strategy used by CPR in Denmark.
   
 - Add more documentation on CPR format
+
+- Add capability of using subs as constraints in Data::FormValidator
+
