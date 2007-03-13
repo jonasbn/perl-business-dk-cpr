@@ -1,5 +1,6 @@
 bin/calculate_cpr.pl
 Build.PL
+Business-DK-CPR.kpf
 Changes
 INSTALL
 lib/Business/DK/CPR.pm
@@ -10,5 +11,10 @@ README
 t/00.load.t
 t/_checkdate.t
 t/calculate.t
+t/critic.t
+t/kwalitee.t
+t/perlcriticrc
+t/pod-coverage.t
+t/pod.t
 t/validate.t
 TODO

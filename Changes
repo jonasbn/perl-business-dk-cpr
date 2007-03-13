@@ -1,6 +1,21 @@
 Changes file for Business-DK-CPR
 
-$Id: Changes,v 1.5 2006-03-01 07:42:54 jonasbn Exp $
+$Id: Changes,v 1.6 2007-03-13 19:35:02 jonasbn Exp $
+
+Release 0.03 - Released Wed Mar 13 2007 Update not necessary
+
+- Added Perl::Critic test t/critic.t and related t/perlcriticrc, we currently
+  pass at severity 5, gentle
+
+- Updated to more contemporary versions of:
+    t/pod-coverage.t
+    t/pod.t
+
+  These should be there for the quality, but will not be run as a part of the
+  normal test run, unless the TEST_POD environment variable is set.
+  
+  This seem to be the defacto way of doing things.
+
 
 Release 0.02 - Released Wed Mar 1 2006 Update not necessary
 

@@ -1,8 +1,10 @@
 INSTALL file for Business-DK-CPR
 
-$Id: INSTALL,v 1.1 2006-02-20 21:38:48 jonasbn Exp $
+$Id: INSTALL,v 1.2 2007-03-13 19:35:02 jonasbn Exp $
 
-1. tar -xvzf Business-DK-CPR-0.01.tar.gz 
+Using Makefile.PL
+
+1. tar -xvzf Business-DK-CPR-<version>.tar.gz 
 
 2. cd Business-DK-CPR
 
@@ -14,4 +16,20 @@ $Id: INSTALL,v 1.1 2006-02-20 21:38:48 jonasbn Exp $
 
 6. make install (requires privileged access)
 
-7. make clean  
+7. make clean
+
+or using Build.PL
+
+1. tar -xvzf Business-DK-CPR-<version>.tar.gz 
+
+2. cd Business-DK-CPR
+
+3. perl Build.PL
+
+4. ./Build
+
+5. ./Build test
+
+6. ./Build install (requires privileged access)
+
+7. ./Build clean

@@ -1,8 +1,9 @@
 package Business::DK::CPR;
 
-# $Id: CPR.pm,v 1.6 2006-03-01 07:42:54 jonasbn Exp $
+# $Id: CPR.pm,v 1.7 2007-03-13 19:35:02 jonasbn Exp $
 
 use strict;
+use warnings;
 use vars qw($VERSION @ISA @EXPORT_OK);
 use Carp qw(croak);
 use Business::DK::CVR qw(_length _calculate_sum);
@@ -11,81 +12,82 @@ use Date::Calc qw(check_date);
 
 require Exporter;
 
-$VERSION = '0.02';
-@ISA = qw(Exporter);
+$VERSION   = '0.03';
+@ISA       = qw(Exporter);
 @EXPORT_OK = qw(validate calculate _checkdate);
 
-use constant MODULUS_OPERAND    => 11;
-use constant DATE_LENGTH        => 6;
+use constant MODULUS_OPERAND => 11;
+use constant DATE_LENGTH     => 6;
 
 my @controlcifers = qw(4 3 2 7 6 5 4 3 2 1);
 
 sub calculate {
-	my $birthdate = shift;
-		
-	if (! $birthdate) {
-		_argument(DATE_LENGTH);
-	}
-	_content($birthdate);
-	_length($birthdate, DATE_LENGTH);
-	_checkdate($birthdate);
+    my $birthdate = shift;
 
-	my @cprs;	
-	for (1 .. 999) {
-		my $n = sprintf("%03s", $_);
-				
-		my $sum = _calculate_sum(($birthdate . $n), \@controlcifers);	
-		my $mod = $sum%MODULUS_OPERAND;
-		
-		my $checkciffer = (MODULUS_OPERAND - $mod);
-		
-		if ($checkciffer < 10) {
-			push @cprs, ($birthdate . $n . $checkciffer);
-		}
-	}
-		
-	if (wantarray) {
-		return @cprs;
-	} else {
-		return scalar(@cprs);
-	}
+    if ( !$birthdate ) {
+        _argument(DATE_LENGTH);
+    }
+    _content($birthdate);
+    _length( $birthdate, DATE_LENGTH );
+    _checkdate($birthdate);
+
+    my @cprs;
+    for ( 1 .. 999 ) {
+        my $n = sprintf( "%03s", $_ );
+
+        my $sum = _calculate_sum( ( $birthdate . $n ), \@controlcifers );
+        my $mod = $sum % MODULUS_OPERAND;
+
+        my $checkciffer = ( MODULUS_OPERAND - $mod );
+
+        if ( $checkciffer < 10 ) {
+            push @cprs, ( $birthdate . $n . $checkciffer );
+        }
+    }
+
+    if (wantarray) {
+        return @cprs;
+    } else {
+        return scalar(@cprs);
+    }
 }
 
 sub validate {
-	my $controlnumber = shift;
+    my $controlnumber = shift;
 
-	my $controlcode_length = scalar(@controlcifers);
+    my $controlcode_length = scalar(@controlcifers);
 
-	if (! $controlnumber) {
-		_argument($controlcode_length);
-	}
-	_content($controlnumber);
-	_length($controlnumber, $controlcode_length);
-	
-	my $sum = _calculate_sum($controlnumber, \@controlcifers);
-	
-	if ($sum%MODULUS_OPERAND) {
-		return 0;
-	} else {
-		return 1;
-	}	
+    if ( !$controlnumber ) {
+        _argument($controlcode_length);
+    }
+    _content($controlnumber);
+    _length( $controlnumber, $controlcode_length );
+
+    my $sum = _calculate_sum( $controlnumber, \@controlcifers );
+
+    if ( $sum % MODULUS_OPERAND ) {
+        return 0;
+    } else {
+        return 1;
+    }
 }
 
 sub _checkdate {
-	my $birthdate = shift;
-	
-	if (! $birthdate) {
-		croak "argument should be provided";				
-	}
-	
-	if (! ($birthdate =~ m/^(\d{2})(\d{2})(\d{2})$/)) {
-		croak "argument: $birthdate could not be parsed";			
-	}
-		
-	if (! check_date($3, $2 ,$1)) {
-		croak "argument: $birthdate has to be a valid date in the following format: ddmmyy";			
-	}
-	return 1;
+    my $birthdate = shift;
+
+    if ( !$birthdate ) {
+        croak "argument should be provided";
+    }
+
+    if ( !( $birthdate =~ m/^(\d{2})(\d{2})(\d{2})$/ ) ) {
+        croak "argument: $birthdate could not be parsed";
+    }
+
+    if ( !check_date( $3, $2, $1 ) ) {
+        croak
+            "argument: $birthdate has to be a valid date in the following format: ddmmyy";
+    }
+    return 1;
 }
 
 1;
