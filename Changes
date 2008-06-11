@@ -1,6 +1,14 @@
 Changes file for Business-DK-CPR
 
-$Id: Changes,v 1.6 2007-03-13 19:35:02 jonasbn Exp $
+$Id: Changes,v 1.7 2008-06-11 07:57:01 jonasbn Exp $
+
+HEAD
+
+- Added LICENSE file 
+
+- Added LICENSE section in POD into. The LICENSE section was not present, but 
+  the information was
+
 
 Release 0.03 - Released Wed Mar 13 2007 Update not necessary
 

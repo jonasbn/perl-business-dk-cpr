@@ -1,6 +1,6 @@
 package Business::DK::CPR;
 
-# $Id: CPR.pm,v 1.7 2007-03-13 19:35:02 jonasbn Exp $
+# $Id: CPR.pm,v 1.8 2008-06-11 07:57:01 jonasbn Exp $
 
 use strict;
 use warnings;
@@ -90,6 +90,10 @@ sub _checkdate {
     return 1;
 }
 
+sub generate {
+    return Business::DK::CVR->generate($amount, $seed);
+}
+
 1;
 
 __END__
@@ -140,10 +144,10 @@ This function checks a CPR number for validity. It takes a CPR number as
 argument and returns 1 (true) for valid and 0 (false) for invalid.
 
 It dies if the CPR number is malformed or in anyway unpassable, be aware that
-the 6 first digits are a date (SEE: B<_checkdate> function below.
+the 6 first digits are a date (SEE: L</_checkdate> function below.
 
 NB! it is possible to make fake CPR number, which appear valid, please see 
-MOTIVATION and the B<calculation> function. 
+MOTIVATION and the Æ</calculate> function. 
 
 =head2 calculate
 
@@ -235,7 +239,9 @@ Jonas B. Nielsen, (jonasbn) - C<< <jonasbn@cpan.org> >>
 
 =head1 COPYRIGHT
 
-Business-DK-CPR is (C) by Jonas B. Nielsen, (jonasbn) 2006
+Business-DK-CPR is (C) by Jonas B. Nielsen, (jonasbn) 2006-2008
+
+=head1 LICENSE
 
 Business-DK-CPR is released under the artistic license
 
