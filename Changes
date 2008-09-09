@@ -1,8 +1,33 @@
 Changes file for Business-DK-CPR
 
-$Id: Changes,v 1.7 2008-06-11 07:57:01 jonasbn Exp $
+$Id: Changes,v 1.8 2008-09-09 19:15:28 jonasbn Exp $
 
 HEAD
+
+- Introduced validateCPR a wrapper on validate (validate is a quite poluting
+  name for export).
+
+- Cleaned the code a bit to follow Perl::Critic policies, nothing serious
+  See also the POD section in Business::DK::CPR on TEST AND QUALITY
+
+- Updated POD to adhere to Perl::Critic template (see: t/perlcriticrc)
+
+- Introduced README file generator in Build.PL
+
+- Introduced recursive test flag in Build.PL and restructured test suite to reflect this:
+    t/validate.t -> t/Business/DK/CPR/validate.t
+    t/calculate.t -> t/Business/DK/CPR/calculate.t
+    t/_checkdate.t -> t/Business/DK/CPR/_checkdate.t
+    
+    New tests:
+    
+    t/Business/DK/CPR/validate1968.t
+    t/Business/DK/CPR/validate2001.t
+    
+- Refactored validate to be a wrapper around: validate1968 and validate2007, so the original modulus validation has propated into
+validate1968
+
+- Introduced validate2007 as a stub to implement the new validation introduced in 2007
 
 - Added LICENSE file 
 

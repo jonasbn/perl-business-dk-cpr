@@ -1,5 +1,5 @@
 
-# $Id: perlcriticrc,v 1.2 2008-06-11 07:57:01 jonasbn Exp $
+# $Id: perlcriticrc,v 1.3 2008-09-09 19:15:52 jonasbn Exp $
 
 severity = 1
 verbose = 7
@@ -17,6 +17,9 @@ keywords = Id
 
 [CodeLayout::ProhibitHardTabs]
 allow_leading_tabs = 0
+
+[-InputOutput::RequireCheckedSyscalls]
+functions = print
 
 [-ControlStructures::ProhibitCStyleForLoops]
 
