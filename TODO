@@ -1,6 +1,9 @@
 TODO file for Business-DK-CPR
 
 $Id: TODO,v 1.5 2008-09-09 19:15:28 jonasbn Exp $
+
+- Validate the proclaimed introduction years of the two CPR number formats
+  1968 and 2007
   
 - Add more documentation on CPR format
 

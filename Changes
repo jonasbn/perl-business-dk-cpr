@@ -4,6 +4,8 @@ $Id: Changes,v 1.8 2008-09-09 19:15:28 jonasbn Exp $
 
 HEAD, Release 0.04 candidate
 
+- Added a use integer, since we only use integers
+
 - Updated MANIFEST.SKIP to more contemporary version
 
 - Introduced validateCPR a wrapper on validate (validate is a quite polluting
@@ -16,7 +18,9 @@ HEAD, Release 0.04 candidate
 
 - Introduced README file generator in Build.PL
 
-- Introduced recursive test flag in Build.PL and restructured test suite to reflect this:
+- Introduced recursive test flag in Build.PL and restructured test suite to
+  reflect this:
+  
     t/validate.t -> t/Business/DK/CPR/validate.t
     t/calculate.t -> t/Business/DK/CPR/calculate.t
     t/_checkdate.t -> t/Business/DK/CPR/_checkdate.t
@@ -26,10 +30,12 @@ HEAD, Release 0.04 candidate
     t/Business/DK/CPR/validate1968.t
     t/Business/DK/CPR/validate2001.t
     
-- Refactored validate to be a wrapper around: validate1968 and validate2007, so the original modulus validation has propagated into
-validate1968
+- Refactored validate to be a wrapper around: validate1968 and validate2007, so
+  the original modulus validation has propagated into validate1968, since 1968
+  was the year CPR was introduced in Denmark
 
-- Introduced validate2007 as an implementation the new validation introduced in 2007
+- Introduced validate2007 as an implementation the new validation introduced in
+  2007
 
 - Added LICENSE file 
 

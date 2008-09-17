@@ -11,6 +11,7 @@ use Business::DK::PO qw(_argument _content);
 use Date::Calc qw(check_date);
 use Hash::Merge qw( merge );
 use base 'Exporter';
+use integer;
 
 $VERSION   = '0.04';
 @EXPORT_OK = qw(
