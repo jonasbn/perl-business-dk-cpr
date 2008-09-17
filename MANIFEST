@@ -1,6 +1,5 @@
 bin/calculate_cpr.pl
 Build.PL
-Business-DK-CPR.kpf
 Changes
 INSTALL
 lib/Business/DK/CPR.pm

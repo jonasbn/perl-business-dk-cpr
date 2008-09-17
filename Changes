@@ -2,9 +2,11 @@ Changes file for Business-DK-CPR
 
 $Id: Changes,v 1.8 2008-09-09 19:15:28 jonasbn Exp $
 
-HEAD
+HEAD, Release 0.04 candidate
 
-- Introduced validateCPR a wrapper on validate (validate is a quite poluting
+- Updated MANIFEST.SKIP to more contemporary version
+
+- Introduced validateCPR a wrapper on validate (validate is a quite polluting
   name for export).
 
 - Cleaned the code a bit to follow Perl::Critic policies, nothing serious
@@ -24,10 +26,10 @@ HEAD
     t/Business/DK/CPR/validate1968.t
     t/Business/DK/CPR/validate2001.t
     
-- Refactored validate to be a wrapper around: validate1968 and validate2007, so the original modulus validation has propated into
+- Refactored validate to be a wrapper around: validate1968 and validate2007, so the original modulus validation has propagated into
 validate1968
 
-- Introduced validate2007 as a stub to implement the new validation introduced in 2007
+- Introduced validate2007 as an implementation the new validation introduced in 2007
 
 - Added LICENSE file 
 

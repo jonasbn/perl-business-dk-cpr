@@ -1,11 +1,11 @@
 # $Id: validate.t,v 1.2 2006-02-20 22:28:54 jonasbn Exp $
 
 use strict;
-use Test::More tests => 8;
+use Test::More tests => 10;
 use Test::Exception;
 
 #Test 1
-BEGIN { use_ok('Business::DK::CPR', qw(validate)) };
+BEGIN { use_ok('Business::DK::CPR', qw(validate validate1968 validate2001)) };
 
 #Test 2
 ok(validate(1501721111), 'Ok, generated');
@@ -26,4 +26,6 @@ dies_ok {validate("abcdefg1")} 'unclean';
 dies_ok {validate(0)} 'zero';
 
 #Test 8
-ok(! validate("1501729993"), 'invalid');
+ok(! validate("1501720001"), 'invalid');
+ok(! validate2001("1501720001"), 'invalid');
+ok(! validate1968("1501720001"), 'invalid');
