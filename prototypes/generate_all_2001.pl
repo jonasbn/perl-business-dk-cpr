@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use Business::DK::CPR qw(validate2001);
+use Business::DK::CPR qw(validate2007);
 
 my %series = (
     10 => 9994,
@@ -19,7 +19,7 @@ while (my ($key, $value)  = each %series) {
         my $n = sprintf( "%04s", $_ );
         my $controlnumber = '150172'.$n;
         
-        if (! validate2001($controlnumber)) {
+        if (! validate2007($controlnumber)) {
             print STDERR "Invalid = $controlnumber\n";
         }
     }

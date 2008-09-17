@@ -15,7 +15,7 @@ use integer;
 
 $VERSION   = '0.04';
 @EXPORT_OK = qw(
-    validate calculate _checkdate validate1968 validate2001 generate validateCPR
+    validate calculate _checkdate validate1968 validate2007 generate validateCPR
 );
 
 use constant MODULUS_OPERAND => 11;
@@ -85,11 +85,11 @@ sub validate {
     if ( validate1968($controlnumber) ) {
         return VALID;
     } else {
-        return validate2001($controlnumber);
+        return validate2007($controlnumber);
     }
 }
 
-sub validate2001 {
+sub validate2007 {
     my $controlnumber = shift;
 
     _assert_controlnumber($controlnumber);
@@ -261,7 +261,7 @@ It dies if the CPR number is malformed or in any way unparsable, be aware that t
 
 L</validate1968> is the old form of CPR number. It is validated using modulus 11.
 
-The new format introduced in 2001 can be validated using L</validate2001>.
+The new format introduced in 2001 can be validated using L</validate2007>.
 
 The L</validate> subroutine wraps both validators and checks using against both.
 
@@ -275,7 +275,7 @@ Better name for export. This is just a wrapper for L</validate>
 
 =head2 validate1968
 
-=head2 validate2001
+=head2 validate2007
 
 =head2 generate
 
@@ -325,7 +325,7 @@ Business::DK::CPR exports on request:
 
 =item validate1968
 
-=item validate2001
+=item validate2007
 
 =item calculate
 

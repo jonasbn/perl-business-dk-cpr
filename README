@@ -44,7 +44,7 @@ SUBROUTINES AND METHODS
     validate1968 is the old form of CPR number. It is validated using
     modulus 11.
 
-    The new format introduced in 2001 can be validated using validate2001.
+    The new format introduced in 2001 can be validated using validate2007.
 
     The validate subroutine wraps both validators and checks using against
     both.
@@ -60,7 +60,7 @@ SUBROUTINES AND METHODS
 
   validate1968
 
-  validate2001
+  validate2007
 
   generate
 
@@ -111,7 +111,7 @@ EXPORTS
     validate
     validateCPR
     validate1968
-    validate2001
+    validate2007
     calculate
     generate
     _checkdate
