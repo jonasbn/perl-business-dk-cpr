@@ -15,7 +15,7 @@ use integer;
 
 $VERSION   = '0.04';
 @EXPORT_OK = qw(
-    validate calculate _checkdate validate1968 validate2007 generate validateCPR
+    validate validateCPR generate calculate _checkdate validate1968 generate1968 validate2007 generate2007  
 );
 
 use constant MODULUS_OPERAND => 11;
@@ -182,32 +182,40 @@ sub _checkdate {
 
     if ( not check_date( $3, $2, $1 ) ) {
         croak
-            "argument: $birthdate has to be a valid date in the following format: ddmmyy";
+            "argument: $birthdate has to be a valid date in the format: ddmmyy";
     }
     return VALID;
 }
 
-sub generate {
+sub generate {}
     my $birthdate = shift;
-    my $sex = shift || undef;
+    my $gender = shift || undef;
+
+
+    my %cprs
+}
+
+sub generate2007 {
+    my $birthdate = shift;
+    my $gender = shift || undef;
 
     _assert_date($birthdate);
 
     my @cprs;
     my %seeds;
 
-    if ( defined $sex ) {
-        if ( $sex eq 'male' ) {
+    if ( defined $gender ) {
+        if ( $gender eq 'male' ) {
             %seeds = %male_seeds;
-        } elsif ( $sex eq 'female' ) {
+        } elsif ( $gender eq 'female' ) {
             %seeds = %female_seeds;
         } else {
-            carp("Unknown sex: $sex, assuming no sex");
-            $sex = undef;
+            carp("Unknown gender: $gender, assuming no gender");
+            $gender = undef;
         }
     }
 
-    if ( not $sex ) {
+    if ( not $gender ) {
         %seeds = %{ merge( \%female_seeds, \%male_seeds ) };
     }
 
@@ -225,6 +233,46 @@ sub generate {
         return scalar @cprs;
     }
 }
+
+sub generate1968 {
+    my $birthdate = shift;
+    my $gender = shift || undef;
+
+    _assert_date($birthdate);
+
+    my @cprs;
+    my $checksum;
+    
+    while ( $checksum < 9999 ) {
+
+        my $cpr = $birthdate . sprintf '%04d', $checksum;
+
+        if (validate1968($cpr)) {
+
+            if ( defined $gender ) {
+                if ( $gender eq 'male' && $checksum % 2) {
+                    push @cprs, $cpr;
+
+                } elsif ( $gender eq 'female' ) {
+                    push @cprs, $cpr;
+
+                } else {
+                    carp("Unknown gender: $gender, assuming no gender");
+                    $gender = undef;
+                }
+            } else {
+                push @cprs, $cpr;
+            }
+        }
+    }
+
+    if (wantarray) {
+        return @cprs;
+    } else {
+        return scalar @cprs;
+    }
+}
+
 
 1;
 
@@ -264,25 +312,33 @@ This documentation describes version 0.04
 
 =head1 DESCRIPTION
 
-CPR stands for Central Person Registration and it the social security number used in Denmark.
+CPR stands for Central Person Registration and it the social security number
+used in Denmark.
 
 =head1 SUBROUTINES AND METHODS
 
 =head2 validate
 
-This function checks a CPR number for validity. It takes a CPR number as argument and returns 1 (true) for valid and 0 (false) for invalid.
+This function checks a CPR number for validity. It takes a CPR number as
+argument and returns 1 (true) for valid and 0 (false) for invalid.
 
-It dies if the CPR number is malformed or in any way unparsable, be aware that the 6 first digits are representing a date (SEE: L</_checkdate> function below). The date indicate the person's birthday, the last 4 digits are representing a serial number and a control cifer.
+It dies if the CPR number is malformed or in any way unparsable, be aware that
+the 6 first digits are representing a date (SEE: L</_checkdate> function below).
+The date indicate the person's birthday, the last 4 digits are representing a
+serial number and control cifer.
 
-L</validate1968> is the old form of CPR number. It is validated using modulus 11.
+L</validate1968> is the old form of the CPR number. It is validated using
+modulus 11.
 
-The new format introduced in 2001 can be validated using L</validate2007>.
+The new format introduced in 2001 (put to use in 2007, hence the sub name) can
+be validated using L</validate2007>.
 
 The L</validate> subroutine wraps both validators and checks using against both.
 
-NB! it is possible to make fake CPR number, which appear valid, please see MOTIVATION and the L</calculate> function. 
+NB! it is possible to make fake CPR number, which appear valid, please see
+MOTIVATION and the L</calculate> function. s
 
-L</validate> is also exported as: L</validateCPR>.
+L</validate> is also exported as: L</validateCPR>, which is less intrusive.
 
 =head2 validateCPR
 
@@ -290,16 +346,26 @@ Better name for export. This is just a wrapper for L</validate>
 
 =head2 validate1968
 
+Validation against the original algorithm introduced in 1968.
+
 =head2 validate2007
+
+Validation against the original algorithm introduced in 1968.
 
 =head2 generate
 
 This is a wrapper around calculate, so the naming is uniform to
 L<Business::DK::CVR>
 
+=head2 generate1968
+
+Generator for validate1968 compatible CPR numbers.
+
 =head2 calculate
 
-This function takes an integer representing a date and calculates valid CPR numbers for the specified date. In scalar context returns the number of valid CPR numbers possible and in list context a list of valid CPR numbers.
+This function takes an integer representing a date and calculates valid CPR
+numbers for the specified date. In scalar context returns the number of valid
+CPR numbers possible and in list context a list of valid CPR numbers.
 
 If the date is malformed or in any way invalid or unspecified the function dies.
 
@@ -309,7 +375,8 @@ If the date is malformed or in any way invalid or unspecified the function dies.
 
 This subroutine takes a digit integer representing a date in the format: DDMMYY.
 
-The date is checked for definedness, contents and length and finally, the correctness of the date.
+The date is checked for definedness, contents and length and finally, the
+correctness of the date.
 
 The subroutine returns 1 indicating true upon successful assertion or
 dies upon failure.
@@ -323,7 +390,8 @@ dies upon failure.
 
 =head2 _assert_controlnumber
 
-This subroutine takes an 10 digit integer representing a CPR. The CPR is tested for definedness, contents and length.
+This subroutine takes an 10 digit integer representing a CPR. The CPR is tested
+for definedness, contents and length.
 
 The subroutine returns 1 indicating true upon successful assertion or
 dies upon failure.
@@ -376,7 +444,7 @@ Business::DK::CPR exports on request:
 
 =head1 TEST AND QUALITY
 
-Coverage of the test suite is at 100%
+Coverage of the test suite is at 100% for release 0.02
 
 ---------------------------- ------ ------ ------ ------ ------ ------ ------
 File                           stmt   bran   cond    sub    pod   time  total
@@ -388,7 +456,7 @@ Total                         100.0  100.0  100.0  100.0  100.0  100.0  100.0
 =head1 BUGS AND LIMITATIONS
 
 No known bugs at this time. No known limitations apart from the obvious ones
-in the CPR system.
+in the CPR system (See: L</SEE ALSO>).
 
 =head1 BUG REPORTING
 
@@ -414,11 +482,19 @@ or by sending mail to
 
 =head1 MOTIVATION
 
-I write business related applications. So I need to be able to validate CPR numbers once is a while, hence the validation function.
+I write business related applications. So I need to be able to validate CPR
+numbers once is a while, hence the validation function.
 
-The calculate function is however a different story. When I was in school we where programming in Comal80 and some of the guys in my school created lists of CPR numbers valid with their own birthdays. The thing was that if you got caught riding the train without a valid ticket the personnel would only check the validity of you CPR number, so all you have to remember was your birthday and 4 more digits not being the actual last 4 digits of your CPR number.
+The calculate function is however a different story. When I was in school we
+where programming in Comal80 and some of the guys in my school created lists of
+CPR numbers valid with their own birthdays. The thing was that if you got caught
+riding the train without a valid ticket the personnel would only check the
+validity of you CPR number, so all you have to remember was your birthday and 4
+more digits not being the actual last 4 digits of your CPR number.
 
-I guess this was the first hack I ever heard about and saw - I never tried it out, but back then it really fascinated me and my interest in computers was really sparked.
+I guess this was the first hack I ever heard about and saw - I never tried it
+out, but back then it really fascinated me and my interest in computers was
+really sparked.
 
 =head1 AUTHOR
 
