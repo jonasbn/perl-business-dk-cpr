@@ -21,6 +21,9 @@ $VERSION   = '0.04';
 use constant MODULUS_OPERAND => 11;
 use constant DATE_LENGTH     => 6;
 use constant VALID           => 1;
+use constant VALID_MALE      => 1;
+use constant VALID_FEMALE    => 2;
+
 use constant INVALID         => 0;
 
 my @controlcifers = qw(4 3 2 7 6 5 4 3 2 1);
@@ -72,7 +75,7 @@ sub _assert_date {
     _length( $birthdate, DATE_LENGTH );
     _checkdate($birthdate);
 
-    return 1;
+    return VALID;
 }
 
 sub validateCPR {
@@ -82,8 +85,9 @@ sub validateCPR {
 sub validate {
     my $controlnumber = shift;
 
-    if ( validate1968($controlnumber) ) {
-        return VALID;
+    my $rv;
+    if ( $rv = validate1968($controlnumber) ) {
+        return $rv;
     } else {
         return validate2007($controlnumber);
     }
@@ -91,6 +95,8 @@ sub validate {
 
 sub validate2007 {
     my $controlnumber = shift;
+
+    _assert_date(substr $controlnumber, 0, 6);
 
     _assert_controlnumber($controlnumber);
 
@@ -108,7 +114,11 @@ sub validate2007 {
             }
 
             if ( $control eq sprintf '%04d', $s ) {
-                return VALID;
+                if (exists $female_seeds{$seed}) {
+                    return VALID_FEMALE;
+                } else {
+                    return VALID_MALE;
+                }    
             }
         }
     }
@@ -119,6 +129,7 @@ sub validate2007 {
 sub validate1968 {
     my $controlnumber = shift;
 
+    _assert_date(substr $controlnumber, 0, 6);
     _assert_controlnumber($controlnumber);
 
     my $sum = _calculate_sum( $controlnumber, \@controlcifers );
@@ -128,7 +139,11 @@ sub validate1968 {
     if ( $sum % MODULUS_OPERAND ) {
         return INVALID;
     } else {
-        return VALID;
+        if ($sum % 2) {
+            return VALID_FEMALE;
+        } else {
+            return VALID_MALE;
+        }
     }
 }
 
@@ -143,7 +158,7 @@ sub _assert_controlnumber {
     _content($controlnumber);
     _length( $controlnumber, $controlcode_length );
 
-    return 1;
+    return VALID;
 }
 
 sub _checkdate {
@@ -169,7 +184,7 @@ sub _checkdate {
         croak
             "argument: $birthdate has to be a valid date in the following format: ddmmyy";
     }
-    return 1;
+    return VALID;
 }
 
 sub generate {
