@@ -39,20 +39,21 @@ SUBROUTINES AND METHODS
     It dies if the CPR number is malformed or in any way unparsable, be
     aware that the 6 first digits are representing a date (SEE: _checkdate
     function below). The date indicate the person's birthday, the last 4
-    digits are representing a serial number and a control cifer.
+    digits are representing a serial number and control cifer.
 
-    validate1968 is the old form of CPR number. It is validated using
+    validate1968 is the old form of the CPR number. It is validated using
     modulus 11.
 
-    The new format introduced in 2001 can be validated using validate2007.
+    The new format introduced in 2001 (put to use in 2007, hence the sub
+    name) can be validated using validate2007.
 
     The validate subroutine wraps both validators and checks using against
     both.
 
     NB! it is possible to make fake CPR number, which appear valid, please
-    see MOTIVATION and the calculate function.
+    see MOTIVATION and the calculate function. s
 
-    validate is also exported as: validateCPR.
+    validate is also exported as: validateCPR, which is less intrusive.
 
   validateCPR
 
@@ -60,7 +61,11 @@ SUBROUTINES AND METHODS
 
   validate1968
 
+    Validation against the original algorithm introduced in 1968.
+
   validate2007
+
+    Validation against the original algorithm introduced in 1968.
 
   generate
 
@@ -124,7 +129,7 @@ INCOMPATIBILITIES
 TODO
     Nothing to do, please refer to the distribution TODO file
 TEST AND QUALITY
-    Coverage of the test suite is at 100%
+    Coverage of the test suite is at 100% for release 0.02
 
     ---------------------------- ------ ------ ------ ------ ------ ------
     ------ File stmt bran cond sub pod time total
@@ -136,7 +141,7 @@ TEST AND QUALITY
 
 BUGS AND LIMITATIONS
     No known bugs at this time. No known limitations apart from the obvious
-    ones in the CPR system.
+    ones in the CPR system (See: SEE ALSO).
 
 BUG REPORTING
     Please report issues via CPAN RT:
