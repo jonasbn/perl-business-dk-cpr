@@ -1,14 +1,17 @@
 # $Id: validate.t,v 1.2 2006/02/20 22:28:54 jonasbn Exp $
 
 use strict;
-use Test::More tests => 14;
+use Test::More tests => 15;
 use Test::Exception;
 
 #Test 1
-use_ok('Business::DK::CPR', qw(validate));
+use_ok('Business::DK::CPR', qw(validate validateCPR));
 
 #Test 2
 ok(validate(1501721111), 'Ok, generated');
+
+#Test 2
+ok(validateCPR(1501721111), 'Ok, generated');
 
 #Test 3
 dies_ok {validate()} 'no arguments';
