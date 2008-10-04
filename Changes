@@ -2,7 +2,20 @@ Changes file for Business-DK-CPR
 
 $Id: Changes,v 1.8 2008-09-09 19:15:28 jonasbn Exp $
 
-HEAD, Release 0.04 candidate
+HEAD, Release 0.04 candidate, update recommended
+
+- Changed the word sex to gender in the code, sounds nicer
+
+- Added new script to bin/ validate_cpr.pl
+
+- Added use of _assert_date to validate methods (missing this was a serious flaw
+  if not to say bug)
+
+- Added use of constants in more places
+
+- Changed the return values for the validate methods:
+    1, indicates male gender
+    2, indicates female gender
 
 - Added a use integer, since we only use integers
 
@@ -28,7 +41,7 @@ HEAD, Release 0.04 candidate
     New tests:
     
     t/Business/DK/CPR/validate1968.t
-    t/Business/DK/CPR/validate2001.t
+    t/Business/DK/CPR/validate2007.t
     
 - Refactored validate to be a wrapper around: validate1968 and validate2007, so
   the original modulus validation has propagated into validate1968, since 1968
