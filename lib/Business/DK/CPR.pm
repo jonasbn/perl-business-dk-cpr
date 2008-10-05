@@ -5,7 +5,7 @@ package Business::DK::CPR;
 use strict;
 use warnings;
 use vars qw($VERSION @EXPORT_OK);
-use Carp qw(croak);
+use Carp qw(croak carp);
 use Business::DK::CVR qw(_length _calculate_sum);
 use Business::DK::PO qw(_argument _content);
 use Date::Calc qw(check_date);
@@ -15,7 +15,15 @@ use integer;
 
 $VERSION   = '0.04';
 @EXPORT_OK = qw(
-    validate validateCPR generate calculate _checkdate validate1968 generate1968 validate2007 generate2007  
+    validate
+    validateCPR
+    generate
+    validate1968
+    generate1968
+    validate2007
+    generate2007
+    calculate
+    _checkdate
 );
 
 use constant MODULUS_OPERAND => 11;
@@ -24,7 +32,7 @@ use constant VALID           => 1;
 use constant VALID_MALE      => 1;
 use constant VALID_FEMALE    => 2;
 
-use constant INVALID         => 0;
+use constant INVALID => 0;
 
 my @controlcifers = qw(4 3 2 7 6 5 4 3 2 1);
 my %female_seeds  = (
@@ -96,7 +104,7 @@ sub validate {
 sub validate2007 {
     my $controlnumber = shift;
 
-    _assert_date(substr $controlnumber, 0, 6);
+    _assert_date( substr $controlnumber, 0, 6 );
 
     _assert_controlnumber($controlnumber);
 
@@ -114,11 +122,11 @@ sub validate2007 {
             }
 
             if ( $control eq sprintf '%04d', $s ) {
-                if (exists $female_seeds{$seed}) {
+                if ( exists $female_seeds{$seed} ) {
                     return VALID_FEMALE;
                 } else {
                     return VALID_MALE;
-                }    
+                }
             }
         }
     }
@@ -129,7 +137,7 @@ sub validate2007 {
 sub validate1968 {
     my $controlnumber = shift;
 
-    _assert_date(substr $controlnumber, 0, 6);
+    _assert_date( substr $controlnumber, 0, 6 );
     _assert_controlnumber($controlnumber);
 
     my $sum = _calculate_sum( $controlnumber, \@controlcifers );
@@ -139,10 +147,10 @@ sub validate1968 {
     if ( $sum % MODULUS_OPERAND ) {
         return INVALID;
     } else {
-        if ($sum % 2) {
-            return VALID_FEMALE;
-        } else {
+        if ( $sum % 2 ) {
             return VALID_MALE;
+        } else {
+            return VALID_FEMALE;
         }
     }
 }
@@ -187,12 +195,22 @@ sub _checkdate {
     return VALID;
 }
 
-sub generate {}
-    my $birthdate = shift;
-    my $gender = shift || undef;
+sub generate {
+    my ( $birthdate, $gender ) = @_;
 
+    my %cprs;
 
-    my %cprs
+    my @cprs1968 = generate1968( $birthdate, $gender );
+    my @cprs2007 = generate2007( $birthdate, $gender );
+
+    %cprs = map { $_ => 1 } @cprs1968;
+    %cprs = map { $_ => 1 } @cprs2007;
+
+    if (wantarray) {
+        return keys %cprs;
+    } else {
+        return scalar keys %cprs;
+    }
 }
 
 sub generate2007 {
@@ -241,29 +259,35 @@ sub generate1968 {
     _assert_date($birthdate);
 
     my @cprs;
-    my $checksum;
-    
+    my @malecprs;
+    my @femalecprs;
+
+    my $checksum = 0;
+
     while ( $checksum < 9999 ) {
 
         my $cpr = $birthdate . sprintf '%04d', $checksum;
 
-        if (validate1968($cpr)) {
+        if ( my $rv = validate1968($cpr) ) {
 
-            if ( defined $gender ) {
-                if ( $gender eq 'male' && $checksum % 2) {
-                    push @cprs, $cpr;
-
-                } elsif ( $gender eq 'female' ) {
-                    push @cprs, $cpr;
-
-                } else {
-                    carp("Unknown gender: $gender, assuming no gender");
-                    $gender = undef;
+            if ( defined $gender and $rv ) {
+                if ( $rv == 2 ) {
+                    push @malecprs, $cpr;
+                } elsif ( $rv == 1 ) {
+                    push @femalecprs, $cpr;
                 }
+
             } else {
                 push @cprs, $cpr;
             }
         }
+        $checksum++;
+    }
+
+    if ( $gender eq 'female' ) {
+        @cprs = @femalecprs;
+    } elsif ( $gender eq 'male' ) {
+        @cprs = @malecprs;
     }
 
     if (wantarray) {
@@ -272,7 +296,6 @@ sub generate1968 {
         return scalar @cprs;
     }
 }
-
 
 1;
 
@@ -360,6 +383,12 @@ L<Business::DK::CVR>
 =head2 generate1968
 
 Generator for validate1968 compatible CPR numbers.
+
+=head2 generate2007
+
+Generator for validate2007 compatible CPR numbers.
+
+=head2 generate
 
 =head2 calculate
 
