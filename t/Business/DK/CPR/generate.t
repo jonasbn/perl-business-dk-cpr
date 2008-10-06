@@ -18,13 +18,13 @@ SKIP: {
     dies_ok{generate(1501721)} 'too long';
     
     #Test 4
-    is(generate(150172, 'female'), 4996, 'Valid female serial numbers series 1, 2 and 3, scalar context');
+    is(generate(150172, 'female'), 4993, 'Valid female serial numbers series 1, 2 and 3, scalar context');
     
     #Test 5
-    is(generate(150172, 'male'), 4997, 'Valid male serial numbers series 1, 2 and 3, scalar context');
+    is(generate(150172, 'male'), 4994, 'Valid male serial numbers series 1, 2 and 3, scalar context');
     
     #Test 6
-    is(generate(150172), 9993, 'Valid male and female serial numbers series 1, 2 and 3, scalar context');
+    is(generate(150172), 9987, 'Valid male and female serial numbers series 1, 2 and 3, scalar context');
     
     
     #Test 5

@@ -19,6 +19,7 @@ my $build = Module::Build->new(
 		'Business::DK::CVR' => 0.01,
 		'Date::Calc'        => 0,
 		'Hash::Merge'		=> 0,
+		'Tie::IxHash'       => 0,
 	},
 );
 $build->create_build_script();

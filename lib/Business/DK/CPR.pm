@@ -38,18 +38,16 @@ use constant INVALID              => 0;
 my @controlcifers = qw(4 3 2 7 6 5 4 3 2 1);
 
 my %female_seeds;
-tie(%female_seeds, 'Tie::IxHash',
-    4 => { max => 9994, min =>  10 },
-    2 => { max => 9998, min =>  8 },
-    6 => { max => 9996, min =>  12 },
-);
+tie %female_seeds, 'Tie::IxHash',
+    4 => { max => 9994, min => 10 },
+    2 => { max => 9998, min => 8 },
+    6 => { max => 9996, min => 12 };
 
 my %male_seeds;
-tie(%male_seeds, 'Tie::IxHash',
-    1 => { max => 9997, min =>  7 },
-    3 => { max => 9999, min =>  9 },
-    5 => { max => 9995, min =>  11 },
-);
+tie %male_seeds, 'Tie::IxHash',
+    1 => { max => 9997, min => 7 },
+    3 => { max => 9999, min => 9 },
+    5 => { max => 9995, min => 11 };
 
 sub calculate {
     my $birthdate = shift;
@@ -116,25 +114,24 @@ sub validate2007 {
 
     my $remainder = $control % MODULUS_OPERAND_2007;
 
-    my %seeds = %{ merge(\%male_seeds, \%female_seeds); };
+    my %seeds = %{ merge( \%male_seeds, \%female_seeds ); };
 
-    if (my $series = $seeds{$remainder}) {
-        if ($control < $seeds{$remainder}->{min}) {
+    if ( my $series = $seeds{$remainder} ) {
+        if ( $control < $seeds{$remainder}->{min} ) {
             return INVALID;
-        } elsif ($control > $seeds{$remainder}->{max}) {
-            return INVALID
-        } 
-    } elsif (($control == 0 or $control == 6) && $remainder == 0) {
+        } elsif ( $control > $seeds{$remainder}->{max} ) {
+            return INVALID;
+        }
+    } elsif ( ( $control == 0 or $control == 6 ) && $remainder == 0 ) {
         return INVALID;
     }
-        
-    
-    if ($female_seeds{$remainder}) {
+
+    if ( $female_seeds{$remainder} ) {
         return VALID_FEMALE;
-    } elsif ($male_seeds{$remainder}) {
+    } elsif ( $male_seeds{$remainder} ) {
         return VALID_MALE;
-    } elsif ($remainder == 0) {
-        if ($control % 2) {
+    } elsif ( $remainder == 0 ) {
+        if ( $control % 2 ) {
             return VALID_MALE;
         } else {
             return VALID_FEMALE;
@@ -248,8 +245,8 @@ sub generate2007 {
     }
 
     foreach my $seed ( keys %seeds ) {
-        my $s = $seed;
-        while ( $s < $seeds{$seed} ) {
+        my $s = $seeds{$seed}->{min};
+        while ( $s < $seeds{$seed}->{max} ) {
             $s += MODULUS_OPERAND_2007;
             push @cprs, ( $birthdate . sprintf '%04d', $s );
         }
