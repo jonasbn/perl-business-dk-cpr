@@ -12,6 +12,7 @@ use Date::Calc qw(check_date);
 use Hash::Merge qw( merge );
 use base 'Exporter';
 use integer;
+use Tie::IxHash;
 
 $VERSION   = '0.04';
 @EXPORT_OK = qw(
@@ -26,26 +27,21 @@ $VERSION   = '0.04';
     _checkdate
 );
 
-use constant MODULUS_OPERAND => 11;
-use constant DATE_LENGTH     => 6;
-use constant VALID           => 1;
-use constant VALID_MALE      => 1;
-use constant VALID_FEMALE    => 2;
-
-use constant INVALID => 0;
+use constant MODULUS_OPERAND_1968 => 11;
+use constant MODULUS_OPERAND_2007 => 6;
+use constant DATE_LENGTH          => 6;
+use constant VALID                => 1;
+use constant VALID_MALE           => 1;
+use constant VALID_FEMALE         => 2;
+use constant INVALID              => 0;
 
 my @controlcifers = qw(4 3 2 7 6 5 4 3 2 1);
-my %female_seeds  = (
-    4 => 9994,
-    2 => 9998,
-    6 => 9996,
-);
 
-my %male_seeds = (
-    1 => 9997,
-    3 => 9999,
-    5 => 9995,
-);
+my %female_seeds;
+tie(%female_seeds, 'Tie::IxHash', 4 => 9994, 2 => 9998, 6 => 9996);
+
+my %male_seeds;
+tie(%male_seeds, 'Tie::IxHash', 1 => 9997, 3 => 9999, 5 => 9995);
 
 sub calculate {
     my $birthdate = shift;
@@ -57,9 +53,9 @@ sub calculate {
         my $n = sprintf '%03s', $_;
 
         my $sum = _calculate_sum( ( $birthdate . $n ), \@controlcifers );
-        my $mod = $sum % MODULUS_OPERAND;
+        my $mod = $sum % MODULUS_OPERAND_1968;
 
-        my $checkciffer = ( MODULUS_OPERAND - $mod );
+        my $checkciffer = ( MODULUS_OPERAND_1968 - $mod );
 
         if ( $checkciffer < 10 ) {
             push @cprs, ( $birthdate . $n . $checkciffer );
@@ -144,7 +140,7 @@ sub validate1968 {
 
     #Note this might look like it is turned upside down but no rest from the
     #modulus calculation indicated validity
-    if ( $sum % MODULUS_OPERAND ) {
+    if ( $sum % MODULUS_OPERAND_1968 ) {
         return INVALID;
     } else {
         if ( $sum % 2 ) {
