@@ -34,6 +34,8 @@ use constant VALID                => 1;
 use constant VALID_MALE           => 1;
 use constant VALID_FEMALE         => 2;
 use constant INVALID              => 0;
+use constant FEMALE               => 'female';
+use constant MALE                 => 'male';
 
 my @controlcifers = qw(4 3 2 7 6 5 4 3 2 1);
 
@@ -154,12 +156,18 @@ sub validate1968 {
     if ( $sum % MODULUS_OPERAND_1968 ) {
         return INVALID;
     } else {
-        if ( $sum % 2 ) {
+        if ( _is_equal($sum) ) {
             return VALID_MALE;
         } else {
             return VALID_FEMALE;
         }
     }
+}
+
+sub _is_equal {
+    my $operand = shift;
+    
+    return (not ($operand % 2));
 }
 
 sub _assert_controlnumber {
@@ -230,9 +238,9 @@ sub generate2007 {
     my %seeds;
 
     if ( defined $gender ) {
-        if ( $gender eq 'male' ) {
+        if ( $gender eq MALE ) {
             %seeds = %male_seeds;
-        } elsif ( $gender eq 'female' ) {
+        } elsif ( $gender eq FEMALE ) {
             %seeds = %female_seeds;
         } else {
             carp("Unknown gender: $gender, assuming no gender");
@@ -278,9 +286,9 @@ sub generate1968 {
         if ( my $rv = validate1968($cpr) ) {
 
             if ( defined $gender and $rv ) {
-                if ( $rv == 2 ) {
+                if ( $rv == VALID_MALE ) {
                     push @malecprs, $cpr;
-                } elsif ( $rv == 1 ) {
+                } elsif ( $rv == VALID_FEMALE ) {
                     push @femalecprs, $cpr;
                 }
 
@@ -291,9 +299,9 @@ sub generate1968 {
         $checksum++;
     }
 
-    if ( $gender eq 'female' ) {
+    if ( $gender eq FEMALE ) {
         @cprs = @femalecprs;
-    } elsif ( $gender eq 'male' ) {
+    } elsif ( $gender eq MALE ) {
         @cprs = @malecprs;
     }
 
@@ -350,25 +358,42 @@ used in Denmark.
 =head2 validate
 
 This function checks a CPR number for validity. It takes a CPR number as
-argument and returns 1 (true) for valid and 0 (false) for invalid.
+argument and returns:
+
+=over
+
+=item * 1 (true) for valid male CPR number
+
+=item * 2 (true) for a valid female CPR number
+
+=item * 0 (false) for invalid CPR number
+
+=back
 
 It dies if the CPR number is malformed or in any way unparsable, be aware that
 the 6 first digits are representing a date (SEE: L</_checkdate> function below).
-The date indicate the person's birthday, the last 4 digits are representing a
-serial number and control cifer.
+
+In brief, the date indicate the person's birthday, the last 4 digits are
+representing a serial number and control cifer.
+
+For a more thorough discussion on the format of CPR numbers please refer to the
+L<SEE ALSO> section.
 
 L</validate1968> is the old form of the CPR number. It is validated using
 modulus 11.
 
-The new format introduced in 2001 (put to use in 2007, hence the sub name) can
-be validated using L</validate2007>.
+The new format introduced in 2001 (put to use in 2007, hence the name used
+throughout this package) can be validated using L</validate2007> and generate
+using L</validate2007>.
 
 The L</validate> subroutine wraps both validators and checks using against both.
+
+The L</generate> subroutine wraps both generators and accumulated the results.
 
 NB! it is possible to make fake CPR number, which appear valid, please see
 MOTIVATION and the L</calculate> function. s
 
-L</validate> is also exported as: L</validateCPR>, which is less intrusive.
+L</validate> is also exported as: L</validateCPR>, which is less imposing.
 
 =head2 validateCPR
 
@@ -376,32 +401,35 @@ Better name for export. This is just a wrapper for L</validate>
 
 =head2 validate1968
 
-Validation against the original algorithm introduced in 1968.
+Validation against the original CPR algorithm introduced in 1968.
 
 =head2 validate2007
 
-Validation against the original algorithm introduced in 1968.
+Validation against the CPR algorithm introduced in 2007.
 
 =head2 generate
 
 This is a wrapper around calculate, so the naming is uniform to
 L<Business::DK::CVR>
 
-=head2 generate1968
-
-Generator for validate1968 compatible CPR numbers.
-
-=head2 generate2007
-
-Generator for validate2007 compatible CPR numbers.
-
-=head2 calculate
-
 This function takes an integer representing a date and calculates valid CPR
 numbers for the specified date. In scalar context returns the number of valid
 CPR numbers possible and in list context a list of valid CPR numbers.
 
 If the date is malformed or in any way invalid or unspecified the function dies.
+
+=head2 generate1968
+
+Specialized generator for validate1968 compatible CPR numbers. See: L</generate>
+
+=head2 generate2007
+
+Specialized generator for validate2007 compatible CPR numbers. See: L</generate>
+
+=head2 calculate
+
+See L</generate> and L<g/enerate1968>. This is the old name for L<generate1968>.
+It is just kept for backwards compatibility and it calls L</generate>.
 
 =head1 PRIVATE FUNCTIONS
 
@@ -436,19 +464,19 @@ Business::DK::CPR exports on request:
 
 =over
 
-=item L</validate>
+=item * L</validate>
 
-=item L</validateCPR>
+=item * L</validateCPR>
 
-=item L</validate1968>
+=item * L</validate1968>
 
-=item L</validate2007>
+=item * L</validate2007>
 
-=item L</calculate>
+=item * L</calculate>
 
-=item L</generate>
+=item * L</generate>
 
-=item L</_checkdate>
+=item * L</_checkdate>
 
 =back
 
@@ -456,7 +484,7 @@ Business::DK::CPR exports on request:
 
 =over
 
-=item 
+=item *
 
 =back
 
@@ -467,6 +495,18 @@ Business::DK::CPR exports on request:
 =item L<Business::DK::PO>
 
 =item L<Business::DK::CVR>
+
+=item L<Exporter>
+
+=item L<Carp>
+
+=item L<Test::Exception>
+
+=item L<Date::Calc>
+
+=item L<Hash::Merge>
+
+=item L<Tie::IxHash>
 
 =back
 
@@ -495,19 +535,20 @@ by not defining or setting the environment varible to something not positive.
 
 =head2 TESTCOVERAGE
 
-Coverage of the test suite is at 100% for release 0.04
+Coverage of the test suite is at 100% for release 0.04, the coverage report
+was generated with the TEST_AUTHOR flag enabled (SEE: L</TEST AND QUALITY>)
 
----------------------------- ------ ------ ------ ------ ------ ------ ------
-File                           stmt   bran   cond    sub    pod   time  total
----------------------------- ------ ------ ------ ------ ------ ------ ------
-blib/lib/Business/DK/CPR.pm    97.2   91.9   84.6  100.0  100.0  100.0   95.9
-Total                          97.2   91.9   84.6  100.0  100.0  100.0   95.9
----------------------------- ------ ------ ------ ------ ------ ------ ------
+    ---------------------------- ------ ------ ------ ------ ------ ------ ------
+    File                           stmt   bran   cond    sub    pod   time  total
+    ---------------------------- ------ ------ ------ ------ ------ ------ ------
+    blib/lib/Business/DK/CPR.pm    97.2   91.9   84.6  100.0  100.0  100.0   95.9
+    Total                          97.2   91.9   84.6  100.0  100.0  100.0   95.9
+    ---------------------------- ------ ------ ------ ------ ------ ------ ------
 
 =head2 PERL::CRITIC
 
-This section describes the L<Perl::Critic> configuration used for testing this
-module.
+This section describes use of L<Perl::Critic> from a perspective of documenting
+additions and exceptions to the standard use.
 
 =over
 
@@ -516,16 +557,16 @@ module.
 This package utilizes L<Tie::IxHash> (SEE: L</DEPENDENCIES>), this module
 relies on tie.
 
-[-NamingConventions::ProhibitMixedCaseSubs]
+=item [-NamingConventions::ProhibitMixedCaseSubs]
 
 CPR is an abreviation for 'Centrale Person Register' (Central Person Register)
 and it is kept in uppercase.
 
-[-ValuesAndExpressions::ProhibitConstantPragma]
+=item [-ValuesAndExpressions::ProhibitConstantPragma]
 
 This is a personal thing, but I like constants.
 
-[-ValuesAndExpressions::ProhibitMagicNumbers]
+=item [-ValuesAndExpressions::ProhibitMagicNumbers]
 
 Some values and boundaries are defined for certain intervals of numbers, these
 are currently kept as is. Perhaps with a refactoring of the use of constants to
