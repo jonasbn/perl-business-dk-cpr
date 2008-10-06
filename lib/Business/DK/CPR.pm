@@ -100,11 +100,11 @@ sub validate {
 sub validate2007 {
     my $controlnumber = shift;
 
-    _assert_date( substr $controlnumber, 0, 6 );
+    _assert_date( substr $controlnumber, 0, DATE_LENGTH );
 
     _assert_controlnumber($controlnumber);
 
-    my $control = substr $controlnumber, 6, 4;
+    my $control = substr $controlnumber, DATE_LENGTH, 4;
 
     my %seeds = %{ merge( \%female_seeds, \%male_seeds ) };
 
@@ -112,7 +112,7 @@ sub validate2007 {
         my $s = $seed;
 
         while (1) {
-            $s += 6;
+            $s += MODULUS_OPERAND_2007;
             if ( $s > $seeds{$seed} ) {
                 last;
             }
@@ -133,7 +133,7 @@ sub validate2007 {
 sub validate1968 {
     my $controlnumber = shift;
 
-    _assert_date( substr $controlnumber, 0, 6 );
+    _assert_date( substr $controlnumber, 0, DATE_LENGTH );
     _assert_controlnumber($controlnumber);
 
     my $sum = _calculate_sum( $controlnumber, \@controlcifers );
@@ -236,7 +236,7 @@ sub generate2007 {
     foreach my $seed ( keys %seeds ) {
         my $s = $seed;
         while ( $s < $seeds{$seed} ) {
-            $s += 6;
+            $s += MODULUS_OPERAND_2007;
             push @cprs, ( $birthdate . sprintf '%04d', $s );
         }
     }
