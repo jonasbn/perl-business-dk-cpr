@@ -30,3 +30,5 @@ functions = print
 [-ValuesAndExpressions::ProhibitMagicNumbers]
 
 [-NamingConventions::ProhibitMixedCaseSubs]
+
+[-Miscellanea::ProhibitTies]
