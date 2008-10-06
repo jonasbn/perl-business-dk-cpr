@@ -38,10 +38,18 @@ use constant INVALID              => 0;
 my @controlcifers = qw(4 3 2 7 6 5 4 3 2 1);
 
 my %female_seeds;
-tie(%female_seeds, 'Tie::IxHash', 4 => 9994, 2 => 9998, 6 => 9996);
+tie(%female_seeds, 'Tie::IxHash',
+    4 => { max => 9994, min =>  10 },
+    2 => { max => 9998, min =>  8 },
+    6 => { max => 9996, min =>  12 },
+);
 
 my %male_seeds;
-tie(%male_seeds, 'Tie::IxHash', 1 => 9997, 3 => 9999, 5 => 9995);
+tie(%male_seeds, 'Tie::IxHash',
+    1 => { max => 9997, min =>  7 },
+    3 => { max => 9999, min =>  9 },
+    5 => { max => 9995, min =>  11 },
+);
 
 sub calculate {
     my $birthdate = shift;
@@ -106,28 +114,34 @@ sub validate2007 {
 
     my $control = substr $controlnumber, DATE_LENGTH, 4;
 
-    my %seeds = %{ merge( \%female_seeds, \%male_seeds ) };
+    my $remainder = $control % MODULUS_OPERAND_2007;
 
-    foreach my $seed ( keys %seeds ) {
-        my $s = $seed;
+    my %seeds = %{ merge(\%male_seeds, \%female_seeds); };
 
-        while (1) {
-            $s += MODULUS_OPERAND_2007;
-            if ( $s > $seeds{$seed} ) {
-                last;
-            }
-
-            if ( $control eq sprintf '%04d', $s ) {
-                if ( exists $female_seeds{$seed} ) {
-                    return VALID_FEMALE;
-                } else {
-                    return VALID_MALE;
-                }
-            }
-        }
+    if (my $series = $seeds{$remainder}) {
+        if ($control < $seeds{$remainder}->{min}) {
+            return INVALID;
+        } elsif ($control > $seeds{$remainder}->{max}) {
+            return INVALID
+        } 
+    } elsif (($control == 0 or $control == 6) && $remainder == 0) {
+        return INVALID;
     }
-
-    return INVALID;
+        
+    
+    if ($female_seeds{$remainder}) {
+        return VALID_FEMALE;
+    } elsif ($male_seeds{$remainder}) {
+        return VALID_MALE;
+    } elsif ($remainder == 0) {
+        if ($control % 2) {
+            return VALID_MALE;
+        } else {
+            return VALID_FEMALE;
+        }
+    } else {
+        return INVALID;
+    }
 }
 
 sub validate1968 {
