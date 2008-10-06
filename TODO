@@ -12,3 +12,5 @@ $Id: TODO,v 1.5 2008-09-09 19:15:28 jonasbn Exp $
   Business::DK::CVR
 
 - Add use of Params::Validate instead of B::DK::PO?
+
+- Remove export of _checkdate

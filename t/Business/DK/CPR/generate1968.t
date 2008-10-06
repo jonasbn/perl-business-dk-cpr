@@ -4,19 +4,19 @@ use strict;
 use Test::More tests => 916;
 use Test::Exception;
 
-SKIP: {
+#Test 1, load test
+use_ok('Business::DK::CPR', qw(validate1968));
+
+#Test 2
+dies_ok{Business::DK::CPR::generate1968()} 'no arguments';
+
+#Test 3
+dies_ok{Business::DK::CPR::generate1968(1501721)} 'too long';
+
+SKIP: {    
     my $msg = 'Author test.  Set $ENV{TEST_AUTHOR} to a true value to run.';
-    skip $msg, 916 unless $ENV{TEST_AUTHOR};
-        
-    #Test 1, load test
-    use_ok('Business::DK::CPR', qw(validate1968));
-    
-    #Test 2
-    dies_ok{Business::DK::CPR::generate1968()} 'no arguments';
-    
-    #Test 3
-    dies_ok{Business::DK::CPR::generate1968(1501721)} 'too long';
-    
+    skip $msg, 913 unless $ENV{TEST_AUTHOR};
+
     #Test 4
     is(Business::DK::CPR::generate1968(150172, 'female'), 456, 'Valid female serial numbers, scalar context');
     
@@ -27,7 +27,7 @@ SKIP: {
     is(Business::DK::CPR::generate1968(150172), 909, 'Valid male and female serial numbers, scalar context');
     
     
-    #Test 5
+    #Test 7-916
     ok(my @cprs = Business::DK::CPR::generate1968(150172), 'Valid male and female serial numbers, list context');
     
     foreach (@cprs) {

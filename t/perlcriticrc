@@ -21,11 +21,7 @@ allow_leading_tabs = 0
 [-InputOutput::RequireCheckedSyscalls]
 functions = print
 
-[-ControlStructures::ProhibitCStyleForLoops]
-
 [-ValuesAndExpressions::ProhibitConstantPragma]
-
-[-ValuesAndExpressions::RequireNumberSeparators]
 
 [-ValuesAndExpressions::ProhibitMagicNumbers]
 
