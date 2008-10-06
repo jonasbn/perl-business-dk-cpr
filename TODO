@@ -10,3 +10,5 @@ $Id: TODO,v 1.5 2008-09-09 19:15:28 jonasbn Exp $
 - Add capability of using subs as constraints in Data::FormValidator see also
   Data::FormValidator::Constraints::Business::DK::CVR, which is a part of
   Business::DK::CVR
+
+- Add use of Params::Validate instead of B::DK::PO?
