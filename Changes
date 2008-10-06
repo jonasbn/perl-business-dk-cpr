@@ -4,6 +4,10 @@ $Id: Changes,v 1.8 2008-09-09 19:15:28 jonasbn Exp $
 
 HEAD, Release 0.04 candidate, update recommended
 
+- Changed from brute force validation in validation2007, we now do a combination
+  of calculations and assertions (refactoring might be necessary, all tests do
+  however pass)
+
 - The generate method now a wrapper around the two specific generators
 
 - Added new methods:
