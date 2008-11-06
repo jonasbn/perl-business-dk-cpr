@@ -50,7 +50,8 @@ if ($verbose) {
     if ( scalar @algorithm ) {
 
         print "$cpr is valid for: " . join ', ',     @algorithm;
-        print '. gender indicated is: ' . join ', ', @gender . "\n";
+        print '. gender indicated is: ' . join ', ', @gender;
+        print "\n";
     } else {
         print "$cpr is not valid\n";
     }
