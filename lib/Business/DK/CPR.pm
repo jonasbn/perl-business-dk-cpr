@@ -133,10 +133,10 @@ sub validate2007 {
     } elsif ( $male_seeds{$remainder} ) {
         return VALID_MALE;
     } elsif ( $remainder == 0 ) {
-        if ( $control % 2 ) {
-            return VALID_MALE;
-        } else {
+        if ( _is_equal($control) ) {
             return VALID_FEMALE;
+        } else {
+            return VALID_MALE;
         }
     } else {
         return INVALID;
@@ -166,8 +166,8 @@ sub validate1968 {
 
 sub _is_equal {
     my $operand = shift;
-    
-    return (not ($operand % 2));
+
+    return ( not( $operand % 2 ) );
 }
 
 sub _assert_controlnumber {
@@ -428,7 +428,7 @@ Specialized generator for validate2007 compatible CPR numbers. See: L</generate>
 
 =head2 calculate
 
-See L</generate> and L<g/enerate1968>. This is the old name for L<generate1968>.
+See L</generate> and L</generate1968>. This is the old name for L</generate1968>.
 It is just kept for backwards compatibility and it calls L</generate>.
 
 =head1 PRIVATE FUNCTIONS
@@ -531,18 +531,19 @@ wish list and ideas for future expansions and experiments.
 
 The distribution uses the TEST_AUTHOR environment variable to run some
 additional tests, which are interesting to the the author, these can be disabled
-by not defining or setting the environment varible to something not positive.
+by not defining or setting the environment variable to something not positive.
 
 =head2 TESTCOVERAGE
 
-Coverage of the test suite is at 100% for release 0.04, the coverage report
+Coverage of the test suite is at 89.1% for release 0.04, the coverage report
 was generated with the TEST_AUTHOR flag enabled (SEE: L</TEST AND QUALITY>)
 
     ---------------------------- ------ ------ ------ ------ ------ ------ ------
     File                           stmt   bran   cond    sub    pod   time  total
     ---------------------------- ------ ------ ------ ------ ------ ------ ------
-    blib/lib/Business/DK/CPR.pm    97.2   91.9   84.6  100.0  100.0  100.0   95.9
-    Total                          97.2   91.9   84.6  100.0  100.0  100.0   95.9
+    blib/lib/Business/DK/CPR.pm    97.3   91.9   84.6  100.0  100.0  100.0   96.0
+    ...raints/Business/DK/CPR.pm   65.9    0.0    0.0   75.0  100.0    0.0   57.6
+    Total                          91.6   81.4   68.8   93.2  100.0  100.0   89.1
     ---------------------------- ------ ------ ------ ------ ------ ------ ------
 
 =head2 PERL::CRITIC
