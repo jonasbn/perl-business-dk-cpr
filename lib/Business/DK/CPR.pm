@@ -3,7 +3,6 @@ package Business::DK::CPR;
 # $Id: CPR.pm,v 1.9 2008-09-09 19:15:44 jonasbn Exp $
 
 use strict;
-no strict 'refs';
 use warnings;
 use vars qw($VERSION @EXPORT_OK);
 use Carp qw(croak carp);
@@ -51,16 +50,15 @@ tie %male_seeds, 'Tie::IxHash',
     3 => { max => 9999, min => 9 },
     5 => { max => 9995, min => 11 };
 
-
 sub merge {
     my ( $left_hashref, $right_hashref ) = @_;
-    
+
     my %hash = %{$right_hashref};
-    
-    foreach  ( keys  %{ $left_hashref } ) {
+
+    foreach ( keys %{$left_hashref} ) {
         $hash{$_} = $left_hashref->{$_};
     }
-    
+
     return \%hash;
 }
 
@@ -204,12 +202,12 @@ sub _checkdate {
         croak 'argument for birthdate should be provided';
     }
 
-    if (not($birthdate =~ m{^ #beginning of line
+    if (not($birthdate =~ m{\A #beginning of line
               (\d{2}) #day of month, 2 digit representation, 01-31
               (\d{2}) #month, 2 digit representation jan 01 - dec 12
               (\d{2}) #year, 2 digit representation
-              $ #end of line
-              }xm
+              \Z #end of line
+              }xsm
         )
         )
     {
@@ -443,6 +441,13 @@ Specialized generator for validate2007 compatible CPR numbers. See: L</generate>
 
 See L</generate> and L</generate1968>. This is the old name for L</generate1968>.
 It is just kept for backwards compatibility and it calls L</generate>.
+
+=head2 merge
+
+Mimics L<Hash::Merge>'s L<Hash::Merge/merge> function. Takes two references to
+hashes and returns a single reference to a hash containing the merge of the two
+with the left parameter having precendence. The precedence has not meaning on
+the case in this module, but then the behaviour is documented.
 
 =head1 PRIVATE FUNCTIONS
 

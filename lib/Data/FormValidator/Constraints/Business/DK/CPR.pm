@@ -48,7 +48,7 @@ sub match_valid_cpr {
 
     my $cpr = ref $dfv ? $dfv->get_current_constraint_value : $dfv;
 
-    my ($untainted_cpr) = $cpr =~ m/\b(\d{10})\b/mx;
+    my ($untainted_cpr) = $cpr =~ m/\A(\d{10})\Z/msx;
 
     return $dfv->untainted_constraint_value($untainted_cpr);
 }

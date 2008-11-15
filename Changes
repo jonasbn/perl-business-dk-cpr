@@ -15,6 +15,8 @@ Release 0.05, update recommended for perl 5.10 users
 
 - Updated MANIFEST.SKIP wrong distribution listed
 
+- Cleaned regular expressions
+
 
 Release 0.04, update recommended
 
