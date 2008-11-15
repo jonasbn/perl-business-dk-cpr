@@ -21,7 +21,7 @@
   <long id="debugger.io-port">9011</long>
   <string id="documentRoot"></string>
   <string id="executable-params">-I /Users/jonasbn/develop/svn-logicLAB/Business-DK-CPR/trunk/lib</string>
-  <string relative="path" id="filename">bin/validate_cpr.pl</string>
+  <string id="filename">/Users/jonasbn/develop/svn-logicLAB/Business-DK-CPR/trunk/bin/validate_cpr.pl</string>
   <string id="getparams"></string>
   <string id="language">Perl</string>
   <string id="mpostparams"></string>
@@ -47,7 +47,7 @@
   <long id="debugger.io-port">9011</long>
   <string id="documentRoot"></string>
   <string id="executable-params"></string>
-  <string relative="path" id="filename">lib/Business/DK/CPR.pm</string>
+  <string id="filename">/Users/jonasbn/develop/svn-logicLAB/Business-DK-CPR/trunk/lib/Business/DK/CPR.pm</string>
   <string id="getparams"></string>
   <string id="language">Perl</string>
   <string id="mpostparams"></string>
@@ -73,7 +73,7 @@
   <long id="debugger.io-port">9011</long>
   <string id="documentRoot"></string>
   <string id="executable-params">-I /Users/jonasbn/develop/svn-logicLAB/Business-DK-CPR/trunk/lib</string>
-  <string relative="path" id="filename">t/Business/DK/CPR/_generate1968.t</string>
+  <string id="filename">/Users/jonasbn/develop/svn-logicLAB/Business-DK-CPR/trunk/t/Business/DK/CPR/_generate1968.t</string>
   <string id="getparams"></string>
   <string id="language">Perl</string>
   <string id="mpostparams"></string>
@@ -96,11 +96,11 @@
 <preference-set id="Invocations">
 <preference-set id="default">
   <string id="cookieparams"></string>
-  <string id="cwd"></string>
+  <string id="cwd">/Users/jonasbn/develop/svn-logicLAB/Business-DK-CPR/trunk</string>
   <long id="debugger.io-port">9011</long>
   <string id="documentRoot"></string>
   <string id="executable-params">-I /Users/jonasbn/develop/cvs-logicLAB/modules/Business-DK-CVR/lib -I /Users/jonasbn/develop/cvs-logicLAB/modules/Business-DK-CPR/lib</string>
-  <string relative="path" id="filename">t/Business/DK/CPR/validate.t</string>
+  <string id="filename">/Users/jonasbn/develop/svn-logicLAB/Business-DK-CPR/trunk/t/Business/DK/CPR/validate.t</string>
   <string id="getparams"></string>
   <string id="language">Perl</string>
   <string id="mpostparams"></string>
@@ -126,7 +126,7 @@
   <long id="debugger.io-port">9011</long>
   <string id="documentRoot"></string>
   <string id="executable-params">-I /Users/jonasbn/develop/svn-logicLAB/Business-DK-CPR/trunk/lib</string>
-  <string relative="path" id="filename">t/Business/DK/CPR/validate2007.t</string>
+  <string id="filename">/Users/jonasbn/develop/svn-logicLAB/Business-DK-CPR/trunk/t/Business/DK/CPR/validate2007.t</string>
   <string id="getparams"></string>
   <string id="language">Perl</string>
   <string id="mpostparams"></string>

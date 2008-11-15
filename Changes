@@ -2,7 +2,21 @@ Changes file for Business-DK-CPR
 
 $Id: Changes,v 1.8 2008-09-09 19:15:28 jonasbn Exp $
 
-Release 0.04 candidate, update recommended
+Release 0.05, update recommended for perl 5.10 users
+
+- Eliminated use of the marvellous Hash::Merge, problems with Clone under
+  perl 5.10 makes the code break. Hash::Merge uses Clone so I am removing it's
+  use since it is breaking my code:
+  
+  http://rt.cpan.org/Public/Bug/Display.html?id=40957
+
+  I mimicking Hash::Merge's merge in my own simple merge function, which does
+  however demonstrate that use of Hash::Merge might be overkill for this task
+
+- Updated MANIFEST.SKIP wrong distribution listed
+
+
+Release 0.04, update recommended
 
 - Introduced Data::FormValidator::Constraints::Business::DK::CPR, this is sort
   of an example application, it is however just a simple wrapper fitting into

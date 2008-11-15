@@ -3,18 +3,18 @@ package Business::DK::CPR;
 # $Id: CPR.pm,v 1.9 2008-09-09 19:15:44 jonasbn Exp $
 
 use strict;
+no strict 'refs';
 use warnings;
 use vars qw($VERSION @EXPORT_OK);
 use Carp qw(croak carp);
 use Business::DK::CVR qw(_length _calculate_sum);
 use Business::DK::PO qw(_argument _content);
 use Date::Calc qw(check_date);
-use Hash::Merge qw( merge );
 use base 'Exporter';
 use integer;
 use Tie::IxHash;
 
-$VERSION   = '0.04';
+$VERSION   = '0.05';
 @EXPORT_OK = qw(
     validate
     validateCPR
@@ -50,6 +50,19 @@ tie %male_seeds, 'Tie::IxHash',
     1 => { max => 9997, min => 7 },
     3 => { max => 9999, min => 9 },
     5 => { max => 9995, min => 11 };
+
+
+sub merge {
+    my ( $left_hashref, $right_hashref ) = @_;
+    
+    my %hash = %{$right_hashref};
+    
+    foreach  ( keys  %{ $left_hashref } ) {
+        $hash{$_} = $left_hashref->{$_};
+    }
+    
+    return \%hash;
+}
 
 sub calculate {
     my $birthdate = shift;
@@ -116,7 +129,7 @@ sub validate2007 {
 
     my $remainder = $control % MODULUS_OPERAND_2007;
 
-    my %seeds = %{ merge( \%male_seeds, \%female_seeds ); };
+    my %seeds = %{ merge( \%male_seeds, \%female_seeds ) };
 
     if ( my $series = $seeds{$remainder} ) {
         if ( $control < $seeds{$remainder}->{min} ) {
@@ -503,8 +516,6 @@ Business::DK::CPR exports on request:
 =item L<Test::Exception>
 
 =item L<Date::Calc>
-
-=item L<Hash::Merge>
 
 =item L<Tie::IxHash>
 
