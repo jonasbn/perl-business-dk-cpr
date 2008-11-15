@@ -25,8 +25,7 @@ SKIP: {
     
     #Test 6
     is(Business::DK::CPR::generate1968(150172), 909, 'Valid male and female serial numbers, scalar context');
-    
-    
+        
     #Test 7-916
     ok(my @cprs = Business::DK::CPR::generate1968(150172), 'Valid male and female serial numbers, list context');
     
