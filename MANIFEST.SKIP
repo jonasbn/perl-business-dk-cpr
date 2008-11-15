@@ -36,7 +36,7 @@
 #   Mac OSX SMB mount metadata files
 \B\._
 # Avoid archives of this distribution
-\bDigitalValidation-DigitalValidation-[\d\.\_]+
+\Business-DK-CPR-[\d\.\_]+
 
 # Avoid project files
 Business-DK-CPR.kpf
