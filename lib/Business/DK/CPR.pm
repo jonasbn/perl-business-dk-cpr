@@ -329,7 +329,7 @@ __END__
 
 =head1 NAME
 
-Business::DK::CPR - a Danish CPR code generator/validator
+Business::DK::CPR - Danish CPR code generator/validator
 
 =head1 VERSION
 
