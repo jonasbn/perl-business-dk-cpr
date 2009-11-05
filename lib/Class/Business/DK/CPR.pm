@@ -133,6 +133,30 @@ This method/mutator sets the a CPR number for a given CPR object, it takes a
 single mandatory parameter, which should be a valid CPR number, returns true (1)
 upon success else it dies.
 
+=head2 algorithm
+
+Accessor returning a string representing what algorithms used to validate the CPR object.
+
+=head2 get_algorithm
+
+See L</algorithm>
+
+=head2 gender
+
+Accessor returning an integer representing the gender indicated by the CPR object.
+
+=over
+
+=item * 1, male
+
+=item * 1, female
+
+=back
+
+=head2 get_gender
+
+See L</gender>
+
 =head1 DIAGNOSTICS
 
 =over
