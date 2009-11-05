@@ -8,11 +8,13 @@ use Class::InsideOut qw( private register id );
 use Carp qw(croak);
 use English qw(-no_match_vars);
 
-use Business::DK::CPR qw(validate);
+use Business::DK::CPR qw(validate1968 validate2007);
 
 our $VERSION = '0.01';
 
 private number => my %number;     # read-only accessor: number()
+private gender => my %gender;     # read-only accessor: gender()
+private algorithm => my %algorithm;     # read-only accessor: algorithm()
 
 sub new {
     my ($class, $number) = @_;
@@ -37,22 +39,51 @@ sub number { $number{ id $_[0] } }
 sub get_number { $number{ id $_[0] } }
 
 sub set_number {
+    my ($self, $unvalidated_cpr) = @_;
     
-    my $rv;
+    my $rv = 0;
+    my @algorithms;
     
-    if ($_[1]) {
-        eval { $rv = validate($_[1]) };
-    
+    if ($unvalidated_cpr) {
+        eval { $rv = validate1968($unvalidated_cpr); 1; };
+
+        if ( $rv && $rv % 2 ) {
+            push @algorithms, '1968';
+        } elsif ($rv) {
+            push @algorithms, '1968';
+        }
+
+        eval { $rv = validate2007($unvalidated_cpr); 1; };
+
+        if ( $rv && $rv % 2 ) {
+            push @algorithms, '2007';
+        } elsif ($rv) {
+            push @algorithms, '2007'; 
+        }    
+        
         if ($EVAL_ERROR or not $rv) {
             croak 'Invalid CPR number parameter';
+        
         } else {
-            $number{ id $_[0] } = $_[1];
+            
+            $number{ id $self } = $unvalidated_cpr;
+            $gender{ id $self } = $rv;
+            $algorithm{ id $self } = (join ', ', @algorithms);
+            
             return 1;
         }
     } else {
         croak 'You must provide a CPR number';
     }
 }
+
+sub gender { $gender{ id $_[0] } }
+
+sub get_gender { $gender{ id $_[0] } }
+
+sub algorithm { $algorithm{ id $_[0] } }
+
+sub get_algorithm { $algorithm{ id $_[0] } }
 
 1;
 
