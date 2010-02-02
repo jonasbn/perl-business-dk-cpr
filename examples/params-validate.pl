@@ -16,7 +16,7 @@ if ($@) {
 }
 
 eval {
-    check_cpr(cpr => 1501721112);
+    check_cpr(cpr => 1501720000);
 };
 
 if ($@) {
