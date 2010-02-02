@@ -123,11 +123,11 @@
 <preference-set id="Invocations">
 <preference-set id="default">
   <string id="cookieparams"></string>
-  <string id="cwd"></string>
+  <string relative="path" id="cwd"></string>
   <long id="debugger.io-port">9011</long>
   <string id="documentRoot"></string>
-  <string id="executable-params">-I /Users/jonasbn/develop/svn-logicLAB/Business-DK-CPR/trunk/lib</string>
-  <string id="filename">/Users/jonasbn/develop/svn-logicLAB/Business-DK-CPR/trunk/t/Business/DK/CPR/validate2007.t</string>
+  <string id="executable-params">-I /Users/jonasbn/develop/svn-CPAN-logicLAB/BDKCPR/lib</string>
+  <string relative="path" id="filename">t/Business/DK/CPR/validate2007.t</string>
   <string id="getparams"></string>
   <string id="language">Perl</string>
   <string id="mpostparams"></string>
