@@ -359,6 +359,38 @@ This documentation describes version 0.04
     my $number_of_valid_cprs = calculate(150172);
 
 
+    #Using with Params::Validate
+    #See also examples/
+    
+    use Params::Validate qw(:all);
+    use Business::DK::CPR qw(validateCPR);
+    
+    eval {
+        check_cpr(cpr => 1501721111);
+    };
+    
+    if ($@) {
+        print "CPR is not valid - $@\n";
+    }
+    
+    eval {
+        check_cpr(cpr => 1501720000);
+    };
+    
+    if ($@) {
+        print "CPR is not valid - $@\n";
+    }
+    
+    sub check_cpr {
+        validate( @_,
+        { cpr =>
+            { callbacks =>
+                { 'validate_cpr' => sub { validateCPR($_[0]); } } } } );
+        
+        print $_[1]." is a valid CPR\n";
+    
+    }
+
 =head1 DESCRIPTION
 
 CPR stands for Central Person Registration and it the social security number
