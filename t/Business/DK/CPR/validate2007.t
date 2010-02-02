@@ -20,6 +20,9 @@ dies_ok {validate2007()} 'no arguments';
 #Test 4
 dies_ok {validate2007(123456789)} 'too short, 9';
 
+#and you can ignore the:
+#Use of uninitialized value $controlnumber in substr at /Users/jonasbn/develop/svn-CPAN-logicLAB/BDKCPR/lib/Business/DK/CPR.pm line XXX.
+
 #Test 5
 dies_ok {validate2007(12345678901)} 'too long, 11';
 
