@@ -2,6 +2,12 @@ Changes file for Business-DK-CPR
 
 $Id: Changes,v 1.8 2008-09-09 19:15:28 jonasbn Exp $
 
+HEAD
+
+- Addressing failing test. Issue with Build.PL and Makefile generation
+  see also: http://www.perlmonks.org/?node_id=458282
+
+
 Release 0.05, update recommended for perl 5.10 users
 
 - Eliminated use of the marvellous Hash::Merge, problems with Clone under
