@@ -526,19 +526,19 @@ Business::DK::CPR exports on request:
 
 =over
 
-=item L<Business::DK::PO>
+=item * L<Business::DK::PO>
 
-=item L<Business::DK::CVR>
+=item * L<Business::DK::CVR>
 
-=item L<Exporter>
+=item * L<Exporter>
 
-=item L<Carp>
+=item * L<Carp>
 
-=item L<Test::Exception>
+=item * L<Test::Exception>
 
-=item L<Date::Calc>
+=item * L<Date::Calc>
 
-=item L<Tie::IxHash>
+=item * L<Tie::IxHash>
 
 =back
 
