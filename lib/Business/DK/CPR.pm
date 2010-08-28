@@ -364,23 +364,7 @@ This documentation describes version 0.04
     
     use Params::Validate qw(:all);
     use Business::DK::CPR qw(validateCPR);
-    
-    eval {
-        check_cpr(cpr => 1501721111);
-    };
-    
-    if ($@) {
-        print "CPR is not valid - $@\n";
-    }
-    
-    eval {
-        check_cpr(cpr => 1501720000);
-    };
-    
-    if ($@) {
-        print "CPR is not valid - $@\n";
-    }
-    
+        
     sub check_cpr {
         validate( @_,
         { cpr =>
