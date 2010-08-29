@@ -25,6 +25,13 @@ functions = print
 
 [-ValuesAndExpressions::ProhibitMagicNumbers]
 
-[-NamingConventions::ProhibitMixedCaseSubs]
+#deprecated [-NamingConventions::ProhibitMixedCaseSubs]
+[-NamingConventions::Capitalization] 
 
 [-Miscellanea::ProhibitTies]
+
+[-Bangs::ProhibitNumberedNames]
+
+[-Subroutines::RequireArgUnpacking]
+
+[-ErrorHandling::RequireCheckingReturnValueOfEval]
