@@ -18,6 +18,7 @@ my $build = Module::Build->new(
 		'Business::DK::CVR' => '0.01',
 		'Date::Calc'        => '0',
 		'Tie::IxHash'       => '0',
+		Class::InsideOut    => '0',
 	},
     build_requires       => {
         'Test::More' => '0',    #core
