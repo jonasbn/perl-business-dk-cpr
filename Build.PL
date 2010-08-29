@@ -1,6 +1,6 @@
 # Build.PL for Business-DK-CPR
 
-# $Id: Build.PL,v 1.3 2008-09-09 19:15:28 jonasbn Exp $
+# $Id$
 
 use Module::Build;
 my $build = Module::Build->new(
