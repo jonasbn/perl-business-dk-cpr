@@ -377,10 +377,12 @@ This documentation describes version 0.04
 
 =head1 DESCRIPTION
 
-CPR stands for Central Person Registration and it the social security number
+CPR stands for Central Person Registration and is the social security number
 used in Denmark.
 
 =head1 SUBROUTINES AND METHODS
+
+All methods are exported by explicit request. None are exported implicitly.
 
 =head2 validate
 
@@ -401,7 +403,7 @@ It dies if the CPR number is malformed or in any way unparsable, be aware that
 the 6 first digits are representing a date (SEE: L</_checkdate> function below).
 
 In brief, the date indicate the person's birthday, the last 4 digits are
-representing a serial number and control cifer.
+representing a serial number and control cipher.
 
 For a more thorough discussion on the format of CPR numbers please refer to the
 L<SEE ALSO> section.
@@ -417,8 +419,8 @@ The L</validate> subroutine wraps both validators and checks using against both.
 
 The L</generate> subroutine wraps both generators and accumulated the results.
 
-NB! it is possible to make fake CPR number, which appear valid, please see
-MOTIVATION and the L</calculate> function. s
+NB! it is possible to make fake CPR numbers that appear valid, please see
+MOTIVATION and the L</calculate> function.
 
 L</validate> is also exported as: L</validateCPR>, which is less imposing.
 
@@ -518,7 +520,13 @@ Business::DK::CPR exports on request:
 
 =over
 
-=item *
+=item * 'argument for birthdate should be provided'
+
+=item * 'argument: <birthdate> could not be parsed'
+
+=item * 'argument: <birthdate> has to be a valid date in the format: ddmmyy'
+
+=item * 'Unknown gender: <gender>, assuming no gender'
 
 =back
 
