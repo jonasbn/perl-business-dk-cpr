@@ -12,19 +12,20 @@ use Business::DK::CPR qw(validate1968 validate2007);
 
 our $VERSION = '0.01';
 
-private number => my %number;     # read-only accessor: number()
-private gender => my %gender;     # read-only accessor: gender()
-private algorithm => my %algorithm;     # read-only accessor: algorithm()
+private number    => my %number;       # read-only accessor: number()
+private gender    => my %gender;       # read-only accessor: gender()
+private algorithm => my %algorithm;    # read-only accessor: algorithm()
 
 sub new {
-    my ($class, $number) = @_;
-    
+    my ( $class, $number ) = @_;
+
+    ## no critic (Variables::ProhibitUnusedVariables)
     my $self = \( my $scalar );
-    
+
     bless $self, $class;
-    
-    register( $self );
-    
+
+    register($self);
+
     if ($number) {
         $self->set_number($number);
     } else {
@@ -34,16 +35,17 @@ sub new {
     return $self;
 }
 
+## no critic (Subroutines::RequireFinalReturn)
 sub number { $number{ id $_[0] } }
 
 sub get_number { $number{ id $_[0] } }
 
 sub set_number {
-    my ($self, $unvalidated_cpr) = @_;
-    
+    my ( $self, $unvalidated_cpr ) = @_;
+
     my $rv = 0;
     my @algorithms;
-    
+
     if ($unvalidated_cpr) {
         eval { $rv = validate1968($unvalidated_cpr); 1; };
 
@@ -58,18 +60,18 @@ sub set_number {
         if ( $rv && $rv % 2 ) {
             push @algorithms, '2007';
         } elsif ($rv) {
-            push @algorithms, '2007'; 
-        }    
-        
-        if ($EVAL_ERROR or not $rv) {
+            push @algorithms, '2007';
+        }
+
+        if ( $EVAL_ERROR or not $rv ) {
             croak 'Invalid CPR number parameter';
-        
+
         } else {
-            
-            $number{ id $self } = $unvalidated_cpr;
-            $gender{ id $self } = $rv;
-            $algorithm{ id $self } = (join ', ', @algorithms);
-            
+
+            $number{ id $self }    = $unvalidated_cpr;
+            $gender{ id $self }    = $rv;
+            $algorithm{ id $self } = ( join ', ', @algorithms );
+
             return 1;
         }
     } else {
