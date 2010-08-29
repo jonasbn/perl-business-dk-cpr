@@ -1,5 +1,5 @@
 
-# $Id: perlcriticrc,v 1.3 2008-09-09 19:15:52 jonasbn Exp $
+# $Id$
 
 severity = 1
 verbose = 8
