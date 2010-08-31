@@ -333,7 +333,7 @@ Business::DK::CPR - Danish CPR code generator/validator
 
 =head1 VERSION
 
-This documentation describes version 0.04
+This documentation describes version 0.05
 
 =head1 SYNOPSIS
 
@@ -520,13 +520,29 @@ Business::DK::CPR exports on request:
 
 =over
 
-=item * 'argument for birthdate should be provided'
+=item * 'argument for birthdate should be provided', a data parameter has to be
+provided. 
 
-=item * 'argument: <birthdate> could not be parsed'
+This error is thrown from L</_checkdate>, which is used for all general parameter
+validation.
 
-=item * 'argument: <birthdate> has to be a valid date in the format: ddmmyy'
+=item * 'argument: <birthdate> could not be parsed', the date provided is not
+represented by 6 digits (see also below).
 
-=item * 'Unknown gender: <gender>, assuming no gender'
+This error is thrown from L</_checkdate>, which is used for all general parameter
+validation.
+
+=item * 'argument: <birthdate> has to be a valid date in the format: ddmmyy',
+the date format used for CPR numbers has to adhere to ddmmyy in numeric format
+like so: 311210, day in a two digit representation: 01-31, month also two digit
+representation: 01-12 and finally year in a two digit representation: 00-99.
+
+This error is thrown from L</_checkdate>, which is used for all general parameter
+validation.
+
+=item * 'Unknown gender: <gender>, assuming no gender', this is just a warning
+issued if a call to L</generate2007> has not been provided with a gender
+parameter
 
 =back
 
@@ -581,9 +597,9 @@ was generated with the TEST_AUTHOR flag enabled (SEE: L</TEST AND QUALITY>)
     ---------------------------- ------ ------ ------ ------ ------ ------ ------
     File                           stmt   bran   cond    sub    pod   time  total
     ---------------------------- ------ ------ ------ ------ ------ ------ ------
-    blib/lib/Business/DK/CPR.pm    97.3   91.9   84.6  100.0  100.0  100.0   96.0
-    ...raints/Business/DK/CPR.pm   65.9    0.0    0.0   75.0  100.0    0.0   57.6
-    Total                          91.6   81.4   68.8   93.2  100.0  100.0   89.1
+    blib/lib/Business/DK/CPR.pm    74.2   41.9   53.8  100.0  100.0   72.9   70.3
+    .../Class/Business/DK/CPR.pm   89.1   85.7   77.8   71.4  100.0   27.1   86.0
+    Total                          77.6   50.0   63.6   91.3  100.0  100.0   74.1
     ---------------------------- ------ ------ ------ ------ ------ ------ ------
 
 =head2 PERL::CRITIC
@@ -593,21 +609,21 @@ additions and exceptions to the standard use.
 
 =over
 
-=item [-Miscellanea::ProhibitTies]
+=item * L<Perl::Critic::Policy::Miscellanea::ProhibitTies>
 
 This package utilizes L<Tie::IxHash> (SEE: L</DEPENDENCIES>), this module
 relies on tie.
 
-=item [-NamingConventions::ProhibitMixedCaseSubs]
+=item * L<Perl::Critic::Policy::NamingConventions::ProhibitMixedCaseSubs>
 
 CPR is an abreviation for 'Centrale Person Register' (Central Person Register)
 and it is kept in uppercase.
 
-=item [-ValuesAndExpressions::ProhibitConstantPragma]
+=item * L<Perl::Critic::Policy::ValuesAndExpressions::ProhibitConstantPragma>
 
 This is a personal thing, but I like constants.
 
-=item [-ValuesAndExpressions::ProhibitMagicNumbers]
+=item * L<Perl::Critic::Policy::ValuesAndExpressions::ProhibitMagicNumbers>
 
 Some values and boundaries are defined for certain intervals of numbers, these
 are currently kept as is. Perhaps with a refactoring of the use of constants to
@@ -642,11 +658,15 @@ or by sending mail to
 
 =over
 
-=item L<http://www.cpr.dk/>
+=item * L<http://www.cpr.dk/>
 
-=item L<Business::DK::PO>
+=item * L<Class::Business::DK::CPR>
 
-=item L<Business::DK::CVR>
+=item * L<Data::FormValidator::Constraints::Business::DK::CPR>
+
+=item * L<Business::DK::PO>
+
+=item * L<Business::DK::CVR>
 
 =back
 
@@ -673,7 +693,7 @@ Jonas B. Nielsen, (jonasbn) - C<< <jonasbn@cpan.org> >>
 
 =head1 COPYRIGHT
 
-Business-DK-CPR is (C) by Jonas B. Nielsen, (jonasbn) 2006-2008
+Business-DK-CPR is (C) by Jonas B. Nielsen, (jonasbn) 2006-2010
 
 =head1 LICENSE
 
