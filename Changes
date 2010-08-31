@@ -2,6 +2,10 @@ Changes file for Business-DK-CPR
 
 $Id: Changes,v 1.8 2008-09-09 19:15:28 jonasbn Exp $
 
+The project Changelog is available at:
+
+http://logiclab.jira.com/browse/BDKCPR#selectedTab=com.atlassian.jira.plugin.system.project%3Achangelog-panel
+
 Release 0.06, Released Tue Aug 31 2010 Update not necessary
 
 - Added documentation and example on Params::Validate integration [BDKCPR-3]
@@ -11,7 +15,7 @@ Release 0.06, Released Tue Aug 31 2010 Update not necessary
 - Add prerequisites test [BDKCPR-2]
 
 - Addressing failing test. Issue with Build.PL and Makefile generation
-  see also: http://www.perlmonks.org/?node_id=458282
+  see also: http://www.perlmonks.org/?node_id=458282 [BDKCPR-4]
 
 
 Release 0.05, update recommended for perl 5.10 users
