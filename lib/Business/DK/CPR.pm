@@ -13,7 +13,7 @@ use base 'Exporter';
 use integer;
 use Tie::IxHash;
 
-$VERSION   = '0.05';
+$VERSION   = '0.06';
 @EXPORT_OK = qw(
     validate
     validateCPR
@@ -333,7 +333,7 @@ Business::DK::CPR - Danish CPR code generator/validator
 
 =head1 VERSION
 
-This documentation describes version 0.05
+This documentation describes version 0.06
 
 =head1 SYNOPSIS
 
