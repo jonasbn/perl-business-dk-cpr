@@ -29,10 +29,14 @@ my $build = Module::Build->new(
     },
     meta_merge => {
         resources => {
-            homepage => 'http://logicLAB.jira.com/browse/BDKCPR',
+            homepage => 'http://logiclab.jira.com/wiki/display/BDKCPR/Home',
             bugtracker =>
                 'http://rt.cpan.org/NoAuth/Bugs.html?Dist=Business-DK-CPR',
             repository => 'http://logicLAB.jira.com/svn/BDKCPR',
+            ProjectChangelog =>
+                'http://logiclab.jira.com/browse/BDKCPR#selectedTab=com.atlassian.jira.plugin.system.project%3Achangelog-panel',
+            ProjectSite => 'http://logicLAB.jira.com/browse/BDKCPR',
+            ProjectWiki => 'http://logiclab.jira.com/wiki/display/BDKCPR/Home',
         }
     },
 );
