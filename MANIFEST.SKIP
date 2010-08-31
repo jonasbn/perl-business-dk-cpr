@@ -39,6 +39,8 @@
 \Business-DK-CPR-[\d\.\_]+
 
 # Avoid project files
-Business-DK-CPR.kpf
+\.kpf
+\.komodoproject
 docs
 prototypes
+^MYMETA.yml$
