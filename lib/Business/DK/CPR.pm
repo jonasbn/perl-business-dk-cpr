@@ -400,29 +400,29 @@ argument and returns:
 =back
 
 It dies if the CPR number is malformed or in any way unparsable, be aware that
-the 6 first digits are representing a date (SEE: L</_checkdate> function below).
+the 6 first digits are representing a date (SEE: L<_checkdate|/_checkdate> function below).
 
 In brief, the date indicate the person's birthday, the last 4 digits are
 representing a serial number and control cipher.
 
 For a more thorough discussion on the format of CPR numbers please refer to the
-L<SEE ALSO> section.
+L<SEE ALSO|/SEE ALSO> section.
 
-L</validate1968> is the old form of the CPR number. It is validated using
-modulus 11.
+L<validate1968|/validate1968> is the old form of the CPR number. It is validated
+using modulus 11.
 
 The new format introduced in 2001 (put to use in 2007, hence the name used
-throughout this package) can be validated using L</validate2007> and generate
-using L</validate2007>.
+throughout this package) can be validated using L<validate2007|/validate2007> and
+generate using L<generate2007|/generate2007>.
 
-The L</validate> subroutine wraps both validators and checks using against both.
+The L<validate|/validate> subroutine wraps both validators and checks using against both.
 
-The L</generate> subroutine wraps both generators and accumulated the results.
+The L<generate|/generate> subroutine wraps both generators and accumulated the results.
 
 NB! it is possible to make fake CPR numbers that appear valid, please see
 MOTIVATION and the L</calculate> function.
 
-L</validate> is also exported as: L</validateCPR>, which is less imposing.
+L<validate|/validate> is also exported as: L<validateCPR|/validateCPR>, which is less imposing.
 
 =head2 validateCPR
 
@@ -439,7 +439,7 @@ Validation against the CPR algorithm introduced in 2007.
 =head2 generate
 
 This is a wrapper around calculate, so the naming is uniform to
-L<Business::DK::CVR>
+L<Business::DK::CVR|Business::DK::CVR>
 
 This function takes an integer representing a date and calculates valid CPR
 numbers for the specified date. In scalar context returns the number of valid
@@ -449,20 +449,20 @@ If the date is malformed or in any way invalid or unspecified the function dies.
 
 =head2 generate1968
 
-Specialized generator for validate1968 compatible CPR numbers. See: L</generate>
+Specialized generator for L<validate1968|/validate1968> compatible CPR numbers. See: L<generate|/generate>
 
 =head2 generate2007
 
-Specialized generator for validate2007 compatible CPR numbers. See: L</generate>
+Specialized generator for L<validate2007|/validate2007> compatible CPR numbers. See: L<generate|/generate>
 
 =head2 calculate
 
-See L</generate> and L</generate1968>. This is the old name for L</generate1968>.
-It is just kept for backwards compatibility and it calls L</generate>.
+See L<generate|/generate> and L<generate1968|/generate1968>. This is the old name for L<generate1968|/generate1968>.
+It is just kept for backwards compatibility and it calls L<generate|/generate>.
 
 =head2 merge
 
-Mimics L<Hash::Merge>'s L<Hash::Merge/merge> function. Takes two references to
+Mimics L<Hash::Merge|Hash::Merge>'s L<merge|Hash::Merge/merge> function. Takes two references to
 hashes and returns a single reference to a hash containing the merge of the two
 with the left parameter having precendence. The precedence has not meaning on
 the case in this module, but then the behaviour is documented.
@@ -500,19 +500,19 @@ Business::DK::CPR exports on request:
 
 =over
 
-=item * L</validate>
+=item * L<validate|/validate>
 
-=item * L</validateCPR>
+=item * L<validateCPR|/validateCPR>
 
-=item * L</validate1968>
+=item * L<validate1968|/validate1968>
 
-=item * L</validate2007>
+=item * L<validate2007|/validate2007>
 
-=item * L</calculate>
+=item * L<calculate|/calculate>
 
-=item * L</generate>
+=item * L<generate|/generate>
 
-=item * L</_checkdate>
+=item * L<_checkdate|/_checkdate>
 
 =back
 
@@ -523,13 +523,13 @@ Business::DK::CPR exports on request:
 =item * 'argument for birthdate should be provided', a data parameter has to be
 provided. 
 
-This error is thrown from L</_checkdate>, which is used for all general parameter
+This error is thrown from L<_checkdate|/_checkdate>, which is used for all general parameter
 validation.
 
 =item * 'argument: <birthdate> could not be parsed', the date provided is not
 represented by 6 digits (see also below).
 
-This error is thrown from L</_checkdate>, which is used for all general parameter
+This error is thrown from L<_checkdate|/_checkdate>, which is used for all general parameter
 validation.
 
 =item * 'argument: <birthdate> has to be a valid date in the format: ddmmyy',
@@ -537,11 +537,11 @@ the date format used for CPR numbers has to adhere to ddmmyy in numeric format
 like so: 311210, day in a two digit representation: 01-31, month also two digit
 representation: 01-12 and finally year in a two digit representation: 00-99.
 
-This error is thrown from L</_checkdate>, which is used for all general parameter
+This error is thrown from L<_checkdate|/_checkdate>, which is used for all general parameter
 validation.
 
 =item * 'Unknown gender: <gender>, assuming no gender', this is just a warning
-issued if a call to L</generate2007> has not been provided with a gender
+issued if a call to L<generate2007|/generate2007> has not been provided with a gender
 parameter
 
 =back
@@ -550,19 +550,19 @@ parameter
 
 =over
 
-=item * L<Business::DK::PO>
+=item * L<Business::DK::PO|Business::DK::PO>
 
-=item * L<Business::DK::CVR>
+=item * L<Business::DK::CVR|Business::DK::CVR>
 
-=item * L<Exporter>
+=item * L<Exporter|Exporter>
 
-=item * L<Carp>
+=item * L<Carp|Carp>
 
-=item * L<Test::Exception>
+=item * L<Test::Exception|Test::Exception>
 
-=item * L<Date::Calc>
+=item * L<Date::Calc|Date::Calc>
 
-=item * L<Tie::IxHash>
+=item * L<Tie::IxHash|Tie::IxHash>
 
 =back
 
@@ -589,10 +589,13 @@ The distribution uses the TEST_AUTHOR environment variable to run some
 additional tests, which are interesting to the the author, these can be disabled
 by not defining or setting the environment variable to something not positive.
 
+The distribution uses the TEST_CRITIC environment variable to control
+L<Perl::Critic|Perl::Critic> tests.
+
 =head2 TESTCOVERAGE
 
 Coverage of the test suite is at 89.1% for release 0.04, the coverage report
-was generated with the TEST_AUTHOR flag enabled (SEE: L</TEST AND QUALITY>)
+was generated with the TEST_AUTHOR flag enabled (SEE: L<TEST AND QUALITY|/TEST AND QUALITY>)
 
     ---------------------------- ------ ------ ------ ------ ------ ------ ------
     File                           stmt   bran   cond    sub    pod   time  total
@@ -604,33 +607,33 @@ was generated with the TEST_AUTHOR flag enabled (SEE: L</TEST AND QUALITY>)
 
 =head2 PERL::CRITIC
 
-This section describes use of L<Perl::Critic> from a perspective of documenting
+This section describes use of L<Perl::Critic|Perl::Critic> from a perspective of documenting
 additions and exceptions to the standard use.
 
 =over
 
-=item * L<Perl::Critic::Policy::Miscellanea::ProhibitTies>
+=item * L<Perl::Critic::Policy::Miscellanea::ProhibitTies|Perl::Critic::Policy::Miscellanea::ProhibitTies>
 
-This package utilizes L<Tie::IxHash> (SEE: L</DEPENDENCIES>), this module
+This package utilizes L<Tie::IxHash|Tie::IxHash> (SEE: L<DEPENDENCIES|/DEPENDENCIES>), this module
 relies on tie.
 
-=item * L<Perl::Critic::Policy::NamingConventions::NamingConventions::Capitalization>
+=item * L<Perl::Critic::Policy::NamingConventions::NamingConventions::Capitalization|Perl::Critic::Policy::NamingConventions::NamingConventions::Capitalization>
 
 CPR is an abreviation for 'Centrale Person Register' (Central Person Register)
 and it is kept in uppercase.
 
-=item * L<Perl::Critic::Policy::NamingConventions::ProhibitMixedCaseSubs> deprecated by the policy above.
+=item * L<Perl::Critic::Policy::NamingConventions::ProhibitMixedCaseSubs|Perl::Critic::Policy::NamingConventions::ProhibitMixedCaseSubs> deprecated by the policy above.
 
-=item * L<Perl::Critic::Policy::ValuesAndExpressions::ProhibitConstantPragma>
+=item * L<Perl::Critic::Policy::ValuesAndExpressions::ProhibitConstantPragma|Perl::Critic::Policy::ValuesAndExpressions::ProhibitConstantPragma>
 
 Constants are good in most cases, see also:
 L<http://logicLAB.jira.com/wiki/display/OPEN/Perl-Critic-Policy-ValuesAndExpressions-ProhibitConstantPragma>
 
-=item * L<Perl::Critic::Policy::ValuesAndExpressions::ProhibitMagicNumbers>
+=item * L<Perl::Critic::Policy::ValuesAndExpressions::ProhibitMagicNumbers|Perl::Critic::Policy::ValuesAndExpressions::ProhibitMagicNumbers>
 
 Some values and boundaries are defined for certain intervals of numbers, these
 are currently kept as is. Perhaps with a refactoring of the use of constants to
-use of L<Readonly> will address this.
+use of L<Readonly|Readonly> will address this.
 
 =back
 
@@ -645,7 +648,7 @@ to a person is not possible without access to central CPR database an access,
 which is costly, limited and monitored.
 
 There are no other known limitations apart from the obvious flaws in the CPR
-system (See: L</SEE ALSO>).
+system (See: L<SEE ALSO|/SEE ALSO>).
 
 =head1 BUG REPORTING
 
@@ -663,13 +666,13 @@ or by sending mail to
 
 =item * L<http://www.cpr.dk/>
 
-=item * L<Class::Business::DK::CPR>
+=item * L<Class::Business::DK::CPR|Class::Business::DK::CPR>
 
-=item * L<Data::FormValidator::Constraints::Business::DK::CPR>
+=item * L<Data::FormValidator::Constraints::Business::DK::CPR|Data::FormValidator::Constraints::Business::DK::CPR>
 
-=item * L<Business::DK::PO>
+=item * L<Business::DK::PO|Business::DK::PO>
 
-=item * L<Business::DK::CVR>
+=item * L<Business::DK::CVR|Business::DK::CVR>
 
 =item * L<http://logicLAB.jira.com/wiki/display/OPEN/Perl-Critic-Policy-ValuesAndExpressions-ProhibitConstantPragma>
 
@@ -706,6 +709,6 @@ Business-DK-CPR is released under the artistic license
 
 The distribution is licensed under the Artistic License, as specified
 by the Artistic file in the standard perl distribution
-(http://www.perl.com/language/misc/Artistic.html).
+(L<http://www.perl.com/language/misc/Artistic.html>).
 
 =cut
