@@ -2,7 +2,10 @@
 
 # $Id$
 
+use strict;
+use warnings;
 use Module::Build;
+
 my $build = Module::Build->new(
 	dist_author        => 'Jonas B. Nielsen, (jonasbn) <jonasbn@cpan.org>',
 	module_name        => 'Business::DK::CPR',
