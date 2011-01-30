@@ -6,6 +6,24 @@ The project Changelog is available at:
 
 http://logiclab.jira.com/browse/BDKCPR#selectedTab=com.atlassian.jira.plugin.system.project%3Achangelog-panel
 
+HEAD,
+
+Feedback from review: [CR-BDKCPR-1] http://logiclab.jira.com/source/cru/CR-BDKCPR-1/
+    
+- Cleaning TODO, BDKCPR-1 implemented the OOP variation
+
+- Removing Komodo IDE project file from Subversion
+
+- Added strictures and warnings to Build.PL
+
+- Added reference to Build.PL (create_makefile_pl)
+
+- Added reference to Business::DK::CPR
+  Perl::Critic::Policy::ValuesAndExpressions::ProhibitConstantPragma
+
+- Updated some information on Perl::Critic policies
+
+
 Release 0.06, Released Tue Aug 31 2010 Update not necessary
 
 - Added documentation and example on Params::Validate integration [BDKCPR-3]
