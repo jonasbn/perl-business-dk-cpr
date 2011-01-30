@@ -11,8 +11,7 @@ use base 'Exporter';
 use integer;
 use Tie::IxHash;
 use Readonly;
-use Params::Validate qw(validate_pos);
-use Business::DK::PO qw(_content);
+use Params::Validate qw( validate_pos SCALAR );
 
 our $VERSION   = '0.07';
 our @EXPORT_OK = qw(
@@ -64,10 +63,8 @@ sub merge {
 }
 
 sub calculate {
-    validate_pos( @_, 1 );
-    my $birthdate = shift;
-
-    _checkdate($birthdate);
+    my ($birthdate) = @_;
+    validate_pos( @_, { type => SCALAR, callbacks => { 'date' => \&_checkdate } } );
 
     my @cprs;
     for ( 1 .. 999 ) {
@@ -92,11 +89,14 @@ sub calculate {
 }
 
 sub validateCPR {
+    #We postpone validation
     return validate(shift);
 }
 
 sub validate {
-    my $controlnumber = shift;
+    my ($controlnumber) = @_;
+
+    #We postpone validation
 
     my $rv;
     if ( $rv = validate1968($controlnumber) ) {
@@ -107,10 +107,9 @@ sub validate {
 }
 
 sub validate2007 {
-    validate_pos( @_, 1 );
-
-    my $controlnumber = shift;
-
+    my ($controlnumber) = @_;
+    validate_pos( @_, { type => SCALAR, regex => qr/^\d+$/ } );
+    
     _checkdate( substr $controlnumber, 0, DATE_LENGTH );
     _assert_controlnumber($controlnumber);
 
@@ -118,6 +117,7 @@ sub validate2007 {
 
     my $remainder = $control % MODULUS_OPERAND_2007;
 
+    #Our own merge, could be Hash::Merge's merge
     my %seeds = %{ merge( \%male_seeds, \%female_seeds ) };
 
     if ( my $series = $seeds{$remainder} ) {
@@ -146,9 +146,9 @@ sub validate2007 {
 }
 
 sub validate1968 {
-    validate_pos( @_, 1 );
+    my ($controlnumber) = @_;
 
-    my $controlnumber = shift;
+    validate_pos( @_, { type => SCALAR, regex => qr/^\d+$/ } );
 
     _checkdate( substr $controlnumber, 0, DATE_LENGTH );
     _assert_controlnumber($controlnumber);
@@ -169,25 +169,25 @@ sub validate1968 {
 }
 
 sub _is_equal {
-    validate_pos( @_, 1 );
-    my $operand = shift;
-
+    my ($operand) = @_;
+    
+    validate_pos( @_, { type => SCALAR, regex => qr/^\d+$/ } );
+    
     return ( not( $operand % 2 ) );
 }
 
 sub _assert_controlnumber {
-    validate_pos( @_, 1 );
-    my $controlnumber = shift;
+    my ($controlnumber) = @_;
 
-    _content($controlnumber);
+    validate_pos( @_, { type => SCALAR, regex => qr/^\d+$/ } );
+
     _length( $controlnumber, scalar @controlcifers );
 
     return VALID;
 }
 
 sub _checkdate {
-    validate_pos( @_, 1 );
-    my $birthdate = shift;
+    my $birthdate = $_[0];
 
     if (not($birthdate =~ m{\A #beginning of line
               (\d{2}) #day of month, 2 digit representation, 01-31
@@ -209,9 +209,13 @@ sub _checkdate {
 }
 
 sub generate {
-    validate_pos( @_, 1, 1 );
     my ( $birthdate, $gender ) = @_;
-
+    
+    validate_pos( @_,
+        { type => SCALAR, callbacks => { 'date' => \&_checkdate }, },
+        { type => SCALAR, optional => 1 },
+    );
+    
     my %cprs;
 
     my @cprs1968 = generate1968( $birthdate, $gender );
@@ -228,12 +232,13 @@ sub generate {
 }
 
 sub generate2007 {
-    validate_pos( @_, 1, 0 );
+    my ( $birthdate, $gender ) = @_;
 
-    my $birthdate = shift;
-    my $gender = shift || undef;
-
-    _checkdate($birthdate);
+    #TODO assert gender?
+    validate_pos( @_,
+        { type => SCALAR, callbacks => { 'date' => \&_checkdate }, },
+        { type => SCALAR, optional => 1 },
+    );
 
     my @cprs;
     my %seeds;
@@ -269,11 +274,13 @@ sub generate2007 {
 }
 
 sub generate1968 {
-    my $birthdate = shift;
-    my $gender = shift || undef;
+    my ( $birthdate, $gender ) = @_;
 
-    _checkdate($birthdate);
     #TODO assert gender?
+    validate_pos( @_,
+        { type => SCALAR, callbacks => { 'date' => \&_checkdate }, },
+        { type => SCALAR, optional => 1 },
+    );
     
     my @cprs;
     my @malecprs;

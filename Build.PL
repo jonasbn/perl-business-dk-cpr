@@ -18,7 +18,6 @@ my $build = Module::Build->new(
 	requires => {
 	    'Exporter'          => '0', #core
 		'Carp'              => '0', #core
-		'Business::DK::PO'  => '0.02',
 		'Business::DK::CVR' => '0.01',
 		'Date::Calc'        => '0',
 		'Tie::IxHash'       => '0',

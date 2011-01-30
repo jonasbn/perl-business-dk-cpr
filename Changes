@@ -8,7 +8,7 @@ http://logiclab.jira.com/browse/BDKCPR#selectedTab=com.atlassian.jira.plugin.sys
 
 HEAD,
 
-- Added use of Params::Validate in key places
+- Added use of Params::Validate in key places and phased out use of Business::DK::PO
 
 - Made control cifers Readonly
 
