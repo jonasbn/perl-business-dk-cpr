@@ -8,6 +8,10 @@ http://logiclab.jira.com/browse/BDKCPR#selectedTab=com.atlassian.jira.plugin.sys
 
 HEAD,
 
+- Updated some information on Perl::Critic policies
+
+- Removed export of _checkdate, this seemed to be only for testing purposes
+
 Feedback from review: [CR-BDKCPR-1] http://logiclab.jira.com/source/cru/CR-BDKCPR-1/
     
 - Cleaning TODO, BDKCPR-1 implemented the OOP variation
@@ -20,8 +24,6 @@ Feedback from review: [CR-BDKCPR-1] http://logiclab.jira.com/source/cru/CR-BDKCP
 
 - Added reference to Business::DK::CPR
   Perl::Critic::Policy::ValuesAndExpressions::ProhibitConstantPragma
-
-- Updated some information on Perl::Critic policies
 
 
 Release 0.06, Released Tue Aug 31 2010 Update not necessary

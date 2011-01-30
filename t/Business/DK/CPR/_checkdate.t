@@ -5,16 +5,16 @@ use Test::More tests => 5;
 use Test::Exception;
 
 #Test 1, load test
-BEGIN { use_ok('Business::DK::CPR', qw(_checkdate)); };
+BEGIN { use_ok('Business::DK::CPR'); };
 
 #Test 2
-ok(_checkdate(150172), 'Ok');
+ok(Business::DK::CPR::_checkdate(150172), 'Ok');
 
 #Test 3
-dies_ok{_checkdate()} 'none';
+dies_ok{Business::DK::CPR::_checkdate()} 'none';
 
 #Test 4
-dies_ok{_checkdate("abc")} 'tainted';
+dies_ok{Business::DK::CPR::_checkdate("abc")} 'tainted';
 
 #Test 5
-dies_ok{_checkdate(310205)} 'bad date';
+dies_ok{Business::DK::CPR::_checkdate(310205)} 'bad date';

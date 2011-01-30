@@ -23,7 +23,6 @@ $VERSION   = '0.07';
     validate2007
     generate2007
     calculate
-    _checkdate
 );
 
 use constant MODULUS_OPERAND_1968 => 11;

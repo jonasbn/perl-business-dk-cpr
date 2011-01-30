@@ -5,7 +5,7 @@ use Test::More tests => 6;
 use Test::Exception;
 
 #Test 1, load test
-use_ok('Business::DK::CPR', qw(_checkdate));
+use_ok('Business::DK::CPR');
 
 #Test 2
 ok(Business::DK::CPR::_assert_controlnumber(1234567890), 'Ok');
