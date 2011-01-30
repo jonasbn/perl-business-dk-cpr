@@ -578,7 +578,7 @@ There are no known incompatibilies in this package.
 
 =over
 
-=item Nothing to do, please refer to the distribution TODO file for the general
+=item * Nothing to do, please refer to the distribution TODO file for the general
 wish list and ideas for future expansions and experiments.
 
 =back
