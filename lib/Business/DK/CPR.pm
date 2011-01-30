@@ -619,7 +619,7 @@ relies on tie.
 CPR is an abreviation for 'Centrale Person Register' (Central Person Register)
 and it is kept in uppercase.
 
-Used to be: L<Perl::Critic::Policy::NamingConventions::ProhibitMixedCaseSubs>
+=item * L<Perl::Critic::Policy::NamingConventions::ProhibitMixedCaseSubs> deprecated by the policy above.
 
 =item * L<Perl::Critic::Policy::ValuesAndExpressions::ProhibitConstantPragma>
 
