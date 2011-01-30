@@ -621,7 +621,8 @@ and it is kept in uppercase.
 
 =item * L<Perl::Critic::Policy::ValuesAndExpressions::ProhibitConstantPragma>
 
-This is a personal thing, but I like constants.
+Constants are good in most cases, see also:
+L<http://logicLAB.jira.com/wiki/display/OPEN/Perl-Critic-Policy-ValuesAndExpressions-ProhibitConstantPragma>
 
 =item * L<Perl::Critic::Policy::ValuesAndExpressions::ProhibitMagicNumbers>
 
@@ -667,6 +668,8 @@ or by sending mail to
 =item * L<Business::DK::PO>
 
 =item * L<Business::DK::CVR>
+
+=item * L<http://logicLAB.jira.com/wiki/display/OPEN/Perl-Critic-Policy-ValuesAndExpressions-ProhibitConstantPragma>
 
 =back
 
