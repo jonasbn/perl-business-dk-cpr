@@ -614,10 +614,12 @@ additions and exceptions to the standard use.
 This package utilizes L<Tie::IxHash> (SEE: L</DEPENDENCIES>), this module
 relies on tie.
 
-=item * L<Perl::Critic::Policy::NamingConventions::ProhibitMixedCaseSubs>
+=item * L<Perl::Critic::Policy::NamingConventions::NamingConventions::Capitalization>
 
 CPR is an abreviation for 'Centrale Person Register' (Central Person Register)
 and it is kept in uppercase.
+
+Used to be: L<Perl::Critic::Policy::NamingConventions::ProhibitMixedCaseSubs>
 
 =item * L<Perl::Critic::Policy::ValuesAndExpressions::ProhibitConstantPragma>
 

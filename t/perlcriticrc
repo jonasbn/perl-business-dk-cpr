@@ -21,6 +21,7 @@ allow_leading_tabs = 0
 [-InputOutput::RequireCheckedSyscalls]
 functions = print
 
+#REF: L<http://logicLAB.jira.com/wiki/display/OPEN/Perl-Critic-Policy-ValuesAndExpressions-ProhibitConstantPragma>
 [-ValuesAndExpressions::ProhibitConstantPragma]
 
 [-ValuesAndExpressions::ProhibitMagicNumbers]
