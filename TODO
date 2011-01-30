@@ -8,6 +8,4 @@ $Id: TODO,v 1.5 2008-09-09 19:15:28 jonasbn Exp $
 
 - Remove export of _checkdate
 
-- Implement OOP variation
-
 - Implement amount parameter for generators?
