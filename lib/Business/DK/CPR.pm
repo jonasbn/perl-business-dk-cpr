@@ -4,7 +4,6 @@ package Business::DK::CPR;
 
 use strict;
 use warnings;
-use vars qw($VERSION @EXPORT_OK);
 use Carp qw(croak carp);
 use Business::DK::CVR qw(_length _calculate_sum);
 use Business::DK::PO qw(_argument _content);
@@ -14,8 +13,8 @@ use integer;
 use Tie::IxHash;
 use Readonly;
 
-$VERSION   = '0.07';
-@EXPORT_OK = qw(
+our $VERSION   = '0.07';
+our @EXPORT_OK = qw(
     validate
     validateCPR
     generate
