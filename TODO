@@ -1,11 +1,17 @@
 TODO file for Business-DK-CPR
 
 $Id: TODO,v 1.5 2008-09-09 19:15:28 jonasbn Exp $
-  
+
+The project roadmap is available at:
+
+http://logiclab.jira.com/browse/BDKCPR#selectedTab=com.atlassian.jira.plugin.system.project%3Aroadmap-panel
+
 - Add more documentation on CPR format
 
 - Add use of Params::Validate instead of B::DK::PO?
 
-- Remove export of _checkdate
+- Remove export of _checkdate, this seems to be only for testing purposes
 
 - Implement amount parameter for generators?
+
+- Make use of Readonly for control cifers
