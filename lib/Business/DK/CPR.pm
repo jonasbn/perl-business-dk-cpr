@@ -333,7 +333,7 @@ Business::DK::CPR - Danish CPR code generator/validator
 
 =head1 VERSION
 
-This documentation describes version 0.06
+This documentation describes version 0.07
 
 =head1 SYNOPSIS
 
@@ -651,7 +651,7 @@ system (See: L</SEE ALSO>).
 
 Please report issues via CPAN RT:
 
-  http://rt.cpan.org/NoAuth/Bugs.html?Dist=Business-DK-CPR
+  L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Business-DK-CPR>
 
 or by sending mail to
 
@@ -698,7 +698,7 @@ Jonas B. Nielsen, (jonasbn) - C<< <jonasbn@cpan.org> >>
 
 =head1 COPYRIGHT
 
-Business-DK-CPR is (C) by Jonas B. Nielsen, (jonasbn) 2006-2010
+Business-DK-CPR is (C) by Jonas B. Nielsen, (jonasbn) 2006-2011
 
 =head1 LICENSE
 
