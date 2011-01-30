@@ -464,7 +464,7 @@ It is just kept for backwards compatibility and it calls L<generate|/generate>.
 
 Mimics L<Hash::Merge|Hash::Merge>'s L<merge|Hash::Merge/merge> function. Takes two references to
 hashes and returns a single reference to a hash containing the merge of the two
-with the left parameter having precendence. The precedence has not meaning on
+with the left parameter having precedence. The precedence has not meaning on
 the case in this module, but then the behaviour is documented.
 
 =head1 PRIVATE FUNCTIONS
@@ -619,7 +619,7 @@ relies on tie.
 
 =item * L<Perl::Critic::Policy::NamingConventions::NamingConventions::Capitalization|Perl::Critic::Policy::NamingConventions::NamingConventions::Capitalization>
 
-CPR is an abreviation for 'Centrale Person Register' (Central Person Register)
+CPR is an abbreviation for 'Centrale Person Register' (Central Person Register)
 and it is kept in uppercase.
 
 =item * L<Perl::Critic::Policy::NamingConventions::ProhibitMixedCaseSubs|Perl::Critic::Policy::NamingConventions::ProhibitMixedCaseSubs> deprecated by the policy above.
