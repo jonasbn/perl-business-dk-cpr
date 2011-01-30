@@ -36,3 +36,5 @@ functions = print
 [-Subroutines::RequireArgUnpacking]
 
 [-ErrorHandling::RequireCheckingReturnValueOfEval]
+
+[-Bangs::ProhibitNumberedNames]
