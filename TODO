@@ -11,5 +11,3 @@ http://logiclab.jira.com/browse/BDKCPR#selectedTab=com.atlassian.jira.plugin.sys
 - Add use of Params::Validate instead of B::DK::PO?
 
 - Implement amount parameter for generators?
-
-- Make use of Readonly for control cifers

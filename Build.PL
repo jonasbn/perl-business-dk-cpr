@@ -23,6 +23,7 @@ my $build = Module::Build->new(
 		'Date::Calc'        => '0',
 		'Tie::IxHash'       => '0',
 		'Class::InsideOut'  => '0',
+        'Readonly'          => '0',
 	},
     build_requires       => {
         'Test::More' => '0',    #core

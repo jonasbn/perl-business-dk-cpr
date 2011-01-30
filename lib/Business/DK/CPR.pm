@@ -12,6 +12,7 @@ use Date::Calc qw(check_date);
 use base 'Exporter';
 use integer;
 use Tie::IxHash;
+use Readonly;
 
 $VERSION   = '0.07';
 @EXPORT_OK = qw(
@@ -35,7 +36,7 @@ use constant INVALID              => 0;
 use constant FEMALE               => 'female';
 use constant MALE                 => 'male';
 
-my @controlcifers = qw(4 3 2 7 6 5 4 3 2 1);
+Readonly my @controlcifers => qw(4 3 2 7 6 5 4 3 2 1);
 
 my %female_seeds;
 tie %female_seeds, 'Tie::IxHash',

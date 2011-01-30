@@ -8,6 +8,8 @@ http://logiclab.jira.com/browse/BDKCPR#selectedTab=com.atlassian.jira.plugin.sys
 
 HEAD,
 
+- Made control cifers Readonly
+
 - Updated some information on Perl::Critic policies
 
 - Removed export of _checkdate, this seemed to be only for testing purposes
