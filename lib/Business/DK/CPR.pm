@@ -548,8 +548,6 @@ parameter
 
 =over
 
-=item * L<Business::DK::PO|Business::DK::PO>
-
 =item * L<Business::DK::CVR|Business::DK::CVR>
 
 =item * L<Exporter|Exporter>
