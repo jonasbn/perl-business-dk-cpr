@@ -6,12 +6,13 @@ use strict;
 use warnings;
 use Carp qw(croak carp);
 use Business::DK::CVR qw(_length _calculate_sum);
-use Business::DK::PO qw(_argument _content);
 use Date::Calc qw(check_date);
 use base 'Exporter';
 use integer;
 use Tie::IxHash;
 use Readonly;
+use Params::Validate qw(validate_pos);
+use Business::DK::PO qw(_content);
 
 our $VERSION   = '0.07';
 our @EXPORT_OK = qw(
@@ -28,6 +29,7 @@ our @EXPORT_OK = qw(
 use constant MODULUS_OPERAND_1968 => 11;
 use constant MODULUS_OPERAND_2007 => 6;
 use constant DATE_LENGTH          => 6;
+use constant CONTROL_CIFER_LENGTH => 4;
 use constant VALID                => 1;
 use constant VALID_MALE           => 1;
 use constant VALID_FEMALE         => 2;
@@ -62,14 +64,16 @@ sub merge {
 }
 
 sub calculate {
+    validate_pos( @_, 1 );
     my $birthdate = shift;
 
-    _assert_date($birthdate);
+    _checkdate($birthdate);
 
     my @cprs;
     for ( 1 .. 999 ) {
         my $n = sprintf '%03s', $_;
 
+        #From DK::Business::CVR
         my $sum = _calculate_sum( ( $birthdate . $n ), \@controlcifers );
         my $mod = $sum % MODULUS_OPERAND_1968;
 
@@ -85,19 +89,6 @@ sub calculate {
     } else {
         return scalar @cprs;
     }
-}
-
-sub _assert_date {
-    my $birthdate = shift;
-
-    if ( !$birthdate ) {
-        _argument(DATE_LENGTH);
-    }
-    _content($birthdate);
-    _length( $birthdate, DATE_LENGTH );
-    _checkdate($birthdate);
-
-    return VALID;
 }
 
 sub validateCPR {
@@ -116,13 +107,14 @@ sub validate {
 }
 
 sub validate2007 {
+    validate_pos( @_, 1 );
+
     my $controlnumber = shift;
 
-    _assert_date( substr $controlnumber, 0, DATE_LENGTH );
-
+    _checkdate( substr $controlnumber, 0, DATE_LENGTH );
     _assert_controlnumber($controlnumber);
 
-    my $control = substr $controlnumber, DATE_LENGTH, 4;
+    my $control = substr $controlnumber, DATE_LENGTH, CONTROL_CIFER_LENGTH;
 
     my $remainder = $control % MODULUS_OPERAND_2007;
 
@@ -154,9 +146,11 @@ sub validate2007 {
 }
 
 sub validate1968 {
+    validate_pos( @_, 1 );
+
     my $controlnumber = shift;
 
-    _assert_date( substr $controlnumber, 0, DATE_LENGTH );
+    _checkdate( substr $controlnumber, 0, DATE_LENGTH );
     _assert_controlnumber($controlnumber);
 
     my $sum = _calculate_sum( $controlnumber, \@controlcifers );
@@ -175,31 +169,25 @@ sub validate1968 {
 }
 
 sub _is_equal {
+    validate_pos( @_, 1 );
     my $operand = shift;
 
     return ( not( $operand % 2 ) );
 }
 
 sub _assert_controlnumber {
+    validate_pos( @_, 1 );
     my $controlnumber = shift;
 
-    my $controlcode_length = scalar @controlcifers;
-
-    if ( not $controlnumber ) {
-        _argument($controlcode_length);
-    }
     _content($controlnumber);
-    _length( $controlnumber, $controlcode_length );
+    _length( $controlnumber, scalar @controlcifers );
 
     return VALID;
 }
 
 sub _checkdate {
+    validate_pos( @_, 1 );
     my $birthdate = shift;
-
-    if ( not $birthdate ) {
-        croak 'argument for birthdate should be provided';
-    }
 
     if (not($birthdate =~ m{\A #beginning of line
               (\d{2}) #day of month, 2 digit representation, 01-31
@@ -221,6 +209,7 @@ sub _checkdate {
 }
 
 sub generate {
+    validate_pos( @_, 1, 1 );
     my ( $birthdate, $gender ) = @_;
 
     my %cprs;
@@ -239,10 +228,12 @@ sub generate {
 }
 
 sub generate2007 {
+    validate_pos( @_, 1, 0 );
+
     my $birthdate = shift;
     my $gender = shift || undef;
 
-    _assert_date($birthdate);
+    _checkdate($birthdate);
 
     my @cprs;
     my %seeds;
@@ -281,8 +272,9 @@ sub generate1968 {
     my $birthdate = shift;
     my $gender = shift || undef;
 
-    _assert_date($birthdate);
-
+    _checkdate($birthdate);
+    #TODO assert gender?
+    
     my @cprs;
     my @malecprs;
     my @femalecprs;

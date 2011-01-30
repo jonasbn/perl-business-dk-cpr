@@ -8,6 +8,8 @@ http://logiclab.jira.com/browse/BDKCPR#selectedTab=com.atlassian.jira.plugin.sys
 
 HEAD,
 
+- Added use of Params::Validate in key places
+
 - Made control cifers Readonly
 
 - Updated some information on Perl::Critic policies

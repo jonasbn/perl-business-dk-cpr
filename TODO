@@ -8,6 +8,4 @@ http://logiclab.jira.com/browse/BDKCPR#selectedTab=com.atlassian.jira.plugin.sys
 
 - Add more documentation on CPR format
 
-- Add use of Params::Validate instead of B::DK::PO?
-
 - Implement amount parameter for generators?
