@@ -11,6 +11,7 @@ my $build = Module::Build->new(
 	module_name        => 'Business::DK::CPR',
 	dist_version_from  => 'lib/Business/DK/CPR.pm',
 	license            => 'artistic',
+    #REF: http://logicLAB.jira.com/wiki/display/OPEN/Module-Build#Module-Build-AutogeneratetheMakefile.PLforbackwardscompatibility
 	create_makefile_pl => 'traditional',
 	create_readme      => 1,
 	recursive_test_files => 1,
@@ -44,3 +45,18 @@ my $build = Module::Build->new(
     },
 );
 $build->create_build_script();
+
+__END__
+
+=pod
+
+=head1 SEE ALSO
+
+=over
+
+=item * create_makefile_pl => 'traditional'
+L<http://logicLAB.jira.com/wiki/display/OPEN/Module-Build#Module-Build-AutogeneratetheMakefile.PLforbackwardscompatibility>
+
+=back
+
+=cut
