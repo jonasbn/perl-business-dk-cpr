@@ -5,7 +5,7 @@ package Business::DK::CPR;
 use strict;
 use warnings;
 use Carp qw(croak carp);
-use Business::DK::CVR qw(_length _calculate_sum);
+use Business::DK::CVR qw(_calculate_sum);
 use Date::Calc qw(check_date);
 use base 'Exporter';
 use integer;
@@ -91,6 +91,15 @@ sub calculate {
 sub validateCPR {
     #We postpone parameter validation
     return validate(shift);
+}
+
+sub _length {
+    my ( $number, $length ) = @_;
+
+    if ( length($number) != $length ) {
+        croak "argument: $number has to be $length digits long";
+    }
+    return 1;
 }
 
 sub validate {
