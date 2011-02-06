@@ -89,14 +89,14 @@ sub calculate {
 }
 
 sub validateCPR {
-    #We postpone validation
+    #We postpone parameter validation
     return validate(shift);
 }
 
 sub validate {
     my ($controlnumber) = @_;
 
-    #We postpone validation
+    #We postpone parameter validation
 
     my $rv;
     if ( $rv = validate1968($controlnumber) ) {
