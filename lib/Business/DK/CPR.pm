@@ -476,6 +476,21 @@ the case in this module, but then the behaviour is documented.
 
 =head1 PRIVATE FUNCTIONS
 
+=head2 _length
+
+This function validates the length of the argument, it dies if the argument
+does not fit wihtin the boundaries specified by the arguments provided:
+
+The B<_length> function takes the following arguments:
+
+=over
+
+=item number (mandatory), the number to be validated
+
+=item length required of number (mandatory)
+
+=back
+
 =head2 _assertdate
 
 This subroutine takes a digit integer representing a date in the format: DDMMYY.
