@@ -6,8 +6,11 @@ The project Changelog is available at:
 
 http://logiclab.jira.com/browse/BDKCPR#selectedTab=com.atlassian.jira.plugin.system.project%3Achangelog-panel
 
-HEAD,
+Release 0.07, Released Feb 2011 Update not necessary
 
+- Migrated _length method from Business::DK::CVR into this package, since it's use was obsoleted in
+  Business::DK::CVR
+ 
 - Added use of Params::Validate in key places and phased out use of Business::DK::PO
 
 - Made control cifers Readonly
