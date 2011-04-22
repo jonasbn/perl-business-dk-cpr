@@ -109,9 +109,8 @@ The documentation describes version 0.01 of Class::Business::DK::CPR
 
 =head1 DESCRIPTION
 
-This module exposes a set of subroutines which are compatible with
-L<Data::FormValidator>. The module implements contraints as specified in
-L<Data::FormValidator::Constraints>.
+This is an OOP implementation for handling Danish CPR numbers. The class gives you an CPR object, which is validated according to the CPR specification, see:
+L<Business::DK::CPR>.
 
 =head1 SUBROUTINES AND METHODS
 
@@ -229,7 +228,7 @@ Jonas B. Nielsen, (jonasbn) - C<< <jonasbn@cpan.org> >>
 
 =head1 COPYRIGHT
 
-Business-DK-CPR and related is (C) by Jonas B. Nielsen, (jonasbn) 2006-2009
+Business-DK-CPR and related is (C) by Jonas B. Nielsen, (jonasbn) 2006-2011
 
 =head1 LICENSE
 
