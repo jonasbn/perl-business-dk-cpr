@@ -44,3 +44,4 @@
 docs
 prototypes
 ^MYMETA.yml$
+^MYMETA\.json$
