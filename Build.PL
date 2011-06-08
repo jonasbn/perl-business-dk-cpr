@@ -23,6 +23,7 @@ my $build = Module::Build->new(
 		'Tie::IxHash'       => '0',
 		'Class::InsideOut'  => '0',
         'Readonly'          => '0',
+		'Params::Validate'  => '0',
 	},
     build_requires       => {
         'Test::More' => '0',    #core
@@ -54,8 +55,7 @@ __END__
 
 =over
 
-=item * create_makefile_pl => 'traditional'
-L<http://logicLAB.jira.com/wiki/display/OPEN/Module-Build#Module-Build-AutogeneratetheMakefile.PLforbackwardscompatibility>
+=item * L<http://logicLAB.jira.com/wiki/display/OPEN/Module-Build#Module-Build-AutogeneratetheMakefile.PLforbackwardscompatibility>
 
 =back
 
