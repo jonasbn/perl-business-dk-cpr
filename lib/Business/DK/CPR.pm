@@ -12,6 +12,7 @@ use integer;
 use Tie::IxHash;
 use Readonly;
 use Params::Validate qw( validate_pos SCALAR );
+use Data::Dumper;
 
 our $VERSION   = '0.07';
 our @EXPORT_OK = qw(
@@ -225,13 +226,23 @@ sub generate {
         { type => SCALAR, optional => 1 },
     );
     
+	my @genders;
+
+	if ($gender) {
+		push @genders, $gender;
+	} else {
+		@genders = qw(male female);
+	}
+
     my %cprs;
+	foreach my $g (@genders) {
+    	my @cprs2007 = generate2007( $birthdate, $g );
 
-    my @cprs1968 = generate1968( $birthdate, $gender );
-    my @cprs2007 = generate2007( $birthdate, $gender );
-
-    %cprs = map { $_ => 1 } @cprs1968;
-    %cprs = map { $_ => 1 } @cprs2007;
+		my $i = 1;
+		foreach my $cpr (@cprs2007) {
+			$cprs{$cpr}++;
+		}
+	}
 
     if (wantarray) {
         return keys %cprs;
