@@ -15,7 +15,7 @@ eval {
 if ($@ and $TEST_AUTHOR) {
     plan skip_all => 'Test::Kwalitee not installed; skipping';
 } elsif (not $TEST_AUTHOR) {
-    plan skip_all => 'set TEST_AUTHOR to enable this test';
+    plan skip_all => 'set TEST_AUTHOR to enable';
 } else {
     Test::Kwalitee->import();
 }

@@ -12,7 +12,7 @@ my $msg;
 if ($@) {
     $msg = 'Test::Prereq::Build required to test dependencies';
 } elsif (not $ENV{TEST_AUTHOR}) {
-    $msg = 'Author test.  Set $ENV{TEST_AUTHOR} to a true value to run.';
+    $msg = 'set TEST_AUTHOR to enable.';
 }
 
 plan skip_all => $msg if $msg;
