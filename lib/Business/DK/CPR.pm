@@ -11,7 +11,7 @@ use base 'Exporter';
 use integer;
 use Tie::IxHash;
 use Readonly;
-use Params::Validate qw( validate_pos SCALAR );
+use Params::Validate qw( validate_pos SCALAR ARRAYREF );
 use Data::Dumper;
 
 our $VERSION   = '0.07';
@@ -65,7 +65,9 @@ sub merge {
 
 sub calculate {
     my ($birthdate) = @_;
-    validate_pos( @_, { type => SCALAR, callbacks => { 'date' => \&_checkdate } } );
+
+    validate_pos( @_,
+        { type => SCALAR, callbacks => { 'date' => \&_checkdate } } );
 
     my @cprs;
     for ( 1 .. 999 ) {
@@ -90,6 +92,7 @@ sub calculate {
 }
 
 sub validateCPR {
+
     #We postpone parameter validation
     return validate(shift);
 }
@@ -119,7 +122,7 @@ sub validate {
 sub validate2007 {
     my ($controlnumber) = @_;
     validate_pos( @_, { type => SCALAR, regex => qr/^\d+$/ } );
-    
+
     _checkdate( substr $controlnumber, 0, DATE_LENGTH );
     _assert_controlnumber($controlnumber);
 
@@ -180,9 +183,9 @@ sub validate1968 {
 
 sub _is_equal {
     my ($operand) = @_;
-    
+
     validate_pos( @_, { type => SCALAR, regex => qr/^\d+$/ } );
-    
+
     return ( not( $operand % 2 ) );
 }
 
@@ -197,52 +200,59 @@ sub _assert_controlnumber {
 }
 
 sub _checkdate {
-    my $birthdate = $_[0];
 
-    if (not($birthdate =~ m{\A #beginning of line
+    my $dateregex = qr{
+              \A #beginning of line
               (\d{2}) #day of month, 2 digit representation, 01-31
               (\d{2}) #month, 2 digit representation jan 01 - dec 12
               (\d{2}) #year, 2 digit representation
               \Z #end of line
-              }xsm
-        )
-        )
-    {
-        croak "argument: $birthdate could not be parsed";
-    }
+              }xsm;
+
+    #According to the documentation validate_pos gets two paramters, hence the
+    #second optional argument specification
+    validate_pos(
+        @_,
+        { type => SCALAR,   regex    => $dateregex },
+        { type => ARRAYREF, optional => 1 }
+    );
+
+    #Params::Validate does not capture for us, so we re-do our regex
+    $_[0] =~ m/$dateregex/;
 
     if ( not check_date( $3, $2, $1 ) ) {
-        croak
-            "argument: $birthdate has to be a valid date in the format: ddmmyy";
+        croak "argument: $_[0] has to be a valid date in the format: ddmmyy";
     }
+
     return VALID;
 }
 
 sub generate {
     my ( $birthdate, $gender ) = @_;
-    
-    validate_pos( @_,
-        { type => SCALAR, callbacks => { 'date' => \&_checkdate }, },
-        { type => SCALAR, optional => 1 },
-    );
-    
-	my @genders;
 
-	if ($gender) {
-		push @genders, $gender;
-	} else {
-		@genders = qw(male female);
-	}
+    validate_pos(
+        @_,
+        { type => SCALAR, callbacks => { 'date' => \&_checkdate }, },
+        { type => SCALAR, optional => 1, default => q{} },
+    );
+
+    my @genders;
+
+    if ($gender) {
+        push @genders, $gender;
+    } else {
+        @genders = qw(male female);
+    }
 
     my %cprs;
-	foreach my $g (@genders) {
-    	my @cprs2007 = generate2007( $birthdate, $g );
+    foreach my $g (@genders) {
+        my @cprs2007 = generate2007( $birthdate, $g );
 
-		my $i = 1;
-		foreach my $cpr (@cprs2007) {
-			$cprs{$cpr}++;
-		}
-	}
+        my $i = 1;
+        foreach my $cpr (@cprs2007) {
+            $cprs{$cpr}++;
+        }
+    }
 
     if (wantarray) {
         return keys %cprs;
@@ -255,9 +265,10 @@ sub generate2007 {
     my ( $birthdate, $gender ) = @_;
 
     #TODO assert gender?
-    validate_pos( @_,
+    validate_pos(
+        @_,
         { type => SCALAR, callbacks => { 'date' => \&_checkdate }, },
-        { type => SCALAR, optional => 1 },
+        { type => SCALAR, optional  => 1 },
     );
 
     my @cprs;
@@ -297,11 +308,12 @@ sub generate1968 {
     my ( $birthdate, $gender ) = @_;
 
     #TODO assert gender?
-    validate_pos( @_,
+    validate_pos(
+        @_,
         { type => SCALAR, callbacks => { 'date' => \&_checkdate }, },
-        { type => SCALAR, optional => 1 },
+        { type => SCALAR, optional => 1, default => q{} },
     );
-    
+
     my @cprs;
     my @malecprs;
     my @femalecprs;
@@ -328,9 +340,9 @@ sub generate1968 {
         $checksum++;
     }
 
-    if ( $gender eq FEMALE ) {
+    if ( $gender and $gender eq FEMALE ) {
         @cprs = @femalecprs;
-    } elsif ( $gender eq MALE ) {
+    } elsif ( $gender and $gender eq MALE ) {
         @cprs = @malecprs;
     }
 
