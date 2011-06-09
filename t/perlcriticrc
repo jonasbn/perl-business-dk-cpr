@@ -38,3 +38,15 @@ functions = print
 [-ErrorHandling::RequireCheckingReturnValueOfEval]
 
 [-Bangs::ProhibitNumberedNames]
+
+[-Bangs::ProhibitFlagComments]
+
+#TODO
+
+[-Documentation::RequirePodLinksIncludeText]
+
+[-RegularExpressions::RequireLineBoundaryMatching]
+
+[-RegularExpressions::RequireExtendedFormatting]
+
+[-RegularExpressions::RequireDotMatchAnything]
