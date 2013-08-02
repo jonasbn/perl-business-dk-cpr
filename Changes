@@ -6,7 +6,7 @@ The project Changelog is available at:
 
 http://logiclab.jira.com/browse/BDKCPR#selectedTab=com.atlassian.jira.plugin.system.project%3Achangelog-panel
 
-0.09 2013.08.02
+0.09 2013-08-02
 
 - Fixed up Changes file as part of my Questhub quest adhering to the standard
   described in: CPAN::Changes::Spec [BDKCPR-13]
@@ -17,7 +17,7 @@ http://logiclab.jira.com/browse/BDKCPR#selectedTab=com.atlassian.jira.plugin.sys
   https://logiclab.jira.com/browse/BDKCPR-13
 
 
-0.08 2011.06.14
+0.08 2011-06-14
 
 - Update not necessary
 
