@@ -41,7 +41,12 @@
 # Avoid project files
 \.kpf
 \.komodoproject
-docs
-prototypes
+^docs
+^prototypes
 ^MYMETA.yml$
 ^MYMETA\.json$
+^tmp
+
+#Jenkins files
+junit-\d+\.xml
+junit-\d+-\.xml

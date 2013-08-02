@@ -1,4 +1,4 @@
-Changes file for Business-DK-CPR
+Changes file for Business::DK::CPR
 
 $Id: Changes,v 1.8 2008-09-09 19:15:28 jonasbn Exp $
 
@@ -6,7 +6,20 @@ The project Changelog is available at:
 
 http://logiclab.jira.com/browse/BDKCPR#selectedTab=com.atlassian.jira.plugin.system.project%3Achangelog-panel
 
-Release 0.08, Released 14th. June 2011 Update not necessary
+0.09 2013.08.02
+
+- Fixed up Changes file as part of my Questhub quest adhering to the standard
+  described in: CPAN::Changes::Spec [BDKCPR-13]
+
+  Quest: http://questhub.io/realm/perl/quest/51f0fd8e18ba7dcf4b000040
+  Spec: https://metacpan.org/module/CPAN::Changes::Spec
+  
+  https://logiclab.jira.com/browse/BDKCPR-13
+
+
+0.08 2011.06.14
+
+- Update not necessary
 
 - Added contemporay boiler plate of Perl::Critic test [BDKCPR-8]
 
@@ -15,7 +28,9 @@ Release 0.08, Released 14th. June 2011 Update not necessary
 - Cleaned up generate method [BDKCPR-10]
 
 
-Release 0.07, Released Feb 2011 Update not necessary
+0.07 2011-02-06
+
+- Update not necessary
 
 - Migrated _length method from Business::DK::CVR into this package, since it's use was obsoleted in
   Business::DK::CVR
@@ -42,7 +57,9 @@ Feedback from review: [CR-BDKCPR-1] http://logiclab.jira.com/source/cru/CR-BDKCP
   Perl::Critic::Policy::ValuesAndExpressions::ProhibitConstantPragma
 
 
-Release 0.06, Released Tue Aug 31 2010 Update not necessary
+0.06 2010.08.31
+
+- Update not necessary
 
 - Added documentation and example on Params::Validate integration [BDKCPR-3]
 
@@ -54,7 +71,9 @@ Release 0.06, Released Tue Aug 31 2010 Update not necessary
   see also: http://www.perlmonks.org/?node_id=458282 [BDKCPR-4]
 
 
-Release 0.05, update recommended for perl 5.10 users
+0.05 2008-11-15
+
+- Update recommended for perl 5.10 users
 
 - Eliminated use of the marvellous Hash::Merge, problems with Clone under
   perl 5.10 makes the code break. Hash::Merge uses Clone so I am removing it's
@@ -70,7 +89,9 @@ Release 0.05, update recommended for perl 5.10 users
 - Cleaned regular expressions
 
 
-Release 0.04, update recommended
+0.04 2008-11-06
+
+- Update recommended
 
 - Introduced Data::FormValidator::Constraints::Business::DK::CPR, this is sort
   of an example application, it is however just a simple wrapper fitting into
@@ -142,7 +163,9 @@ Release 0.04, update recommended
   the information was
 
 
-Release 0.03 - Released Wed Mar 13 2007 Update not necessary
+0.03 2007-03-13
+
+- Update not necessary
 
 - Added Perl::Critic test t/critic.t and related t/perlcriticrc, we currently
   pass at severity 5, gentle
@@ -157,11 +180,13 @@ Release 0.03 - Released Wed Mar 13 2007 Update not necessary
   This seem to be the defacto way of doing things.
 
 
-Release 0.02 - Released Wed Mar 1 2006 Update not necessary
+0.02 2006-03-01
+
+- Update not necessary
 
 - Fixed a small POD error, reported by htoug (thanks)
 
 
-Release 0.01 - Released Tue Feb 21 2006
+0.01 2006-02-21
 
 - Initial version
