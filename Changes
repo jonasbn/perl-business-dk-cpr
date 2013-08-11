@@ -6,6 +6,13 @@ The project Changelog is available at:
 
 http://logiclab.jira.com/browse/BDKCPR#selectedTab=com.atlassian.jira.plugin.system.project%3Achangelog-panel
 
+HEAD
+
+- Added changes.t automatic assertion of the integrity of the Changes file, see also BDKCPR-13 [BDKCPR-15]
+
+https://logiclab.jira.com/browse/BDKCPR-15
+
+
 0.09 2013-08-02
 
 - Fixed up Changes file as part of my Questhub quest adhering to the standard
