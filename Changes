@@ -6,11 +6,17 @@ The project Changelog is available at:
 
 http://logiclab.jira.com/browse/BDKCPR#selectedTab=com.atlassian.jira.plugin.system.project%3Achangelog-panel
 
-HEAD
+0.10 2013-08-17
 
-- Added changes.t automatic assertion of the integrity of the Changes file, see also BDKCPR-13 [BDKCPR-15]
+- Changed MANIFEST.SKIP to avoid shipping of unfinished test t/boilerplates.t
+  this should never have been included [BDKCPR-14]
 
-https://logiclab.jira.com/browse/BDKCPR-15
+  https://logiclab.jira.com/browse/BDKCPR-14
+
+- Added changes.t automatic assertion of the integrity of the Changes file, 
+ see also BDKCPR-13 [BDKCPR-15]
+
+  https://logiclab.jira.com/browse/BDKCPR-15
 
 
 0.09 2013-08-02

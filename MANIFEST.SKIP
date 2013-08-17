@@ -46,6 +46,7 @@
 ^MYMETA.yml$
 ^MYMETA\.json$
 ^tmp
+^t/boilerplates.t
 
 #Jenkins files
 junit-\d+\.xml
