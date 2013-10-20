@@ -635,6 +635,25 @@ by not defining or setting the environment variable to something not positive.
 The distribution uses the TEST_CRITIC environment variable to control
 L<Perl::Critic|Perl::Critic> tests.
 
+=head2 STANDARD TESTS
+
+Here are listed the standard tests, recommended for all CPAN-like distributions.
+The matrix lists what flags are required to run the specific test.
+
+                    NONE TEST_AUTHOR TEST_CRITIC TEST_POD
+    --------------- ---- ----------- ----------- --------
+    00.load.t         *
+    changes.t         *
+    critic.t                              * 
+    kwalitee.t                *
+    pod-coverage.t                                   *
+    pod.t                                            *
+    prerequisites.t           *
+    --------------- ---- ----------- ----------- --------
+
+All of the above tests are actually boilerplates and are maintained as separate
+components.
+
 =head2 TESTCOVERAGE
 
 Coverage of the test suite is at 89.1% for release 0.04, the coverage report
