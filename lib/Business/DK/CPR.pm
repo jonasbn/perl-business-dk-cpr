@@ -526,15 +526,15 @@ dies upon failure.
 
 =head2 _checkdate
 
-This subroutine takes a digit integer representing a date in the format: DDMMYY.
+This subroutine takes a 6 digit integer representing a date in the format: DDMMYY.
 
 The subroutine returns 1 indicating true upon successful check or
 dies upon failure.
 
 =head2 _assert_controlnumber
 
-This subroutine takes an 10 digit integer representing a CPR. The CPR is tested
-for definedness, contents and length.
+This subroutine takes an 10 digit integer representing a complete CPR.
+The CPR is tested for definedness, contents and length.
 
 The subroutine returns 1 indicating true upon successful assertion or
 dies upon failure.
