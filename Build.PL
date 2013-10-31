@@ -13,7 +13,7 @@ my $build = Module::Build->new(
 	license            => 'artistic',
     #REF: http://logicLAB.jira.com/wiki/display/OPEN/Module-Build#Module-Build-AutogeneratetheMakefile.PLforbackwardscompatibility
 	create_makefile_pl => 'traditional',
-	create_readme      => 1,
+	create_readme      => 0,
 	recursive_test_files => 1,
 	requires => {
 	    'Exporter'          => '0', #core
@@ -37,7 +37,7 @@ my $build = Module::Build->new(
             homepage => 'http://logiclab.jira.com/wiki/display/BDKCPR/Home',
             bugtracker =>
                 'http://rt.cpan.org/NoAuth/Bugs.html?Dist=Business-DK-CPR',
-            repository => 'http://logicLAB.jira.com/svn/BDKCPR',
+            repository => 'https://github.com/jonasbn/bdkcpr',
             ProjectChangelog =>
                 'http://logiclab.jira.com/browse/BDKCPR#selectedTab=com.atlassian.jira.plugin.system.project%3Achangelog-panel',
             ProjectSite => 'http://logicLAB.jira.com/browse/BDKCPR',
