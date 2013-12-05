@@ -13,7 +13,7 @@ my $build = Module::Build->new(
 	license            => 'artistic',
     #REF: http://logicLAB.jira.com/wiki/display/OPEN/Module-Build#Module-Build-AutogeneratetheMakefile.PLforbackwardscompatibility
 	create_makefile_pl => 'traditional',
-	create_readme      => 0,
+	create_readme      => 1,
 	recursive_test_files => 1,
 	requires => {
 	    'Exporter'          => '0', #core
