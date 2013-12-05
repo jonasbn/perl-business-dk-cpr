@@ -14,3 +14,9 @@ META.yml
 MYMETA.yml
 nytprof.out
 pm_to_blib
+*.tar
+*.gz
+MANIFEST
+META.json
+MYMETA.json
+Makefile.PL
