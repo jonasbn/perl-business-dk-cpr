@@ -52,3 +52,5 @@ functions = print
 [-RegularExpressions::RequireExtendedFormatting]
 
 [-RegularExpressions::RequireDotMatchAnything]
+
+[-ErrorHandling::RequireUseOfExceptions]
