@@ -215,7 +215,7 @@ sub _checkdate {
     validate_pos(
         @_,
         { type => SCALAR,   regex    => $dateregex },
-        { type => ARRAYREF, optional => 1 }
+        { type => ARRAYREF, optional => 1 },
     );
 
     #Params::Validate does not capture for us, so we re-do our regex
