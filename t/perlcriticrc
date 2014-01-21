@@ -41,6 +41,8 @@ functions = print
 
 [-Bangs::ProhibitFlagComments]
 
+[-Editor::RequireEmacsFileVariables]
+
 #TODO
 
 [-Documentation::RequirePodLinksIncludeText]
