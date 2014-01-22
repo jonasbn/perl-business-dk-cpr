@@ -237,6 +237,6 @@ Business-DK-CPR and related is released under the artistic license
 
 The distribution is licensed under the Artistic License, as specified
 by the Artistic file in the standard perl distribution
-(http://www.perl.com/language/misc/Artistic.html).
+(L<http://www.perl.com/language/misc/Artistic.html>).
 
 =cut
