@@ -8,6 +8,7 @@ use vars qw(@ISA $VERSION @EXPORT_OK);
 use Business::DK::CPR qw(validate);
 use Scalar::Util qw(blessed);
 use Carp qw(croak);
+use 5.8.0;
 
 use base 'Exporter';
 
