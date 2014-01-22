@@ -12,7 +12,6 @@ use integer;
 use Tie::IxHash;
 use Readonly;
 use Params::Validate qw( validate_pos SCALAR ARRAYREF );
-use Data::Dumper;
 use 5.10.0;
 
 our $VERSION   = '0.10';
