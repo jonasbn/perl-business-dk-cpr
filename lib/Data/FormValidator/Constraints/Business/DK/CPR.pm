@@ -38,7 +38,7 @@ sub valid_cpr {
         } else {
             return INVALID;
         }
-        }
+    };
 }
 
 sub match_valid_cpr {
