@@ -192,7 +192,7 @@ Jonas B. Nielsen, (jonasbn) - C<< <jonasbn@cpan.org> >>
 
 =head1 COPYRIGHT
 
-Business-DK-CPR and related is (C) by Jonas B. Nielsen, (jonasbn) 2006-2008
+Business-DK-CPR and related is (C) by Jonas B. Nielsen, (jonasbn) 2006-2014
 
 =head1 LICENSE
 
