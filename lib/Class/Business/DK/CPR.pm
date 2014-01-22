@@ -7,6 +7,7 @@ use warnings;
 use Class::InsideOut qw( private register id );
 use Carp qw(croak);
 use English qw(-no_match_vars);
+use 5.010; #5.10.0
 
 use Business::DK::CPR qw(validate1968 validate2007);
 
