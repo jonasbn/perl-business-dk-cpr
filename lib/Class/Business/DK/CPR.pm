@@ -11,7 +11,7 @@ use 5.010; #5.10.0
 
 use Business::DK::CPR qw(validate1968 validate2007);
 
-our $VERSION = '0.01';
+our $VERSION = '0.11';
 
 private number    => my %number;       # read-only accessor: number()
 private gender    => my %gender;       # read-only accessor: gender()

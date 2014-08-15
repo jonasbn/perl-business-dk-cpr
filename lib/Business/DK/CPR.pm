@@ -14,7 +14,7 @@ use Readonly;
 use Params::Validate qw( validate_pos SCALAR ARRAYREF );
 use 5.010; #5.10.0
 
-our $VERSION   = '0.10';
+our $VERSION   = '0.11';
 our @EXPORT_OK = qw(
     validate
     validateCPR
