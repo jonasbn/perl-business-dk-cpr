@@ -1,4 +1,5 @@
 [![CPAN version](https://badge.fury.io/pl/Business-DK-CPR.svg)](http://badge.fury.io/pl/Business-DK-CPR)
+[![Build Status](https://travis-ci.org/jonasbn/bdkcpr.svg?branch=master)](https://travis-ci.org/jonasbn/bdkcpr)
 
 # NAME
 
