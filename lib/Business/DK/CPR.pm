@@ -357,9 +357,11 @@ sub generate1968 {
 
 __END__
 
+=pod
+
 =head1 NAME
 
-Business::DK::CPR - Danish CPR code generator/validator
+Business::DK::CPR - Danish CPR (SSN) number generator/validator
 
 =head1 VERSION
 
