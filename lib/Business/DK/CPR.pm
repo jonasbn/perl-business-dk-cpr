@@ -357,6 +357,14 @@ __END__
 
 =pod
 
+=begin markdown
+
+[![CPAN version](https://badge.fury.io/pl/Business-DK-CPR.svg)](http://badge.fury.io/pl/Business-DK-CPR)
+[![Build Status](https://travis-ci.org/jonasbn/bdkcpr.svg?branch=master)](https://travis-ci.org/jonasbn/bdkcpr)
+[![Coverage Status](https://coveralls.io/repos/jonasbn/bdkcpr/badge.png)](https://coveralls.io/r/jonasbn/bdkcpr)
+
+=end markdown
+
 =head1 NAME
 
 Business::DK::CPR - Danish CPR (SSN) number generator/validator
