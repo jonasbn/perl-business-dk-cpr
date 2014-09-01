@@ -1,7 +1,5 @@
 package Business::DK::CPR;
 
-# $Id: CPR.pm,v 1.9 2008-09-09 19:15:44 jonasbn Exp $
-
 use strict;
 use warnings;
 use Carp qw(croak carp);
