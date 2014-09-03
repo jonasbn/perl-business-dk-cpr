@@ -4,7 +4,13 @@ $Id: Changes,v 1.8 2008-09-09 19:15:28 jonasbn Exp $
 
 The project Changelog is available at:
 
-http://logiclab.jira.com/browse/BDKCPR#selectedTab=com.atlassian.jira.plugin.system.project%3Achangelog-panel
+http://logiclab.jira.com/browse/BDKCPR#selectedTab=com.atlassian.jira.plugin.system.
+project%3Achangelog-panel
+
+- Migrating build system from Module::Build to Dist::Zilla
+
+- Upgrading license from Artistic 1.0 to Artistic 2.0
+
 
 0.11 2014-08-15
 
