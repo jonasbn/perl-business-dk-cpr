@@ -1,6 +1,4 @@
-#!/usr/local/bin/perl
-
-# $Id$
+#!/usr/bin/env perl
 
 use strict;
 use warnings;

@@ -1,24 +1,23 @@
 Changes file for Business::DK::CPR
 
-$Id: Changes,v 1.8 2008-09-09 19:15:28 jonasbn Exp $
+0.12 2015-08-22 Maintenance release, update not required
 
-The project Changelog is available at:
+- Changed she-bang lines to env based
 
-http://logiclab.jira.com/browse/BDKCPR#selectedTab=com.atlassian.jira.plugin.system.
-project%3Achangelog-panel
+- Removed SVN keywords, we are now on Github
 
 - Migrating build system from Module::Build to Dist::Zilla
 
 - Upgrading license from Artistic 1.0 to Artistic 2.0
 
 
-0.11 2014-08-15
+0.11 2014-08-15 Maintenance release, update not required
 
 - Addressing Kwalitee, aligning version for version consistency in
   modules in distribution
 
 
-0.10 2013-08-17
+0.10 2013-08-17 Maintenance release, update not required
 
 - Changed MANIFEST.SKIP to avoid shipping of unfinished test t/boilerplates.t
   this should never have been included [BDKCPR-14]
@@ -31,7 +30,7 @@ project%3Achangelog-panel
   https://logiclab.jira.com/browse/BDKCPR-15
 
 
-0.09 2013-08-02
+0.09 2013-08-02 Maintenance release, update not required
 
 - Fixed up Changes file as part of my Questhub quest adhering to the standard
   described in: CPAN::Changes::Spec [BDKCPR-13]
@@ -42,9 +41,7 @@ project%3Achangelog-panel
   https://logiclab.jira.com/browse/BDKCPR-13
 
 
-0.08 2011-06-14
-
-- Update not necessary
+0.08 2011-06-14 Maintenance release, update not required
 
 - Added contemporay boiler plate of Perl::Critic test [BDKCPR-8]
 
@@ -53,9 +50,7 @@ project%3Achangelog-panel
 - Cleaned up generate method [BDKCPR-10]
 
 
-0.07 2011-02-06
-
-- Update not necessary
+0.07 2011-02-06 Maintenance release, update not required
 
 - Migrated _length method from Business::DK::CVR into this package, since it's use was obsoleted in
   Business::DK::CVR
@@ -82,9 +77,7 @@ Feedback from review: [CR-BDKCPR-1] http://logiclab.jira.com/source/cru/CR-BDKCP
   Perl::Critic::Policy::ValuesAndExpressions::ProhibitConstantPragma
 
 
-0.06 2010.08.31
-
-- Update not necessary
+0.06 2010.08.31 Maintenance release, update not required
 
 - Added documentation and example on Params::Validate integration [BDKCPR-3]
 
@@ -96,7 +89,7 @@ Feedback from review: [CR-BDKCPR-1] http://logiclab.jira.com/source/cru/CR-BDKCP
   see also: http://www.perlmonks.org/?node_id=458282 [BDKCPR-4]
 
 
-0.05 2008-11-15
+0.05 2008-11-15 Bug fix release, update not required (see below)
 
 - Update recommended for perl 5.10 users
 
@@ -114,9 +107,7 @@ Feedback from review: [CR-BDKCPR-1] http://logiclab.jira.com/source/cru/CR-BDKCP
 - Cleaned regular expressions
 
 
-0.04 2008-11-06
-
-- Update recommended
+0.04 2008-11-06 Bug fix release, update recommended
 
 - Introduced Data::FormValidator::Constraints::Business::DK::CPR, this is sort
   of an example application, it is however just a simple wrapper fitting into
@@ -188,9 +179,7 @@ Feedback from review: [CR-BDKCPR-1] http://logiclab.jira.com/source/cru/CR-BDKCP
   the information was
 
 
-0.03 2007-03-13
-
-- Update not necessary
+0.03 2007-03-13 Maintenance release, update not required
 
 - Added Perl::Critic test t/critic.t and related t/perlcriticrc, we currently
   pass at severity 5, gentle
@@ -205,13 +194,11 @@ Feedback from review: [CR-BDKCPR-1] http://logiclab.jira.com/source/cru/CR-BDKCP
   This seem to be the defacto way of doing things.
 
 
-0.02 2006-03-01
-
-- Update not necessary
+0.02 2006-03-01 Bug fix release, update not required
 
 - Fixed a small POD error, reported by htoug (thanks)
 
 
-0.01 2006-02-21
+0.01 2006-02-21 Initial version
 
 - Initial version

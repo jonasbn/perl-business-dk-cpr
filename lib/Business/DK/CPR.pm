@@ -12,7 +12,7 @@ use Readonly;
 use Params::Validate qw( validate_pos SCALAR ARRAYREF );
 use 5.010; #5.10.0
 
-our $VERSION   = '0.11';
+our $VERSION   = '0.12';
 our @EXPORT_OK = qw(
     validate
     validateCPR
@@ -771,14 +771,10 @@ Jonas B. Nielsen, (jonasbn) - C<< <jonasbn@cpan.org> >>
 
 =head1 COPYRIGHT
 
-Business-DK-CPR is (C) by Jonas B. Nielsen, (jonasbn) 2006-2014
+Business-DK-CPR is (C) by Jonas B. Nielsen, (jonasbn) 2006-2015
 
 =head1 LICENSE
 
-Business-DK-CPR is released under the artistic license
-
-The distribution is licensed under the Artistic License, as specified
-by the Artistic file in the standard perl distribution
-(L<http://www.perl.com/language/misc/Artistic.html>).
+Business-DK-CPR is released under the artistic license 2.0
 
 =cut

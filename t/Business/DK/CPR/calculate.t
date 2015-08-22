@@ -1,4 +1,3 @@
-# $Id: calculate.t,v 1.1 2006/02/20 21:38:48 jonasbn Exp $
 
 use strict;
 use Test::More tests => 823;

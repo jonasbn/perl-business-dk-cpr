@@ -1,7 +1,5 @@
 package Class::Business::DK::CPR;
 
-# $Id$
-
 use strict;
 use warnings;
 use Class::InsideOut qw( private register id );

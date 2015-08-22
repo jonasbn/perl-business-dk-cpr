@@ -1,6 +1,4 @@
-#!/usr/bin/local/perl
-
-# $Id: calculate_cpr.pl,v 1.1 2006-02-21 21:06:31 jonasbn Exp $
+#!/usr/bin/env perl
 
 use strict;
 use warnings;
