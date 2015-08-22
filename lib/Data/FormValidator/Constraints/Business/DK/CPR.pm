@@ -8,7 +8,7 @@ use vars qw(@ISA $VERSION @EXPORT_OK);
 use Business::DK::CPR qw(validate);
 use Scalar::Util qw(blessed);
 use Carp qw(croak);
-use 5.008; #5.8.0
+use 5.008;    #5.8.0
 
 use base 'Exporter';
 
@@ -35,7 +35,8 @@ sub valid_cpr {
 
         if ( validate($cpr) ) {
             return VALID;
-        } else {
+        }
+        else {
             return INVALID;
         }
     };

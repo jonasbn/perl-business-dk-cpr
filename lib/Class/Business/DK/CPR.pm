@@ -5,7 +5,7 @@ use warnings;
 use Class::InsideOut qw( private register id );
 use Carp qw(croak);
 use English qw(-no_match_vars);
-use 5.010; #5.10.0
+use 5.010;    #5.10.0
 
 use Business::DK::CPR qw(validate1968 validate2007);
 
@@ -27,7 +27,8 @@ sub new {
 
     if ($number) {
         $self->set_number($number);
-    } else {
+    }
+    else {
         croak 'You must provide a CPR number';
     }
 
@@ -50,7 +51,8 @@ sub set_number {
 
         if ( $rv && $rv % 2 ) {
             push @algorithms, '1968';
-        } elsif ($rv) {
+        }
+        elsif ($rv) {
             push @algorithms, '1968';
         }
 
@@ -58,14 +60,16 @@ sub set_number {
 
         if ( $rv && $rv % 2 ) {
             push @algorithms, '2007';
-        } elsif ($rv) {
+        }
+        elsif ($rv) {
             push @algorithms, '2007';
         }
 
         if ( $EVAL_ERROR or not $rv ) {
             croak 'Invalid CPR number parameter';
 
-        } else {
+        }
+        else {
 
             $number{ id $self }    = $unvalidated_cpr;
             $gender{ id $self }    = $rv;
@@ -73,7 +77,8 @@ sub set_number {
 
             return 1;
         }
-    } else {
+    }
+    else {
         croak 'You must provide a CPR number';
     }
 }

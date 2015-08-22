@@ -12,9 +12,6 @@ verbose = 8
 lib_sections    = NAME|VERSION|SYNOPSIS|DESCRIPTION|SUBROUTINES AND METHODS|DIAGNOSTICS|CONFIGURATION AND ENVIRONMENT|DEPENDENCIES|INCOMPATIBILITIES|BUGS AND LIMITATIONS|TEST AND QUALITY|TODO|SEE ALSO|BUG REPORTING|AUTHOR|COPYRIGHT|LICENSE
 script_sections = NAME|VERSION|SYNOPSIS|DESCRIPTION|SUBROUTINES AND METHODS|DIAGNOSTICS|CONFIGURATION AND ENVIRONMENT|DEPENDENCIES|INCOMPATIBILITIES|BUGS AND LIMITATIONS|TEST AND QUALITY|TODO|SEE ALSO|BUG REPORTING|AUTHOR|COPYRIGHT|LICENSE
 
-[Miscellanea::RequireRcsKeywords]
-keywords = Id
-
 [CodeLayout::ProhibitHardTabs]
 allow_leading_tabs = 0
 
@@ -41,8 +38,6 @@ functions = print
 
 [-Bangs::ProhibitFlagComments]
 
-[-Editor::RequireEmacsFileVariables]
-
 #TODO
 
 [-Documentation::RequirePodLinksIncludeText]
@@ -52,5 +47,3 @@ functions = print
 [-RegularExpressions::RequireExtendedFormatting]
 
 [-RegularExpressions::RequireDotMatchAnything]
-
-[-ErrorHandling::RequireUseOfExceptions]

@@ -10,18 +10,18 @@ use integer;
 use Tie::IxHash;
 use Readonly;
 use Params::Validate qw( validate_pos SCALAR ARRAYREF );
-use 5.010; #5.10.0
+use 5.010;    #5.10.0
 
 our $VERSION   = '0.12';
 our @EXPORT_OK = qw(
-    validate
-    validateCPR
-    generate
-    validate1968
-    generate1968
-    validate2007
-    generate2007
-    calculate
+  validate
+  validateCPR
+  generate
+  validate1968
+  generate1968
+  validate2007
+  generate2007
+  calculate
 );
 
 use constant MODULUS_OPERAND_1968 => 11;
@@ -39,15 +39,15 @@ Readonly my @controlcifers => qw(4 3 2 7 6 5 4 3 2 1);
 
 my %female_seeds;
 tie %female_seeds, 'Tie::IxHash',
-    4 => { max => 9994, min => 10 },
-    2 => { max => 9998, min => 8 },
-    6 => { max => 9996, min => 12 };
+  4 => { max => 9994, min => 10 },
+  2 => { max => 9998, min => 8 },
+  6 => { max => 9996, min => 12 };
 
 my %male_seeds;
 tie %male_seeds, 'Tie::IxHash',
-    1 => { max => 9997, min => 7 },
-    3 => { max => 9999, min => 9 },
-    5 => { max => 9995, min => 11 };
+  1 => { max => 9997, min => 7 },
+  3 => { max => 9999, min => 9 },
+  5 => { max => 9995, min => 11 };
 
 sub merge {
     my ( $left_hashref, $right_hashref ) = @_;
@@ -84,7 +84,8 @@ sub calculate {
 
     if (wantarray) {
         return @cprs;
-    } else {
+    }
+    else {
         return scalar @cprs;
     }
 }
@@ -112,7 +113,8 @@ sub validate {
     my $rv;
     if ( $rv = validate1968($controlnumber) ) {
         return $rv;
-    } else {
+    }
+    else {
         return validate2007($controlnumber);
     }
 }
@@ -134,24 +136,30 @@ sub validate2007 {
     if ( my $series = $seeds{$remainder} ) {
         if ( $control < $seeds{$remainder}->{min} ) {
             return INVALID;
-        } elsif ( $control > $seeds{$remainder}->{max} ) {
+        }
+        elsif ( $control > $seeds{$remainder}->{max} ) {
             return INVALID;
         }
-    } elsif ( ( $control == 0 or $control == 6 ) && $remainder == 0 ) {
+    }
+    elsif ( ( $control == 0 or $control == 6 ) && $remainder == 0 ) {
         return INVALID;
     }
 
     if ( $female_seeds{$remainder} ) {
         return VALID_FEMALE;
-    } elsif ( $male_seeds{$remainder} ) {
+    }
+    elsif ( $male_seeds{$remainder} ) {
         return VALID_MALE;
-    } elsif ( $remainder == 0 ) {
+    }
+    elsif ( $remainder == 0 ) {
         if ( _is_equal($control) ) {
             return VALID_FEMALE;
-        } else {
+        }
+        else {
             return VALID_MALE;
         }
-    } else {
+    }
+    else {
         return INVALID;
     }
 }
@@ -170,10 +178,12 @@ sub validate1968 {
     #modulus calculation indicated validity
     if ( $sum % MODULUS_OPERAND_1968 ) {
         return INVALID;
-    } else {
+    }
+    else {
         if ( _is_equal($sum) ) {
             return VALID_MALE;
-        } else {
+        }
+        else {
             return VALID_FEMALE;
         }
     }
@@ -238,7 +248,8 @@ sub generate {
 
     if ($gender) {
         push @genders, $gender;
-    } else {
+    }
+    else {
         @genders = qw(male female);
     }
 
@@ -254,7 +265,8 @@ sub generate {
 
     if (wantarray) {
         return keys %cprs;
-    } else {
+    }
+    else {
         return scalar keys %cprs;
     }
 }
@@ -275,9 +287,11 @@ sub generate2007 {
     if ( defined $gender ) {
         if ( $gender eq MALE ) {
             %seeds = %male_seeds;
-        } elsif ( $gender eq FEMALE ) {
+        }
+        elsif ( $gender eq FEMALE ) {
             %seeds = %female_seeds;
-        } else {
+        }
+        else {
             carp("Unknown gender: $gender, assuming no gender");
             $gender = undef;
         }
@@ -297,7 +311,8 @@ sub generate2007 {
 
     if (wantarray) {
         return @cprs;
-    } else {
+    }
+    else {
         return scalar @cprs;
     }
 }
@@ -327,11 +342,13 @@ sub generate1968 {
             if ( defined $gender and $rv ) {
                 if ( $rv == VALID_MALE ) {
                     push @malecprs, $cpr;
-                } elsif ( $rv == VALID_FEMALE ) {
+                }
+                elsif ( $rv == VALID_FEMALE ) {
                     push @femalecprs, $cpr;
                 }
 
-            } else {
+            }
+            else {
                 push @cprs, $cpr;
             }
         }
@@ -340,13 +357,15 @@ sub generate1968 {
 
     if ( $gender and $gender eq FEMALE ) {
         @cprs = @femalecprs;
-    } elsif ( $gender and $gender eq MALE ) {
+    }
+    elsif ( $gender and $gender eq MALE ) {
         @cprs = @malecprs;
     }
 
     if (wantarray) {
         return @cprs;
-    } else {
+    }
+    else {
         return scalar @cprs;
     }
 }

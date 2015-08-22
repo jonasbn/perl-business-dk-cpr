@@ -26,15 +26,17 @@ eval { $cpr = Class::Business::DK::CPR->new($unvalidated_cpr); };
 if ($EVAL_ERROR) {
     print "$unvalidated_cpr is not valid\n";
 
-} else {
+}
+else {
     if ($verbose) {
         print $cpr->get_number
-            . ' is valid for algorithms: '
-            . $cpr->get_algorithm;
+          . ' is valid for algorithms: '
+          . $cpr->get_algorithm;
         print ', gender indicated is: '
-            . ( $cpr->get_gender % 2 ? 'male' : 'female' );
+          . ( $cpr->get_gender % 2 ? 'male' : 'female' );
         print "\n";
-    } else {
+    }
+    else {
         print $cpr->get_number . " is valid\n";
     }
 }

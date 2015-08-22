@@ -143,7 +143,7 @@ the case in this module, but then the behaviour is documented.
 This function validates the length of the argument, it dies if the argument
 does not fit wihtin the boundaries specified by the arguments provided:
 
-The __\_length__ function takes the following arguments:
+The **\_length** function takes the following arguments:
 
 - number (mandatory), the number to be validated
 - length required of number (mandatory)
@@ -356,12 +356,8 @@ Jonas B. Nielsen, (jonasbn) - `<jonasbn@cpan.org>`
 
 # COPYRIGHT
 
-Business-DK-CPR is (C) by Jonas B. Nielsen, (jonasbn) 2006-2014
+Business-DK-CPR is (C) by Jonas B. Nielsen, (jonasbn) 2006-2015
 
 # LICENSE
 
-Business-DK-CPR is released under the artistic license
-
-The distribution is licensed under the Artistic License, as specified
-by the Artistic file in the standard perl distribution
-([http://www.perl.com/language/misc/Artistic.html](http://www.perl.com/language/misc/Artistic.html)).
+Business-DK-CPR is released under the artistic license 2.0
