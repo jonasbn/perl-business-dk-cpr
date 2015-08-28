@@ -1,5 +1,10 @@
 Changes file for Business::DK::CPR
 
+0.13 2015-08-28 Maintenance release, update not required
+
+- Aligned version numbers for Perl packages
+
+
 0.12 2015-08-22 Maintenance release, update not required
 
 - Changed she-bang lines to env based
