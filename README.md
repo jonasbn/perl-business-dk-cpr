@@ -193,13 +193,13 @@ provided.
     This error is thrown from [\_checkdate](#_checkdate), which is used for all general parameter
     validation.
 
-- 'argument: <birthdate> could not be parsed', the date provided is not
+- 'argument: &lt;birthdate> could not be parsed', the date provided is not
 represented by 6 digits (see also below).
 
     This error is thrown from [\_checkdate](#_checkdate), which is used for all general parameter
     validation.
 
-- 'argument: <birthdate> has to be a valid date in the format: ddmmyy',
+- 'argument: &lt;birthdate> has to be a valid date in the format: ddmmyy',
 the date format used for CPR numbers has to adhere to ddmmyy in numeric format
 like so: 311210, day in a two digit representation: 01-31, month also two digit
 representation: 01-12 and finally year in a two digit representation: 00-99.
@@ -207,7 +207,7 @@ representation: 01-12 and finally year in a two digit representation: 00-99.
     This error is thrown from [\_checkdate](#_checkdate), which is used for all general parameter
     validation.
 
-- 'Unknown gender: <gender>, assuming no gender', this is just a warning
+- 'Unknown gender: &lt;gender>, assuming no gender', this is just a warning
 issued if a call to [generate2007](#generate2007) has not been provided with a gender
 parameter
 
