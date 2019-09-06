@@ -100,11 +100,11 @@ L<Data::FormValidator::Constraints>.
 
 =head2 valid_cpr
 
-Checks whether a CPR is valid (see: SYNOPSIS) and L<Business::DK::CPR>
+Checks whether a CPR is valid (see: L</SYNOPSIS>) and L<Business::DK::CPR>
 
 =head2 match_valid_cpr
 
-Untaints a given CPR (see: SYNOPSIS and BUGS AND LIMITATIONS)
+Untaints a given CPR (see: L</SYNOPSIS> and L</"BUGS AND LIMITATIONS">)
 
 =head1 EXPORTS
 
@@ -112,7 +112,7 @@ Data::FormValidator::Constraints::Business::DK::CPR exports on request:
 
 =over
 
-=item L</valid_dk_cpr>
+=item L</valid_cpr>
 
 =item L</match_valid_cpr>
 
