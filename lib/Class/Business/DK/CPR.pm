@@ -18,6 +18,8 @@ private algorithm => my %algorithm;    # read-only accessor: algorithm()
 sub new {
     my ( $class, $number ) = @_;
 
+    croak 'You must provide a CPR number' unless ($number);
+
     ## no critic (Variables::ProhibitUnusedVariables)
     my $self = \( my $scalar );
 
@@ -25,12 +27,7 @@ sub new {
 
     register($self);
 
-    if ($number) {
-        $self->set_number($number);
-    }
-    else {
-        croak 'You must provide a CPR number';
-    }
+    $self->set_number($number);
 
     return $self;
 }
