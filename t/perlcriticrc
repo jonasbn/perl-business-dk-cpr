@@ -38,6 +38,9 @@ functions = print
 
 [-Bangs::ProhibitFlagComments]
 
+[Documentation::PodSpelling]
+stop_words_file = t/wordlist.txt
+
 #TODO
 
 [-Documentation::RequirePodLinksIncludeText]

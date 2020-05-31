@@ -147,7 +147,7 @@ The module has no known incompatibilities.
 =head1 BUGS AND LIMITATIONS
 
 The tests seem to reflect that untainting takes place, but the L</match_valid_cpr> is not called at all, so
-how this untaiting is expected integrated into L<Data::FormValidator> is still not settled (SEE: TODO)
+how this untainting is expected integrated into L<Data::FormValidator> is still not settled (SEE: TODO)
 
 =head1 TEST AND QUALITY
 
@@ -186,7 +186,7 @@ Please report issues via CPAN RT:
 or by sending mail to
 
   bug-Business-DK-CPR@rt.cpan.org
-  
+
 =head1 AUTHOR
 
 Jonas B. Nielsen, (jonasbn) - C<< <jonasbn@cpan.org> >>

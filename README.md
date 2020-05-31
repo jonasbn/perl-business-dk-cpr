@@ -36,18 +36,18 @@ This documentation describes version 0.07
 
     #Using with Params::Validate
     #See also examples/
-    
+
     use Params::Validate qw(:all);
     use Business::DK::CPR qw(validateCPR);
-        
+
     sub check_cpr {
         validate( @_,
         { cpr =>
             { callbacks =>
                 { 'validate_cpr' => sub { validateCPR($_[0]); } } } } );
-        
+
         print $_[1]." is a valid CPR\n";
-    
+
     }
 
 # DESCRIPTION
@@ -141,7 +141,7 @@ the case in this module, but then the behaviour is documented.
 ## \_length
 
 This function validates the length of the argument, it dies if the argument
-does not fit wihtin the boundaries specified by the arguments provided:
+does not fit within the boundaries specified by the arguments provided:
 
 The **\_length** function takes the following arguments:
 
@@ -188,7 +188,7 @@ Business::DK::CPR exports on request:
 # DIAGNOSTICS
 
 - 'argument for birthdate should be provided', a data parameter has to be
-provided. 
+provided.
 
     This error is thrown from [\_checkdate](#_checkdate), which is used for all general parameter
     validation.
@@ -251,7 +251,7 @@ The matrix lists what flags are required to run the specific test.
     --------------- ---- ----------- ----------- --------
     00.load.t         *
     changes.t         *
-    critic.t                              * 
+    critic.t                              *
     kwalitee.t                *
     pod-coverage.t                                   *
     pod.t                                            *
@@ -261,7 +261,7 @@ The matrix lists what flags are required to run the specific test.
 All of the above tests are actually boilerplates and are maintained as separate
 components.
 
-## TESTCOVERAGE
+## TEST COVERAGE
 
 Coverage of the test suite is at 89.1% for release 0.04, the coverage report
 was generated with the TEST\_AUTHOR flag enabled (SEE: [TEST AND QUALITY](#test-and-quality))
