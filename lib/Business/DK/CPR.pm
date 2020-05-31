@@ -12,7 +12,7 @@ use Readonly;
 use Params::Validate qw( validate_pos SCALAR ARRAYREF );
 use 5.010;    #5.10.0
 
-our $VERSION   = '0.13';
+our $VERSION   = '0.14';
 our @EXPORT_OK = qw(
   validate
   validateCPR
@@ -390,7 +390,7 @@ Business::DK::CPR - Danish CPR (SSN) number generator/validator
 
 =head1 VERSION
 
-This documentation describes version 0.07
+This documentation describes version 0.14
 
 =head1 SYNOPSIS
 
@@ -786,14 +786,18 @@ really sparked.
 
 =head1 AUTHOR
 
-Jonas B. Nielsen, (jonasbn) - C<< <jonasbn@cpan.org> >>
+=over
+
+=item * Jonas B., (jonasbn) - C<< <jonasbn@cpan.org> >>
+
+=back
 
 =head1 COPYRIGHT
 
-Business-DK-CPR is (C) by Jonas B. Nielsen, (jonasbn) 2006-2015
+Business-DK-CPR and related is (C) by Jonas B., (jonasbn) 2006-2020
 
 =head1 LICENSE
 
-Business-DK-CPR is released under the artistic license 2.0
+Business-DK-CPR is released under the Artistic License 2.0
 
 =cut

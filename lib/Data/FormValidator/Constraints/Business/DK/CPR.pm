@@ -17,7 +17,7 @@ use base 'Exporter';
 use constant VALID   => 1;
 use constant INVALID => undef;
 
-$VERSION = '0.13';
+$VERSION = '0.14';
 
 sub valid_cpr {
     return sub {
@@ -67,7 +67,7 @@ Data::FormValidator::Constraints::Business::DK::CPR - constraint for Danish CPR
 
 =head1 VERSION
 
-The documentation describes version 0.01 of Data::FormValidator::Constraints::Business::DK::CPR
+The documentation describes version 0.14 of Data::FormValidator::Constraints::Business::DK::CPR
 
 =head1 SYNOPSIS
 
@@ -189,18 +189,18 @@ or by sending mail to
 
 =head1 AUTHOR
 
-Jonas B. Nielsen, (jonasbn) - C<< <jonasbn@cpan.org> >>
+=over
+
+=item * Jonas B., (jonasbn) - C<< <jonasbn@cpan.org> >>
+
+=back
 
 =head1 COPYRIGHT
 
-Business-DK-CPR and related is (C) by Jonas B. Nielsen, (jonasbn) 2006-2014
+Business-DK-CPR and related is (C) by Jonas B., (jonasbn) 2006-2020
 
 =head1 LICENSE
 
-Business-DK-CPR and related is released under the artistic license
-
-The distribution is licensed under the Artistic License, as specified
-by the Artistic file in the standard perl distribution
-(L<http://www.perl.com/language/misc/Artistic.html>).
+Business-DK-CPR and related is released under the Artistic License 2.0
 
 =cut

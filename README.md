@@ -8,7 +8,7 @@ Business::DK::CPR - Danish CPR (SSN) number generator/validator
 
 # VERSION
 
-This documentation describes version 0.07
+This documentation describes version 0.14
 
 # SYNOPSIS
 
@@ -352,12 +352,12 @@ really sparked.
 
 # AUTHOR
 
-Jonas B. Nielsen, (jonasbn) - `<jonasbn@cpan.org>`
+- Jonas B., (jonasbn) - `<jonasbn@cpan.org>`
 
 # COPYRIGHT
 
-Business-DK-CPR is (C) by Jonas B. Nielsen, (jonasbn) 2006-2015
+Business-DK-CPR and related is (C) by Jonas B., (jonasbn) 2006-2020
 
 # LICENSE
 
-Business-DK-CPR is released under the artistic license 2.0
+Business-DK-CPR is released under the Artistic License 2.0
