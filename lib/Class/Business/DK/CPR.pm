@@ -108,7 +108,7 @@ The documentation describes version 0.01 of Class::Business::DK::CPR
 
     use Class::Business::DK::CPR;
 
-    my $cvr = Class::Business::DK::CPR->new(1501729473);
+    my $cpr = Class::Business::DK::CPR->new(1501729473);
 
 =head1 DESCRIPTION
 
