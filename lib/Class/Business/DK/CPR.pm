@@ -18,6 +18,10 @@ private algorithm => my %algorithm;    # read-only accessor: algorithm()
 sub new {
     my ( $class, $number ) = @_;
 
+    if (not $number) {
+        croak 'You must provide a CPR number';
+    }
+
     ## no critic (Variables::ProhibitUnusedVariables)
     my $self = \( my $scalar );
 
@@ -25,12 +29,7 @@ sub new {
 
     register($self);
 
-    if ($number) {
-        $self->set_number($number);
-    }
-    else {
-        croak 'You must provide a CPR number';
-    }
+    $self->set_number($number);
 
     return $self;
 }
@@ -99,7 +98,7 @@ __END__
 
 =head1 NAME
 
-Class::Business::DK::CPR - Danish CPR number class 
+Class::Business::DK::CPR - Danish CPR number class
 
 =head1 VERSION
 
@@ -225,7 +224,7 @@ Please report issues via CPAN RT:
 or by sending mail to
 
   bug-Business-DK-CPR@rt.cpan.org
-  
+
 =head1 AUTHOR
 
 Jonas B. Nielsen, (jonasbn) - C<< <jonasbn@cpan.org> >>
