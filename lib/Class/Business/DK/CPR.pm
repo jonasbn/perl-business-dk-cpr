@@ -9,7 +9,7 @@ use 5.010;    #5.10.0
 
 use Business::DK::CPR qw(validate1968 validate2007);
 
-our $VERSION = '0.14';
+our $VERSION = '0.15';
 
 private number    => my %number;       # read-only accessor: number()
 private gender    => my %gender;       # read-only accessor: gender()
@@ -102,7 +102,7 @@ Class::Business::DK::CPR - Danish CPR number class
 
 =head1 VERSION
 
-The documentation describes version 0.14 of Class::Business::DK::CPR
+The documentation describes version 0.15 of Class::Business::DK::CPR
 
 =head1 SYNOPSIS
 
@@ -217,13 +217,17 @@ Coverage of the test suite is at 98.3%
 
 =head1 BUG REPORTING
 
-Please report issues via CPAN RT:
+Please report issue via GitHub
 
-  http://rt.cpan.org/NoAuth/Bugs.html?Dist=Business-DK-CPR
+    L<https://github.com/jonasbn/perl-business-dk-cpr/issues>
+
+Alternatively report issues via CPAN RT:
+
+    L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Business-DK-CPR>
 
 or by sending mail to
 
-  bug-Business-DK-CPR@rt.cpan.org
+    bug-Business-DK-CPR@rt.cpan.org
 
 =head1 AUTHOR
 

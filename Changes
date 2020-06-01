@@ -1,4 +1,12 @@
-Changes file for Business::DK::CPR
+Change log for Business::DK::CPR
+
+0.15 2020-06-01 Maintenance release, update not required
+
+- Improvements to Dist::Zilla config, only ExtUtils::MakeMaker supported via Dist::Zilla now. Module::Build support having been removed
+
+- See the Article by Neil Bowers (NEILB) on the topic: https://neilb.org/2015/05/18/two-build-files-considered-harmful.html
+
+- Thanks to Karen Etheridge (ETHER) for information and link to the mentioned article
 
 0.14 2020-05-31 Maintenance release, update not required
 

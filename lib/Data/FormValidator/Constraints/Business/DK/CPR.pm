@@ -17,7 +17,7 @@ use base 'Exporter';
 use constant VALID   => 1;
 use constant INVALID => undef;
 
-$VERSION = '0.14';
+$VERSION = '0.15';
 
 sub valid_cpr {
     return sub {
@@ -67,7 +67,7 @@ Data::FormValidator::Constraints::Business::DK::CPR - constraint for Danish CPR
 
 =head1 VERSION
 
-The documentation describes version 0.14 of Data::FormValidator::Constraints::Business::DK::CPR
+The documentation describes version 0.15 of Data::FormValidator::Constraints::Business::DK::CPR
 
 =head1 SYNOPSIS
 
@@ -179,13 +179,17 @@ Coverage of the test suite is at 57.6%
 
 =head1 BUG REPORTING
 
-Please report issues via CPAN RT:
+Please report issue via GitHub
 
-  http://rt.cpan.org/NoAuth/Bugs.html?Dist=Business-DK-CPR
+    L<https://github.com/jonasbn/perl-business-dk-cpr/issues>
+
+Alternatively report issues via CPAN RT:
+
+    L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Business-DK-CPR>
 
 or by sending mail to
 
-  bug-Business-DK-CPR@rt.cpan.org
+    bug-Business-DK-CPR@rt.cpan.org
 
 =head1 AUTHOR
 

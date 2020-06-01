@@ -8,7 +8,7 @@ Business::DK::CPR - Danish CPR (SSN) number generator/validator
 
 # VERSION
 
-This documentation describes version 0.14
+This documentation describes version 0.15
 
 # SYNOPSIS
 
@@ -353,6 +353,11 @@ really sparked.
 # AUTHOR
 
 - Jonas B., (jonasbn) - `<jonasbn@cpan.org>`
+
+# ACKNOWLEDGEMENTS
+
+- Karen Etheridge (ETHER)
+- Neil Bowers (NEILB)
 
 # COPYRIGHT
 

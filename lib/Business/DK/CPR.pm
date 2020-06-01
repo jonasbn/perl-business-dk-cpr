@@ -12,7 +12,7 @@ use Readonly;
 use Params::Validate qw( validate_pos SCALAR ARRAYREF );
 use 5.010;    #5.10.0
 
-our $VERSION   = '0.14';
+our $VERSION   = '0.15';
 our @EXPORT_OK = qw(
   validate
   validateCPR
@@ -390,7 +390,7 @@ Business::DK::CPR - Danish CPR (SSN) number generator/validator
 
 =head1 VERSION
 
-This documentation describes version 0.14
+This documentation describes version 0.15
 
 =head1 SYNOPSIS
 
@@ -741,13 +741,19 @@ system (See: L<SEE ALSO|/SEE ALSO>).
 
 =head1 BUG REPORTING
 
-Please report issues via CPAN RT:
+=head1 BUG REPORTING
 
-  L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Business-DK-CPR>
+Please report issue via GitHub
+
+    L<https://github.com/jonasbn/perl-business-dk-cpr/issues>
+
+Alternatively report issues via CPAN RT:
+
+    L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Business-DK-CPR>
 
 or by sending mail to
 
-  bug-Business-DK-CPR@rt.cpan.org
+    bug-Business-DK-CPR@rt.cpan.org
 
 =head1 SEE ALSO
 
@@ -789,6 +795,16 @@ really sparked.
 =over
 
 =item * Jonas B., (jonasbn) - C<< <jonasbn@cpan.org> >>
+
+=back
+
+=head1 ACKNOWLEDGEMENTS
+
+=over
+
+=item * Karen Etheridge (ETHER)
+
+=item * Neil Bowers (NEILB)
 
 =back
 
