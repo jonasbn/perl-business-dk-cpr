@@ -316,7 +316,13 @@ system (See: [SEE ALSO](#see-also)).
 
 # BUG REPORTING
 
-Please report issues via CPAN RT:
+# BUG REPORTING
+
+Please report issue via GitHub
+
+    L<https://github.com/jonasbn/perl-business-dk-cpr/issues>
+
+Alternatively report issues via CPAN RT:
 
     L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Business-DK-CPR>
 
