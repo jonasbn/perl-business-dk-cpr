@@ -1,5 +1,9 @@
 Change log for Business::DK::CPR
 
+0.16 2020-06-02 Maintenance release, update not required
+
+- Removed the directive from the Dist::Zilla config as indicated in release 0.15
+
 0.15 2020-06-01 Maintenance release, update not required
 
 - Improvements to Dist::Zilla config, only ExtUtils::MakeMaker supported via Dist::Zilla now. Module::Build support having been removed

@@ -17,7 +17,7 @@ use base 'Exporter';
 use constant VALID   => 1;
 use constant INVALID => undef;
 
-$VERSION = '0.15';
+$VERSION = '0.16';
 
 sub valid_cpr {
     return sub {
@@ -67,7 +67,7 @@ Data::FormValidator::Constraints::Business::DK::CPR - constraint for Danish CPR
 
 =head1 VERSION
 
-The documentation describes version 0.15 of Data::FormValidator::Constraints::Business::DK::CPR
+The documentation describes version 0.16 of Data::FormValidator::Constraints::Business::DK::CPR
 
 =head1 SYNOPSIS
 

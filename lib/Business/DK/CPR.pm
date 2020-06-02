@@ -12,7 +12,7 @@ use Readonly;
 use Params::Validate qw( validate_pos SCALAR ARRAYREF );
 use 5.010;    #5.10.0
 
-our $VERSION   = '0.15';
+our $VERSION   = '0.16';
 our @EXPORT_OK = qw(
   validate
   validateCPR
@@ -390,7 +390,7 @@ Business::DK::CPR - Danish CPR (SSN) number generator/validator
 
 =head1 VERSION
 
-This documentation describes version 0.15
+This documentation describes version 0.16
 
 =head1 SYNOPSIS
 
