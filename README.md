@@ -8,7 +8,7 @@ Business::DK::CPR - Danish CPR (SSN) number generator/validator
 
 # VERSION
 
-This documentation describes version 0.15
+This documentation describes version 0.16
 
 # SYNOPSIS
 
