@@ -8,7 +8,7 @@ Business::DK::CPR - Danish CPR (SSN) number generator/validator
 
 # VERSION
 
-This documentation describes version 0.16
+This documentation describes version 0.17
 
 # SYNOPSIS
 
@@ -362,6 +362,7 @@ really sparked.
 
 - Karen Etheridge (ETHER)
 - Neil Bowers (NEILB)
+- Mohammad S Anwar (MANWAR)
 
 # COPYRIGHT
 
