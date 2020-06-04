@@ -181,11 +181,19 @@ Coverage of the test suite is at 57.6%
 
 Please report issue via GitHub
 
-    L<https://github.com/jonasbn/perl-business-dk-cpr/issues>
+=over
+
+=item * L<https://github.com/jonasbn/perl-business-dk-cpr/issues>
+
+=back
 
 Alternatively report issues via CPAN RT:
 
-    L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Business-DK-CPR>
+=over
+
+=item * L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Business-DK-CPR>
+
+=back
 
 or by sending mail to
 
