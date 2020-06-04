@@ -9,10 +9,6 @@ requires 'Params::Validate';
 requires 'Readonly';
 requires 'perl', '5.010';
 
-on 'build', sub {
-    requires 'Module::Build', '0.30';
-};
-
 on 'test', sub {
     requires 'File::Spec';
     requires 'IO::Handle';
@@ -24,11 +20,12 @@ on 'test', sub {
     requires 'Test::Pod', '1.41';
     requires 'Test::Pod::Coverage', '1.08';
     requires 'Test::Tester', '1.302111';
+    requires 'Perl::Critic::Bangs';
+    requires 'Test::NoPlan';
 };
 
 on 'configure', sub {
     requires 'ExtUtils::MakeMaker';
-    requires 'Module::Build', '0.30';
 };
 
 on 'develop', sub {
