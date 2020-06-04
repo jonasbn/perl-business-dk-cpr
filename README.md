@@ -316,19 +316,17 @@ system (See: [SEE ALSO](#see-also)).
 
 # BUG REPORTING
 
-# BUG REPORTING
-
 Please report issue via GitHub
 
-    L<https://github.com/jonasbn/perl-business-dk-cpr/issues>
+- [GitHub Issues](https://github.com/jonasbn/perl-business-dk-cpr/issues)
 
 Alternatively report issues via CPAN RT:
 
-    L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Business-DK-CPR>
+- [http://rt.cpan.org/NoAuth/Bugs.html?Dist=Business-DK-CPR](http://rt.cpan.org/NoAuth/Bugs.html?Dist=Business-DK-CPR)
 
 or by sending mail to
 
-    bug-Business-DK-CPR@rt.cpan.org
+- `bug-Business-DK-CPR@rt.cpan.org`
 
 # SEE ALSO
 
