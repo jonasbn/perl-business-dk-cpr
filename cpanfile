@@ -17,6 +17,7 @@ on 'test', sub {
     requires 'Test::Fatal';
     requires 'Test::Kwalitee', '1.21';
     requires 'Test::More';
+    requires 'Test::Exception';
     requires 'Test::Pod', '1.41';
     requires 'Test::Pod::Coverage', '1.08';
     requires 'Test::Tester', '1.302111';
