@@ -7,7 +7,7 @@ requires 'Tie::IxHash';
 requires 'Class::InsideOut';
 requires 'Params::Validate';
 requires 'Readonly';
-requires 'perl', '5.010';
+requires 'perl', '5.39.0';
 
 on 'test', sub {
     requires 'File::Spec';
