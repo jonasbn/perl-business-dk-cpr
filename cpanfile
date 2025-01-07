@@ -20,7 +20,7 @@ on 'test', sub {
     requires 'Test::Exception';
     requires 'Test::Pod', '1.52';
     requires 'Test::Pod::Coverage', '1.10';
-    requires 'Test::Tester', '1.302204';
+    requires 'Test::Tester', '1.302207';
     requires 'Perl::Critic::Bangs';
     requires 'Test::NoPlan';
 };
